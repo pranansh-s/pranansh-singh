@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useEffect, useRef } from "react";
 
-import * as delaunayFast from 'delaunay-fast';
+const delaunayFast = require("delaunay-fast");
 import { motion } from "framer-motion";
 
 const Canvas: NextPage = (props) => {
