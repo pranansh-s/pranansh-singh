@@ -1,0 +1,17 @@
+import { FC } from "react";
+
+const Work: FC = () => {
+  return (
+    <section className="relative w-screen h-max text-white snap-start text-center bg-primary flex justify-center items-start pt-10 md:justify-start  md:pl-24 md:pt-12">
+      <header className="relative top-[10%]">
+        <h1 className="font-cedarville text-6xl lg:text-7xl opacity-20 whitespace-nowrap">work</h1>
+        <h1 className="font-outerBold text-5xl lg:text-6xl absolute top-3 left-4 whitespace-nowrap">work</h1>
+      </header>
+      <ul>
+        
+      </ul>
+    </section>
+  )
+}
+
+export default Work;
