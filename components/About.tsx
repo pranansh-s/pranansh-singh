@@ -5,7 +5,7 @@ import Carousel from "./Carousel";
 
 const About: FC = () => {
   return (
-    <section className="relative w-screen md:h-screen h-max overflow-hidden text-white snap-center text-center bg-primary flex flex-col items-start pl-3 pt-10 justify-start md:pl-24 md:pt-12">
+    <section className="relative w-screen md:h-screen h-max overflow-hidden text-white lg:snap-center text-center bg-primary flex flex-col items-start pl-3 pt-10 justify-start md:pl-24 md:pt-12">
       <header className="relative top-[10%]">
         <h1 className="font-cedarville text-6xl lg:text-7xl opacity-20 whitespace-nowrap">about</h1>
         <h1 className="font-outerBold text-5xl lg:text-6xl absolute top-3 left-4 whitespace-nowrap">about</h1>

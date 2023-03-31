@@ -7,7 +7,7 @@ const Hero: FC = () => {
   const rotate = useTransform(y, [-150, 150], [-90, 90])
   
   return (
-    <section className="relative h-screen flex items-center justify-center text-white snap-center text-center">
+    <section className="relative h-screen flex items-center justify-center text-white lg:snap-center text-center">
       <Canvas />
       <div className="h-max xl:w-[70rem] lg:w-[53rem] md:w-[35rem] w-[26rem] grid grid-cols-3 gap-x-3 lg:gap-x-8 justify-items-end items-center">
         <motion.h1 

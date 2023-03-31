@@ -14,8 +14,9 @@ const Home: NextPage = () => {
     
       <Hero />
       <About />
-      <Work />
-      <Contact />
+      <div style={{backgroundImage: "url(./under-construction.png)"}} className='w-full h-72 -mt-20 snap-center bg-repeat-x bg-primary'></div>
+      {/* <Work /> */}
+      {/* <Contact /> */}
     </div>
   )
 }
