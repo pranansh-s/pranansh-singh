@@ -3,12 +3,8 @@ import { FC, useEffect, useRef } from "react";
 import { Card } from "../data/skills";
 
 const Carousel: FC<{animation: string, data: any}> = ({animation, data}) => {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    carouselRef.current?.classList.add(`animate-${animation}`);
-  }, []);
   return (
-    <div ref={carouselRef} className={`h-[18%] w-max space-x-3 flex p-[0.375rem] hover:pause`}>
+    <div className={`h-[18%] w-max space-x-3 flex p-[0.375rem] hover:pause animate-${animation}`}>
       {data.map((item: Card, index: number) =>
         <motion.div
           key={index}
