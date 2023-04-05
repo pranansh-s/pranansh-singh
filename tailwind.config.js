@@ -18,27 +18,27 @@ module.exports = {
         secondary: '#FF5858'
       },
       animation: {
-        'scroll1': 'scroll1 11s linear infinite',
-        'scroll2': 'scroll2 14s linear infinite',
-        'scroll3': 'scroll3 9s linear infinite',
-        'scroll4': 'scroll4 8s linear infinite',
+        'scroll1': 'scrollR1 11s linear infinite',
+        'scroll2': 'scrollR2 14s linear infinite',
+        'scroll3': 'scrollR3 9s linear infinite',
+        'scroll4': 'scrollR4 8s linear infinite',
 
         'scrollResp': 'scrollResp 16s linear infinite',
       },
       keyframes: {
-        scroll1: {
+        scrollR1: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(calc((18vh + 0.75rem) * 8))" }
         },
-        scroll2: {
+        scrollR2: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(calc((18vh + 0.75rem) * -6))" }
         },
-        scroll3: {
+        scrollR3: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(calc((18vh + 0.75rem) * 4))" }
         },
-        scroll4: {
+        scrollR4: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(calc((18vh + 0.75rem) * -2))" }
         },

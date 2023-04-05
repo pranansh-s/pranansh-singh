@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { FC, useEffect, useRef } from "react";
+import { FC } from "react";
 import { Card } from "../data/skills";
 
-const Carousel: FC<{animation: string, data: any}> = ({animation, data}) => {
+const Carousel: FC<{animationClass: string, data: any}> = ({animationClass, data}) => {
   return (
-    <div className={`h-[18%] w-max space-x-3 flex p-[0.375rem] hover:pause animate-${animation}`}>
+    <div className={`h-[18%] w-max space-x-3 flex p-[0.375rem] hover:pause animate-${animationClass}`}>
       {data.map((item: Card, index: number) =>
         <motion.div
           key={index}

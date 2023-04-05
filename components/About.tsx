@@ -31,10 +31,10 @@ const About: FC = () => {
       </motion.div>
       <div
         className="bg-[#382773] absolute -right-[43rem] -top-1/3 h-[110vh] xl:flex hidden w-[200vh] rotate-45 items-center pb-2 flex-col justify-end">
-          <Carousel data={Row4} animation="scroll4"/>
-          <Carousel data={Row3} animation="scroll3"/>
-          <Carousel data={Row2} animation="scroll2"/>
-          <Carousel data={Row1} animation="scroll1"/>
+          <Carousel data={Row4} animationClass="scroll4"/>
+          <Carousel data={Row3} animationClass="scroll3"/>
+          <Carousel data={Row2} animationClass="scroll2"/>
+          <Carousel data={Row1} animationClass="scroll1"/>
       </div>
       <div className="bg-[#382773] mt-36 md:-ml-24 -ml-3">
         <div className="animate-scrollResp hover:pause h-36 w-max xl:hidden flex items-center p-3 space-x-3">
