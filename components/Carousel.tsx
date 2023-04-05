@@ -4,7 +4,7 @@ import { Card } from "../data/skills";
 
 const Carousel: FC<{animationClass: string, data: any}> = ({animationClass, data}) => {
   return (
-    <div className={`h-[18%] w-max space-x-3 flex p-[0.375rem] hover:pause animate-${animationClass}`}>
+    <div className={`h-[18%] w-max space-x-3 flex p-[0.375rem] hover:pause animate-${animationClass || "scroll1"}`}>
       {data.map((item: Card, index: number) =>
         <motion.div
           key={index}
