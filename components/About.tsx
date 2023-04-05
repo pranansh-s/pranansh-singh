@@ -14,9 +14,10 @@ const About: FC = () => {
           initial={{ x: -200, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, type: 'spring', stiffness: 80 }}
-          className="xl:w-[35%] w-full leading-6 font-outerLight lg:text-lg text-base text-left md:mt-36 mt-24 pr-6">
-            Hello my name is <span className="text-secondary">&lt;PrananshSingh/&gt;</span> a growing Full Stack Developer and Computer Science student, besides messing around on the web I also like to do stuff with Machine Learning, Image Processing, Creative Coding. Other than that i also try to dabble with some designing, writing and sketching.
-            <br /><br /> All in all programming for me is a way to express yourself creatively, solving modern age problems simultaneously.
+          className="xl:w-[35%] w-full leading-6 font-outerLight lg:text-base text-sm text-left md:mt-36 mt-24 pr-6">
+          Hello! I'm <span className="text-secondary">&lt;PrananshSingh/&gt;</span>, a full stack developer with a passion for building beautiful and responsive user interfaces. While I enjoy working on both the frontend and backend of web applications, my true passion lies in crafting intuitive and user-friendly experiences.
+          <br /><br />In addition to my frontend skills, I have a strong interest in machine learning and data analysis. I'm always looking for opportunities to incorporate data-driven insights into my projects, and I'm excited about the potential for machine learning to revolutionize the way we interact with technology.
+          <br /><br />When I'm not coding, I love to explore my creative side through design and illustration. I believe that good design is an essential component of any successful project, and I strive to create beautiful and functional designs that enhance the user experience.
       </motion.p>
       <motion.div
         initial={{ x: -200, opacity: 0 }}
