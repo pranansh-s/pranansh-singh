@@ -5,10 +5,23 @@ import Cursor from '../components/Cursor'
 import Hero from '../components/Hero'
 import Navbar from '../components/Navbar'
 import Work from '../components/Work'
+import { NextSeo } from 'next-seo'
 
 const Home: NextPage = () => {
   return (
     <div className='relative overflow-x-hidden overflow-y-visible h-screen xl:snap-y snap-mandatory z-0 md:cursor-none select-none'>
+      <NextSeo
+        title="Pranansh Singh"
+        description="Pranansh Singh - Portfolio website"
+        canonical="https://pranansh-singh.vercel.app"
+        openGraph={{
+          url: "https://pranansh-singh.vercel.app",
+          title:"Pranansh Singh",
+          description: "Pranansh Singh - Portfolio website",
+          site_name: "Pranansh Singh",
+          type: "website"
+        }}
+      />
       <Cursor />
       <Navbar />
     

@@ -1,0 +1,27 @@
+{
+    "name": "Pranansh Singh",
+    "short_name": "Prononshu",
+    "description": "Pranansh Singh's personal portfolio website",
+    "keywords": "pranansh, singh, portfolio, full stack developer, frontend developer, web developer, nextjs, reactjs, nodejs",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#1C172E",
+    "icons": [
+      {
+        "src": "/logo512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      },
+      {
+        "src": "/logo192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/logo64.png",
+        "type": "image/png",
+        "sizes": "64x64"
+      }
+    ]
+  }
