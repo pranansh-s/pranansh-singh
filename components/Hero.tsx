@@ -7,13 +7,13 @@ const Hero: FC = () => {
   const rotate = useTransform(y, [-150, 150], [-90, 90])
   
   return (
-    <section className="relative h-screen flex items-center justify-center text-white lg:snap-center text-center">
+    <section className="relative h-screen flex items-center justify-center text-white xl:snap-center text-center">
       <Canvas />
       <div className="h-max xl:w-[70rem] lg:w-[53rem] md:w-[35rem] w-[26rem] grid grid-cols-3 gap-x-3 lg:gap-x-8 justify-items-end items-center">
         <motion.h1 
           initial={{ x: -200, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1 }} className="uppercase xl:text-8xl lg:text-7xl md:text-5xl text-4xl font-outerBold text-left col-span-2 mr-auto">pranansh</motion.h1>
+          transition={{ duration: 1 }} className="uppercase drop-shadow-[0_0_4px_rgba(0,0,0,1)] xl:text-8xl lg:text-7xl md:text-5xl text-4xl font-outerBold text-left col-span-2 mr-auto">pranansh</motion.h1>
         <motion.sub
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -51,7 +51,7 @@ const Hero: FC = () => {
         <motion.h1 
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1 }} className="uppercase xl:text-8xl lg:text-7xl md:text-5xl text-4xl font-outerBold text-right">singh</motion.h1>
+          transition={{ duration: 1 }} className="uppercase drop-shadow-[0_0_4px_rgba(0,0,0,1)] xl:text-8xl lg:text-7xl md:text-5xl text-4xl font-outerBold text-right">singh</motion.h1>
       </div>
       <div className="rotate-90 absolute lg:-right-18 md:-right-12 -right-8 md:bottom-20 bottom-12 flex items-center md:gap-3 gap-1 opacity-40">
         <div className="h-[0.1rem] w-10 md:w-24 rounded-xl bg-white"/>

@@ -61,9 +61,9 @@ const Cursor: FC = () => {
         translateY: cursorY,
         transitionProperty: 'padding'
       }}
-      className="md:flex fixed pointer-events-none -top-8 -left-8 bg-white rounded-full mix-blend-difference duration-300 p-5 z-30 hidden justify-center items-center" ref={cursor}>
+      className="md:flex fixed pointer-events-none -top-4 -left-4 bg-white rounded-full mix-blend-difference duration-300 p-5 z-30 hidden justify-center items-center" ref={cursor}>
         <span className="transition-all duration-300 text-xs text-primary text-center font-outerMedium opacity-60 w-10 scale-0 absolute" ref={cursorTextPull}>Pull Me</span>
-        <span className="transition-all duration-300 text-xs text-primary text-center font-outerMedium opacity-60 w-10 scale-0 absolute" ref={cursorTextClick}>Click Me</span>
+        <span className="transition-all duration-300 text-xs text-primary text-center font-outerMedium opacity-60 w-10 scale-0 absolute" ref={cursorTextClick}></span>
         <motion.span
           animate={{ rotate: 360 }}
           transition={{ ease: "linear", duration: 5, repeat: Infinity }}

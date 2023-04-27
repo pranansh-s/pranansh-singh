@@ -14,10 +14,10 @@ const Navbar: FC = () => {
         }}
         transition={{ duration: 1.5 }}
         className="fixed h-screen flex-col justify-center sm:flex hidden items-center gap-7 right-0 m-2 md:m-8 z-20">
-        <div className="md:p-2 p-[5px] w-min rounded-full bg-secondary"/>
-        <div className="md:p-1 p-[3px] w-min rounded-full bg-secondary/60"/>
-        <div className="md:p-1 p-[3px] w-min rounded-full bg-secondary/60"/>
-        <div className="md:p-1 p-[3px] w-min rounded-full bg-secondary/60"/>
+        <div className="md:p-2 p-[5px] w-min rounded-full bg-secondary outline outline-2 outline-white"/>
+        <div className="md:p-1 p-[3px] w-min rounded-full bg-white/60"/>
+        <div className="md:p-1 p-[3px] w-min rounded-full bg-white/60"/>
+        <div className="md:p-1 p-[3px] w-min rounded-full bg-white/60"/>
     </motion.header>
   )
 }

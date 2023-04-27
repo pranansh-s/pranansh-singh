@@ -8,14 +8,13 @@ import Work from '../components/Work'
 
 const Home: NextPage = () => {
   return (
-    <div className='relative overflow-x-hidden overflow-y-visible h-screen lg:snap-y snap-mandatory z-0 md:cursor-none select-none'>
+    <div className='relative overflow-x-hidden overflow-y-visible h-screen xl:snap-y snap-mandatory z-0 md:cursor-none select-none'>
       <Cursor />
       <Navbar />
     
       <Hero />
       <About />
-      <div style={{backgroundImage: "url(./under-construction.png)"}} className='w-full h-72 -mt-20 snap-center bg-repeat-x bg-primary'></div>
-      {/* <Work /> */}
+      <Work />
       {/* <Contact /> */}
     </div>
   )
