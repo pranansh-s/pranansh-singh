@@ -9,7 +9,7 @@ const Cursor: FC = () => {
   const posX = useMotionValue(0);
   const posY = useMotionValue(0);
 
-  const springConfig = { damping: 100, stiffness: 900 };
+  const springConfig = { damping: 100, stiffness: 1500 };
   const cursorX = useSpring(posX, springConfig);
   const cursorY = useSpring(posY, springConfig);
   

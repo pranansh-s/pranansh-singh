@@ -9,7 +9,7 @@ import { NextSeo } from 'next-seo'
 
 const Home: NextPage = () => {
   return (
-    <div className='relative overflow-x-hidden overflow-y-visible h-screen xl:snap-y snap-mandatory z-0 md:cursor-none select-none'>
+    <div className='relative overflow-x-hidden overflow-y-visible h-screen z-0 md:cursor-none'>
       <NextSeo
         title="Pranansh Singh"
         description="Pranansh Singh - Portfolio website"
