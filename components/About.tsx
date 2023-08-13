@@ -21,11 +21,11 @@ const About: FC = () => {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 2, type: 'spring', stiffness: 80, delay: 0.1 }}
         className="flex lg:space-x-6 space-x-3 mt-16">
-          <a target="_blank" href="https://www.linkedin.com/in/pranansh-singh-9288a523b/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/linkedin.svg" alt="" className="md:w-8 w-6"/></a>
-          <a target="_blank" href="https://github.com/pranansh-s/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/github.svg" alt="" className="md:w-8 w-6"/></a>
-          <a target="_blank" href="https://www.instagram.com/prononshu/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/instagram.svg" alt="" className="md:w-8 w-6"/></a>
-          <a target="_blank" href="https://twitter.com/pronounshu/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/twitter.svg" alt="" className="md:w-8 w-6"/></a>
-          <a target="_blank" href="https://discord.com/users/569124912527310853/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/discord.svg" alt="" className="md:w-8 w-6"/></a>
+          <a rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/pranansh-singh-9288a523b/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/linkedin.svg" alt="" className="md:w-8 w-6"/></a>
+          <a rel="noreferrer" target="_blank" href="https://github.com/pranansh-s/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/github.svg" alt="" className="md:w-8 w-6"/></a>
+          <a rel="noreferrer" target="_blank" href="https://www.instagram.com/prononshu/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/instagram.svg" alt="" className="md:w-8 w-6"/></a>
+          <a rel="noreferrer" target="_blank" href="https://twitter.com/pronounshu/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/twitter.svg" alt="" className="md:w-8 w-6"/></a>
+          <a rel="noreferrer" target="_blank" href="https://discord.com/users/569124912527310853/" className="click md:hover:cursor-none hover:cursor-pointer hover:bg-white rounded-full p-2 transition-all duration-300 ease-out"><img src="../social-media/discord.svg" alt="" className="md:w-8 w-6"/></a>
       </motion.div>
       <div
         className="bg-[#382773] absolute -right-[43rem] -top-1/3 h-[110vh] xl:flex hidden w-[200vh] rotate-45 items-center pb-2 flex-col justify-end">
