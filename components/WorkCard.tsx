@@ -18,17 +18,17 @@ const WorkCard: FC<{setState: any, index: number, active: number, item: WorkDeta
         </div>
         <div className="flex xl:flex-row flex-col-reverse xl:space-y-0 space-y-10">
           <div className="xl:w-1/2 w-full flex items-end xl:justify-start justify-center xl:mt-0 mt-16">
-            <img src={item.phone[0]} className="md:h-[23rem] h-[13rem] drop-shadow-lg" alt="" />
+            <img src={item.phone[0]} className="md:h-[23rem] h-[19rem] drop-shadow-lg" alt="" />
             <div>
               <div className="flex w-full justify-between xl:px-10 px-0 xl:scale-100 origin-bottom scale-75 items-end">
                 <img src={item.doodleIcons[0]} alt="" className="h-max" />
                 <img src={item.doodleIcons[1]} alt="" className="h-max" />
               </div>
-              <img src={item.phone[1]} className="md:w-[23rem] w-[13rem] drop-shadow-lg" alt="" />
+              <img src={item.phone[1]} className="md:w-[23rem] w-[19rem] drop-shadow-lg" alt="" />
             </div>
           </div>
           <div className="flex flex-col xl:items-end items-start justify-center space-y-6 xl:text-right text-left xl:w-1/2 w-full">
-            {item.link && <a target="_blank" className="font-outerLight w-max active:outline-1 click hover:bg-white group hover:text-black md:hover:cursor-none hover:cursor-pointer outline outline-1 py-2 px-4 rounded-full flex text-sm items-center transition-all duration-300" href={item.link}>
+            {item.link && <a target="_blank" className="focus:outline-1 font-outerLight w-max active:outline-1 click hover:bg-white group hover:text-black md:hover:cursor-none hover:cursor-pointer outline outline-1 py-2 px-4 rounded-full flex text-sm items-center transition-all duration-300" href={item.link}>
               Visit Site
               <svg className="fill-white group-hover:fill-black group-hover:rotate-90 transition-all duration-300 rotate-45 w-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m26.71 10.29-10-10a1 1 0 0 0-1.41 0l-10 10 1.41 1.41L15 3.41V32h2V3.41l8.29 8.29z"/></svg>
             </a>}

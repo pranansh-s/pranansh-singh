@@ -12,6 +12,15 @@ export interface WorkDetail {
 
 export const work: WorkDetail[] = [
     {
+        images: ["./work/Namegen/NAMEGEN.png"],
+        phone: ["./work/Namegen/potrait.svg", "./work/Namegen/landscape.svg"],
+        doodleIcons: ["./work/Namegen/bulb.svg", "./work/Namegen/ruler.svg"],
+        name: "namegen",
+        color: "#8B79CF",
+        text: "I played a crucial role in creating namegen.io, collaborating with a UI/UX designer. Our aim was a user-friendly platform for generating unique business names. We used advanced algorithms to suggest fitting names aligned with brand identity. I used modern technologies like NextJS, TailwindCSS, Redux, and Typescript for development. I also implemented Affiliate Tracking via Impact and Programmatic SEO for growth. Server-side tech boosted efficiency, making Namegen.io indispensable for entrepreneurs seeking the perfect name.",
+        link: "https://namegen.io/",
+    },
+    {
         images: ["./work/The Barbeque Company/BBQ.png"],
         phone: ["./work/The Barbeque Company/potrait.svg", "./work/The Barbeque Company/landscape.svg"],
         doodleIcons: ["./work/The Barbeque Company/cutlery.svg", "./work/The Barbeque Company/dish.svg"],
@@ -38,13 +47,4 @@ export const work: WorkDetail[] = [
         text: "Throughout the project, I utilized my expertise in web development and API integration to create an engaging and interactive game that provides users with a fun and exciting experience. This project not only demonstrates my proficiency in these areas but also showcases my passion for creating unique and dynamic applications that utilize cutting-edge technologies. Overall, I am thrilled to have developed this project and am excited to continue pushing the boundaries of what is possible in web development.",
         link: "https://pixelatd.vercel.app/",
     },
-    // {
-    //     images: ["./work/Skookshie/EVENTSTRY.png"],
-    //     phone: ["./work/Skookshie/potrait.svg", "./work/Skookshie/landscape.svg"],
-    //     doodleIcons: ["./work/Skookshie/balloon.svg", "./work/Skookshie/gift.svg"],
-    //     name: "skookshie",
-    //     color: "#FF80C1",
-    //     text: "work for the barbeque company, made website uwuw uwuwu, some text about that explain strapi wowie and stuff. work for the barbeque company, made website uwuw uwuwu, some text about that explain strapi wowie and stuff. work for the barbeque company, made website uwuw uwuwu, some text about that explain strapi wowie and stuff. work for the barbeque company, made website uwuw uwuwu, some text about that explain strapi wowie and stuff.",
-    //     link: "https://skookshie.vercel.app/",
-    // },
 ]
