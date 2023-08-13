@@ -28,7 +28,7 @@ const WorkCard: FC<{setState: any, index: number, active: number, item: WorkDeta
             </div>
           </div>
           <div className="flex flex-col xl:items-end items-start justify-center space-y-6 xl:text-right text-left xl:w-1/2 w-full">
-            {item.link && <a target="_blank" className="focus:outline-1 font-outerLight w-max active:outline-1 click hover:bg-white group hover:text-black md:hover:cursor-none hover:cursor-pointer outline outline-1 py-2 px-4 rounded-full flex text-sm items-center transition-all duration-300" href={item.link}>
+            {item.link && <a rel="noreferrer" target="_blank" className="focus:outline-1 font-outerLight w-max active:outline-1 click hover:bg-white group hover:text-black md:hover:cursor-none hover:cursor-pointer outline outline-1 py-2 px-4 rounded-full flex text-sm items-center transition-all duration-300" href={item.link}>
               Visit Site
               <svg className="fill-white group-hover:fill-black group-hover:rotate-90 transition-all duration-300 rotate-45 w-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m26.71 10.29-10-10a1 1 0 0 0-1.41 0l-10 10 1.41 1.41L15 3.41V32h2V3.41l8.29 8.29z"/></svg>
             </a>}
