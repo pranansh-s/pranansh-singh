@@ -9,30 +9,30 @@
 }
 
 @layer base {
-    @font-face {
-        font-family: "MADE Outer Sans Bold";
-        src: url('../public/fonts/outer-sans-bold.otf');
-    }
-    @font-face {
-        font-family: "MADE Outer Sans Light";
-        src: url('../public/fonts/outer-sans-light.otf');
-    }
-    @font-face {
-        font-family: "MADE Outer Sans Medium";
-        src: url('../public/fonts/outer-sans-medium.otf');
-    }
-    @font-face {
-        font-family: "MADE Outer Sans Regular";
-        src: url('../public/fonts/outer-sans-regular.otf');
-    }
-    @font-face {
-        font-family: "Cedarville Cursive";
-        src: url('../public/fonts/cedarville-cursive.ttf');
-    }
+  @font-face {
+    font-family: 'MADE Outer Sans Bold';
+    src: url('../public/fonts/outer-sans-bold.otf');
+  }
+  @font-face {
+    font-family: 'MADE Outer Sans Light';
+    src: url('../public/fonts/outer-sans-light.otf');
+  }
+  @font-face {
+    font-family: 'MADE Outer Sans Medium';
+    src: url('../public/fonts/outer-sans-medium.otf');
+  }
+  @font-face {
+    font-family: 'MADE Outer Sans Regular';
+    src: url('../public/fonts/outer-sans-regular.otf');
+  }
+  @font-face {
+    font-family: 'Cedarville Cursive';
+    src: url('../public/fonts/cedarville-cursive.ttf');
+  }
 
-    .font-outline {
-      -webkit-text-stroke: 2px white;
-    }
+  .font-outline {
+    -webkit-text-stroke: 2px white;
+  }
 }
 
 * {
@@ -110,6 +110,11 @@ img {
   pointer-events: none;
 }
 
-a, img, button, input, label, span {
+a,
+img,
+button,
+input,
+label,
+span {
   -webkit-tap-highlight-color: transparent;
 }

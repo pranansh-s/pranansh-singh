@@ -1,75 +1,65 @@
-import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useState } from 'react';
 
-const Cursor: FC = () => {
-  const cursor = useRef<HTMLDivElement>(null);
-  const cursorTextPull = useRef<HTMLSpanElement>(null);
-  const cursorTextClick = useRef<HTMLSpanElement>(null);
+import { motion, useMotionValue, useSpring, Variants } from 'framer-motion';
 
-  const posX = useMotionValue(0);
-  const posY = useMotionValue(0);
+import { cursorSpringConfig } from '@/constants/motion';
 
-  const springConfig = { damping: 100, stiffness: 1500 };
-  const cursorX = useSpring(posX, springConfig);
-  const cursorY = useSpring(posY, springConfig);
-  
+const Cursor = () => {
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  const springX = useSpring(cursorX, cursorSpringConfig);
+  const springY = useSpring(cursorY, cursorSpringConfig);
+
+  const [cursorVariant, setCursorVariant] = useState<'default' | 'hover'>('default');
+
   useEffect(() => {
-    const setPos = (e: MouseEvent) => {
-      posX.set(e.clientX);
-      posY.set(e.clientY);
-    }
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+    };
 
-    const hoverMousePull = () => {
-      cursor.current!.style.padding = '2rem';
-      cursorTextPull.current!.style.transform = "scale(1, 1)";
-    }
+    const checkHoverState = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
 
-    const hoverMouseClick = () => {
-      cursor.current!.style.padding = '2rem';
-      cursorTextClick.current!.style.transform = "scale(1, 1)";
-    }
-    
-    const unHoverMousePull = () => {
-      cursor.current!.style.padding = '1.25rem';
-      cursorTextPull.current!.style.transform = "scale(0, 0)";
-    }
+      if (target.closest('.hov')) {
+        setCursorVariant('hover');
+      } else {
+        setCursorVariant('default');
+      }
+    };
 
-    const unHoverMouseClick = () => {
-      cursor.current!.style.padding = '1.25rem';
-      cursorTextClick.current!.style.transform = "scale(0, 0)";
-    }
+    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('mouseover', checkHoverState);
 
-
-    Array.from(document.getElementsByClassName('hov')).forEach((el) => el.addEventListener('mouseover', hoverMousePull));
-    Array.from(document.getElementsByClassName('hov')).forEach((el) => el.addEventListener('mouseout', unHoverMousePull));
-    Array.from(document.getElementsByClassName('click')).forEach((el) => el.addEventListener('mouseover', hoverMouseClick));
-    Array.from(document.getElementsByClassName('click')).forEach((el) => el.addEventListener('mouseout', unHoverMouseClick));
-    window.addEventListener('mousemove', setPos);
     return () => {
-      Array.from(document.getElementsByClassName('hov')).forEach((el) => el.removeEventListener('mouseover', hoverMousePull));
-      Array.from(document.getElementsByClassName('hov')).forEach((el) => el.removeEventListener('mouseout', unHoverMousePull));
-      Array.from(document.getElementsByClassName('click')).forEach((el) => el.removeEventListener('mouseover', hoverMouseClick));
-      Array.from(document.getElementsByClassName('click')).forEach((el) => el.removeEventListener('mouseout', unHoverMouseClick));
-      window.removeEventListener('mousemove', setPos);
-    }
-  }, []);
+      window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener('mouseover', checkHoverState);
+    };
+  }, [cursorX, cursorY]);
+
+  const containerVariants: Variants = {
+    default: { padding: '1.25rem' },
+    hover: { padding: '2rem' },
+  };
 
   return (
     <motion.div
+      variants={containerVariants}
+      animate={cursorVariant}
+      className="pointer-events-none fixed z-50 hidden -top-5 -left-5 items-center justify-center rounded-full bg-white mix-blend-difference md:flex"
       style={{
-        translateX: cursorX,
-        translateY: cursorY,
-        transitionProperty: 'padding'
+        x: springX,
+        y: springY,
       }}
-      className="md:flex fixed pointer-events-none -top-4 -left-4 bg-white rounded-full mix-blend-difference duration-300 p-5 z-30 hidden justify-center items-center" ref={cursor}>
-        <span className="transition-all duration-300 text-xs text-primary text-center font-outerMedium opacity-60 w-10 scale-0 absolute" ref={cursorTextPull}>Pull Me</span>
-        <span className="transition-all duration-300 text-xs text-primary text-center font-outerMedium opacity-60 w-10 scale-0 absolute" ref={cursorTextClick}></span>
-        <motion.span
-          animate={{ rotate: 360 }}
-          transition={{ ease: "linear", duration: 5, repeat: Infinity }}
-          className="rounded-full outline-dashed outline-2 p-6 absolute"></motion.span>
+    >
+      <motion.span
+        animate={{ rotate: 360 }}
+        transition={{ ease: 'linear', duration: 2.5, repeat: Infinity }}
+        className="absolute rounded-full p-6 outline-dashed outline-2"
+      />
     </motion.div>
-  )
-}
+  );
+};
 
-export default Cursor
+export default Cursor;
