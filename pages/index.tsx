@@ -28,7 +28,6 @@ export default Home;
 const HomeContainer = tw.div`
   relative
   z-0
-  h-screen
   overflow-x-hidden
   overflow-y-visible
   md:cursor-none

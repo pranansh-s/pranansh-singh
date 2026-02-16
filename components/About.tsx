@@ -8,9 +8,9 @@ const About: FC = () => {
   return (
     <section
       id="about"
-      className="relative flex h-max min-h-screen w-screen flex-col items-start justify-start overflow-hidden bg-primary pl-3 pt-10 text-center text-white md:pl-16 md:pt-12 xl:snap-center xl:pl-24"
+      className="relative flex h-max min-h-screen w-screen flex-col items-start justify-start overflow-hidden bg-primary pl-3 pt-10 text-center text-white/50 md:pl-16 md:pt-12 xl:snap-center xl:pl-24"
     >
-      <header className="relative top-10">
+      <header className="relative top-10 text-white">
         <h1 className="whitespace-nowrap font-cedarville text-6xl opacity-20 lg:text-7xl">about</h1>
         <h1 className="absolute top-3 left-4 whitespace-nowrap font-outerBold text-5xl lg:text-6xl">about</h1>
       </header>

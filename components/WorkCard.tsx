@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { WorkDetail } from '../data/work';
+import { WorkDetail } from '@/data/work';
 
 const WorkCard: FC<{ setState: any; index: number; active: number; item: WorkDetail }> = ({
   setState,

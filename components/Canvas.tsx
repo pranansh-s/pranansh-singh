@@ -1,12 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { NextPage } from 'next';
 
 import { motion } from 'framer-motion';
 import tw from 'tailwind-styled-components';
 
 import { DelaunaySystem } from '@/utils/canvas';
 
-const Canvas: NextPage = props => {
+const Canvas = () => {
   const canRef = useRef<HTMLCanvasElement>(null);
   const systemRef = useRef<DelaunaySystem | null>(null);
 
@@ -29,7 +28,7 @@ const Canvas: NextPage = props => {
 
   return (
     <CanvasContainer>
-      <canvas className="absolute" ref={canRef} {...props} />
+      <canvas className="absolute" ref={canRef} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

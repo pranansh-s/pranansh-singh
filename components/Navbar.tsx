@@ -1,14 +1,13 @@
-import { FC } from 'react';
-
 import { motion } from 'framer-motion';
+import tw from 'tailwind-styled-components';
 
-import { useSection } from '../utils/SectionContext';
+import { useSection } from '@/utils/SectionContext';
 
-const Navbar: FC = () => {
+const Navbar = () => {
   const { currentSection } = useSection();
 
   return (
-    <motion.header
+    <NavbarContainer
       initial={{
         x: 100,
         opacity: 0,
@@ -17,23 +16,36 @@ const Navbar: FC = () => {
         x: 0,
         opacity: 1,
       }}
-      transition={{ duration: 1.5 }}
-      className="fixed right-0 z-20 m-2 hidden h-screen flex-col items-center justify-center gap-7 sm:flex md:m-8"
+      transition={{ duration: 1 }}
     >
-      <div
-        className={`w-min rounded-full transition-all duration-300 ${currentSection == 'hero' ? 'bg-secondary p-[5px] outline outline-2 outline-white md:p-2' : 'bg-white/60 p-[3px] md:p-1'}`}
-      />
-      <div
-        className={`w-min rounded-full transition-all duration-300 ${currentSection == 'about' ? 'bg-secondary p-[5px] outline outline-2 outline-white md:p-2' : 'bg-white/60 p-[3px] md:p-1'}`}
-      />
-      <div
-        className={`w-min rounded-full transition-all duration-300 ${currentSection == 'work' ? 'bg-secondary p-[5px] outline outline-2 outline-white md:p-2' : 'bg-white/60 p-[3px] md:p-1'}`}
-      />
-      <div
-        className={`w-min rounded-full transition-all duration-300 ${currentSection == 'contact' ? 'bg-secondary p-[5px] outline outline-2 outline-white md:p-2' : 'bg-white/60 p-[3px] md:p-1'}`}
-      />
-    </motion.header>
+      <SectionDot $isActive={currentSection == 'hero'} />
+      <SectionDot $isActive={currentSection == 'about'} />
+      <SectionDot $isActive={currentSection == 'work'} />
+      <SectionDot $isActive={currentSection == 'contact'} />
+    </NavbarContainer>
   );
 };
 
 export default Navbar;
+
+const NavbarContainer = tw(motion.header)`
+  fixed
+  right-0
+  z-20
+  m-2
+  hidden
+  h-screen
+  flex-col
+  items-center
+  justify-center
+  gap-7
+  sm:flex
+  md:m-8
+`;
+
+const SectionDot = tw.div<{ $isActive: boolean }>`
+  w-min
+  rounded-full
+  transition-all
+  duration-300
+  ${p => (p.$isActive ? 'bg-secondary p-[5px] outline outline-2 outline-white sm:p-2' : 'bg-white/60 sm:p-1')} `;

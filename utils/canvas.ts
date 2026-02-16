@@ -42,7 +42,7 @@ export class DelaunaySystem {
     this.resize();
     this.initPoints();
 
-    window.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', e => {
       this.mouseX = e.clientX;
       this.mouseY = e.clientY;
     });
@@ -74,6 +74,7 @@ export class DelaunaySystem {
     const radius = 500;
 
     const visibility = Math.min(1, Math.max(0, 1 - (distance - 50) / (radius - 50)));
+    const opacity = Math.abs(a[0] * (b[1] - c[1]) + b[0] * (c[1] - a[1]) + c[0] * (a[1] - b[1])) / 3e4;
     if (visibility <= 0.05) return;
 
     this.ctx.beginPath();
@@ -82,8 +83,6 @@ export class DelaunaySystem {
     this.ctx.lineTo(c[0], c[1]);
     this.ctx.closePath();
 
-    const opacity = Math.abs(a[0] * (b[1] - c[1]) + b[0] * (c[1] - a[1]) + c[0] * (a[1] - b[1])) / 3e4;
-    
     this.ctx.fillStyle = `rgba(65, 41, 90, ${opacity * visibility * 2})`;
     this.ctx.strokeStyle = `rgba(0, 0, 0, ${opacity * visibility * 0.5})`;
     this.ctx.fill();

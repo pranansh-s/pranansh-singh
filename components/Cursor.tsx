@@ -1,6 +1,7 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { motion, useMotionValue, useSpring, Variants } from 'framer-motion';
+import tw from 'tailwind-styled-components';
 
 import { cursorSpringConfig } from '@/constants/motion';
 
@@ -39,15 +40,14 @@ const Cursor = () => {
   }, [cursorX, cursorY]);
 
   const containerVariants: Variants = {
-    default: { padding: '1.25rem' },
-    hover: { padding: '2rem' },
+    default: { padding: '1.5rem' },
+    hover: { padding: '2.5rem' },
   };
 
   return (
-    <motion.div
+    <CursorContainer
       variants={containerVariants}
       animate={cursorVariant}
-      className="pointer-events-none fixed z-50 hidden -top-5 -left-5 items-center justify-center rounded-full bg-white mix-blend-difference md:flex"
       style={{
         x: springX,
         y: springY,
@@ -56,10 +56,25 @@ const Cursor = () => {
       <motion.span
         animate={{ rotate: 360 }}
         transition={{ ease: 'linear', duration: 2.5, repeat: Infinity }}
-        className="absolute rounded-full p-6 outline-dashed outline-2"
+        className="absolute rounded-full p-8 outline-dashed outline-2"
       />
-    </motion.div>
+    </CursorContainer>
   );
 };
 
 export default Cursor;
+
+const CursorContainer = tw(motion.div)`
+  pointer-events-none
+  fixed
+  -top-8
+  -left-5
+  z-50
+  hidden
+  items-center
+  justify-center
+  rounded-full
+  bg-white
+  mix-blend-difference
+  md:flex
+`;
