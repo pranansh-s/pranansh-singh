@@ -1,21 +1,11 @@
-import { motion, useMotionValue, useTransform } from 'framer-motion';
-import Lottie from 'lottie-react';
+import { motion } from 'framer-motion';
 import tw from 'tailwind-styled-components';
 
 import AnimatedArrow from '@/components/AnimatedArrow';
 import Canvas from '@/components/Canvas';
+import Typewriter from '@/components/Typewriter';
 
 import { draggableSpringConfig } from '@/constants/motion';
-
-import typingLottie from '@/public/typing.json';
-import Typewriter from './Typewriter';
-
-const PortfolioTag = () => (
-  <ProfileTagContainer>
-    <div className="h-[0.1rem] w-10 rounded-xl bg-white md:w-24" />
-    <span className="font-outerRegular text-[0.65rem]">Portfolio</span>
-  </ProfileTagContainer>
-);
 
 const Hero = () => (
   <HeroContainer id="hero">
@@ -57,9 +47,7 @@ const Hero = () => (
         singh
       </NameTag>
     </HeroHeader>
-    <Typewriter text='hello bonjour aloha नमस्ते привет こんにちは مرحبًا'/>
-    <StyledLottie animationData={typingLottie} />
-    <PortfolioTag />
+    <Typewriter text="hello | bonjour | hola | aloha | नमस्ते | привет | こんにちは | مرحبًا" />
   </HeroContainer>
 );
 
@@ -67,6 +55,7 @@ export default Hero;
 
 const HeroContainer = tw.section`
   relative
+  mx-auto
   flex
   h-screen
   max-w-[1600px]
@@ -75,18 +64,6 @@ const HeroContainer = tw.section`
   text-center
   text-white
   xl:snap-center
-`;
-
-const StyledLottie = tw(Lottie)`
-  absolute
-  right-0
-  bottom-0
-  origin-bottom-right
-  translate-x-12
-  translate-y-8
-  lg:translate-y-12
-  scale-[0.6]
-  md:scale-[0.35]
 `;
 
 const HeroHeader = tw.header`
@@ -98,6 +75,7 @@ const HeroHeader = tw.header`
 `;
 
 const NameTag = tw(motion.h1)`
+  pointer-events-none
   font-outerBold
   text-6xl
   uppercase
@@ -111,19 +89,6 @@ const SubText = tw(motion.sub)`
   text-white/30
   transition-colors
   duration-500
-  hover:text-white/70
+  hover:text-secondary
   sm:block
-`;
-
-const ProfileTagContainer = tw.div`
-  absolute
-  right-0
-  bottom-0
-  flex
-  translate-x-16
-  -translate-y-20
-  rotate-90
-  items-center
-  gap-2
-  opacity-40
 `;

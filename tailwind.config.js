@@ -14,6 +14,11 @@ module.exports = {
         primary: '#1C172E',
         secondary: '#FF5858',
       },
+      padding: {
+        xl: '64px',
+        md: '36px',
+        sm: '12px',
+      },
       animation: {
         scroll1: 'scrollR1 11s linear infinite',
         scroll2: 'scrollR2 14s linear infinite',
