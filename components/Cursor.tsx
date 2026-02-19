@@ -1,48 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { motion, useMotionValue, useSpring, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import tw from 'tailwind-styled-components';
 
-import { cursorSpringConfig } from '@/constants/motion';
+import useCursor, { CursorType } from '@/hooks/useCursor';
+
+const containerVariants = {
+  default: { padding: '1.5rem' },
+  hover: { padding: '2.5rem' },
+};
 
 const Cursor = () => {
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const springX = useSpring(cursorX, cursorSpringConfig);
-  const springY = useSpring(cursorY, cursorSpringConfig);
-
-  const [cursorVariant, setCursorVariant] = useState<'default' | 'hover'>('default');
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-
-    const checkHoverState = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-
-      if (target.closest('.hov')) {
-        setCursorVariant('hover');
-      } else {
-        setCursorVariant('default');
-      }
-    };
-
-    window.addEventListener('mousemove', moveCursor);
-    window.addEventListener('mouseover', checkHoverState);
-
-    return () => {
-      window.removeEventListener('mousemove', moveCursor);
-      window.removeEventListener('mouseover', checkHoverState);
-    };
-  }, [cursorX, cursorY]);
-
-  const containerVariants: Variants = {
-    default: { padding: '1.5rem' },
-    hover: { padding: '2.5rem' },
-  };
+  const [cursorVariant, setCursorVariant] = useState<CursorType>('default');
+  const { springX, springY } = useCursor(setCursorVariant);
 
   return (
     <CursorContainer

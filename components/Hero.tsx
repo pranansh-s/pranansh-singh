@@ -3,7 +3,6 @@ import tw from 'tailwind-styled-components';
 
 import AnimatedArrow from '@/components/AnimatedArrow';
 import Canvas from '@/components/Canvas';
-import Typewriter from '@/components/Typewriter';
 
 import { draggableSpringConfig } from '@/constants/motion';
 
@@ -14,6 +13,7 @@ const Hero = () => (
       <NameTag
         initial={{ x: -200, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 1 }}
         className="col-span-2 mr-auto"
       >
@@ -21,6 +21,7 @@ const Hero = () => (
       </NameTag>
       <SubText
         initial={{ y: 50, opacity: 0 }}
+        viewport={{ once: true }}
         whileInView={{ y: 0, opacity: 1 }}
         {...draggableSpringConfig}
         drag
@@ -30,6 +31,7 @@ const Hero = () => (
       </SubText>
       <SubText
         initial={{ y: 50, opacity: 0 }}
+        viewport={{ once: true }}
         whileInView={{ y: 0, opacity: 1 }}
         {...draggableSpringConfig}
         drag
@@ -40,6 +42,7 @@ const Hero = () => (
       <AnimatedArrow />
       <NameTag
         initial={{ x: 100, opacity: 0 }}
+        viewport={{ once: true }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
         className="ml-auto"
@@ -47,7 +50,6 @@ const Hero = () => (
         singh
       </NameTag>
     </HeroHeader>
-    <Typewriter text="hello | bonjour | hola | aloha | नमस्ते | привет | こんにちは | مرحبًا" />
   </HeroContainer>
 );
 
@@ -58,12 +60,12 @@ const HeroContainer = tw.section`
   mx-auto
   flex
   h-screen
+  max-h-[768px]
   max-w-[1600px]
   items-center
   justify-center
   text-center
   text-white
-  xl:snap-center
 `;
 
 const HeroHeader = tw.header`

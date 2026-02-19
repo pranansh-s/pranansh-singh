@@ -14,40 +14,23 @@ module.exports = {
         primary: '#1C172E',
         secondary: '#FF5858',
       },
-      padding: {
+      spacing: {
         xl: '64px',
         md: '36px',
-        sm: '12px',
+        sm: '16px',
       },
       animation: {
-        scroll1: 'scrollR1 11s linear infinite',
-        scroll2: 'scrollR2 14s linear infinite',
-        scroll3: 'scrollR3 9s linear infinite',
-        scroll4: 'scrollR4 8s linear infinite',
-
-        scrollResp: 'scrollResp 16s linear infinite',
+        xlcarouselScroll: 'scrollXL 24s linear infinite',
+        carouselScroll: 'scroll 24s linear infinite',
       },
       keyframes: {
-        scrollR1: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(calc((18vh + 0.75rem) * 8))' },
+        scroll: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
-        scrollR2: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(calc((18vh + 0.75rem) * -6))' },
-        },
-        scrollR3: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(calc((18vh + 0.75rem) * 4))' },
-        },
-        scrollR4: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(calc((18vh + 0.75rem) * -2))' },
-        },
-
-        scrollResp: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(calc((8rem + 0.75rem) * -20))' },
+        scrollXL: {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
       },
     },

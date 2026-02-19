@@ -1,0 +1,36 @@
+import tw from 'tailwind-styled-components';
+
+interface IHeaderProps {
+  title: string;
+}
+
+const Header: React.FC<IHeaderProps> = ({ title }) => (
+  <HeaderContainer>
+    <TitleShadow aria-hidden>{title}</TitleShadow>
+    <Title>{title}</Title>
+  </HeaderContainer>
+);
+
+export default Header;
+
+const HeaderContainer = tw.header`
+  relative
+  w-max
+  text-white
+`;
+
+const Title = tw.h1`
+  relative
+  font-outerBold
+  text-5xl
+  lg:text-6xl
+`;
+
+const TitleShadow = tw(Title)`
+  -translate-x-3
+  translate-y-10
+  font-cedarville
+  text-6xl
+  opacity-20
+  lg:text-7xl
+`;

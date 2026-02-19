@@ -1,34 +1,14 @@
-import { useEffect, useRef } from 'react';
-
 import { motion } from 'framer-motion';
 import tw from 'tailwind-styled-components';
 
-import { DelaunaySystem } from '@/utils/canvas';
+import useCanvas from '@/hooks/useCanvas';
 
 const Canvas = () => {
-  const canRef = useRef<HTMLCanvasElement>(null);
-  const systemRef = useRef<DelaunaySystem | null>(null);
-
-  useEffect(() => {
-    if (!canRef.current) return;
-
-    systemRef.current = new DelaunaySystem(canRef.current);
-    systemRef.current.start();
-
-    const handleResize = () => {
-      systemRef.current?.resize();
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      systemRef.current?.stop();
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [canRef]);
+  const canvasRef = useCanvas();
 
   return (
     <CanvasContainer>
-      <canvas className="absolute" ref={canRef} />
+      <canvas className="absolute" ref={canvasRef} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

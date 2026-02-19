@@ -1,13 +1,16 @@
+import dynamic from 'next/dynamic';
+
 import tw from 'tailwind-styled-components';
 
-import About from '@/components/About';
-import Contact from '@/components/Contact';
 import Cursor from '@/components/Cursor';
 import Hero from '@/components/Hero';
 import Navbar from '@/components/Navbar';
-import Work from '@/components/Work';
 
 import type { NextPage } from 'next';
+
+const About = dynamic(() => import('@/components/About'), { ssr: false });
+const Work = dynamic(() => import('@/components/Work'), { ssr: false });
+const Contact = dynamic(() => import('@/components/Contact'), { ssr: false });
 
 const Home: NextPage = () => {
   return (
@@ -30,5 +33,7 @@ const HomeContainer = tw.div`
   z-0
   overflow-x-hidden
   overflow-y-visible
+  scroll-smooth
+  will-change-scroll
   md:cursor-none
 `;

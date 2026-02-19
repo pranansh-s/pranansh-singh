@@ -6,3 +6,10 @@ export const draggableSpringConfig = {
   dragElastic: 0.05,
   transition: { duration: 0.8, type: 'spring' as const, stiffness: 100, delay: 0.5 },
 };
+
+export const swipeUpReveal = {
+  initial: { y: 100, opacity: 0 },
+  whileInView: { y: 0, opacity: 1 },
+  viewport: { once: true },
+  transition: { duration: 1, type: 'spring' as const, stiffness: 80 },
+};

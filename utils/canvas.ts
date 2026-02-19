@@ -1,3 +1,9 @@
+type Color = {
+  r: number;
+  g: number;
+  b: number;
+};
+
 const delaunayFast = require('delaunay-fast');
 
 class Point {
@@ -34,6 +40,7 @@ export class DelaunaySystem {
   private count: number;
   private mouseX: number = 0;
   private mouseY: number = 0;
+  private color: Color = { r: 65, g: 41, b: 90 };
 
   constructor(canvas: HTMLCanvasElement, count = 500) {
     this.canvas = canvas;
@@ -64,29 +71,35 @@ export class DelaunaySystem {
   }
 
   private drawTriangle(i1: number, i2: number, i3: number, vertices: number[][]) {
-    const a = vertices[i1];
-    const b = vertices[i2];
-    const c = vertices[i3];
+    const p1 = vertices[i1];
+    const p2 = vertices[i2];
+    const p3 = vertices[i3];
 
-    const centerX = (a[0] + b[0] + c[0]) / 3;
-    const centerY = (a[1] + b[1] + c[1]) / 3;
+    const centerX = (p1[0] + p2[0] + p3[0]) / 3;
+    const centerY = (p1[1] + p2[1] + p3[1]) / 3;
     const distance = Math.hypot(centerX - this.mouseX, centerY - this.mouseY);
     const radius = 500;
 
     const visibility = Math.min(1, Math.max(0, 1 - (distance - 50) / (radius - 50)));
-    const opacity = Math.abs(a[0] * (b[1] - c[1]) + b[0] * (c[1] - a[1]) + c[0] * (a[1] - b[1])) / 3e4;
+    const opacity = Math.abs(p1[0] * (p2[1] - p3[1]) + p2[0] * (p3[1] - p1[1]) + p3[0] * (p1[1] - p2[1])) / 3e4;
     if (visibility <= 0.05) return;
 
     this.ctx.beginPath();
-    this.ctx.moveTo(a[0], a[1]);
-    this.ctx.lineTo(b[0], b[1]);
-    this.ctx.lineTo(c[0], c[1]);
+    this.ctx.moveTo(p1[0], p1[1]);
+    this.ctx.lineTo(p2[0], p2[1]);
+    this.ctx.lineTo(p3[0], p3[1]);
     this.ctx.closePath();
 
-    this.ctx.fillStyle = `rgba(65, 41, 90, ${opacity * visibility * 2})`;
-    this.ctx.strokeStyle = `rgba(0, 0, 0, ${opacity * visibility * 0.5})`;
+    const { r, g, b } = this.color;
+
+    this.ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity * visibility * 2})`;
+    this.ctx.strokeStyle = `rgba(0, 0, 0, ${opacity * visibility * 0.25})`;
     this.ctx.fill();
     this.ctx.stroke();
+  }
+
+  public setColor(red: number, green: number, blue: number) {
+    this.color = { r: red, g: green, b: blue };
   }
 
   public start() {

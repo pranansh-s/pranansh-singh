@@ -1,20 +1,17 @@
-const DotLottieReact = dynamic(
-  () => import('@lottiefiles/dotlottie-react').then((mod) => mod.DotLottieReact),
-  { ssr: false }
-);
-
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
+import Lottie from 'lottie-react';
 import tw from 'tailwind-styled-components';
+
+import typingLottie from '@/public/lottie/typing.json';
 
 const sentenceVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 const letterVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { opacity: { duration: 0 } } },
+  visible: { opacity: 1, transition: { duration: 0 } },
 };
 
 interface ITypewriterProps {
@@ -22,42 +19,51 @@ interface ITypewriterProps {
 }
 
 const Typewriter: React.FC<ITypewriterProps> = ({ text }) => (
-  <TypewriterContainer key={text} variants={sentenceVariants} initial="hidden" animate="visible">
+  <TypewriterContainer
+    key={text}
+    variants={sentenceVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+  >
+    <StyledLottie animationData={typingLottie} />
     {text.split('').map((char, i) => (
-      <motion.span key={`${char}-${i}`} variants={letterVariants}>
+      <motion.span
+        className="relative bottom-10 -left-3 xl:bottom-0 xl:-left-16"
+        key={`${char}-${i}`}
+        variants={letterVariants}
+      >
         {char}
       </motion.span>
     ))}
-    <DotLottieReact src="/lottie/typing.lottie" />
   </TypewriterContainer>
 );
 
 export default Typewriter;
 
 const TypewriterContainer = tw(motion.div)`
-  absolute
-  bottom-0
-  left-0
-  w-screen
+  w-full
   whitespace-nowrap
-  p-1
+  px-1
   text-left
-  font-sans
-  text-6xl
-  text-purple-600
-  text-opacity-40
-  sm:p-3
-  md:text-7xl
+  font-mono
+  text-[2.75vw]
+  text-secondary
+  sm:px-3
+  xl:text-[2.5rem]
 `;
 
-const StyledLottie = tw(DotLottieReact)`
+const StyledLottie = tw(Lottie)`
   absolute
   right-0
   bottom-0
   origin-bottom-right
-  translate-x-12
+  translate-x-10
   translate-y-8
   scale-[0.6]
+  opacity-40
+  hover:opacity-100
   md:scale-[0.35]
   lg:translate-y-12
+  xl:opacity-100
 `;
