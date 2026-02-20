@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
 import tw from 'tailwind-styled-components';
@@ -18,7 +20,7 @@ interface ITypewriterProps {
   text: string;
 }
 
-const Typewriter: React.FC<ITypewriterProps> = ({ text }) => (
+const Typewriter: FC<ITypewriterProps> = ({ text }) => (
   <TypewriterContainer
     key={text}
     variants={sentenceVariants}

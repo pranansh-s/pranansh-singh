@@ -11,19 +11,26 @@ function MyApp({ Component, pageProps }: AppProps) {
     <SectionProvider>
       <NextSeo
         title="Pranansh Singh"
-        description="Pranansh Singh - Portfolio website"
+        description="Portfolio of Pranansh Singh, a full-stack developer specializing in React, TypeScript, system design, and performance optimization. View my work in web development, open source, and side projects."
         canonical="https://pranansh-singh.vercel.app"
         openGraph={{
           url: 'https://pranansh-singh.vercel.app',
           title: 'Pranansh Singh',
-          description: 'Pranansh Singh - Portfolio website',
-          site_name: 'Pranansh Singh',
+          description: 'Portfolio of Pranansh Singh, a full-stack developer specializing in React, TypeScript, system design, and performance optimization. View my work in web development, open source, and side projects.',
+          site_name: 'Pranansh Singh Portfolio',
           type: 'website',
+          locale: 'en_US',
           images: [
             {
-              url: 'https://pranansh-singh.vercel.app/logo64.png',
+              url: 'https://pranansh-singh.vercel.app/logo192.png',
               width: 800,
-              height: 600,
+              height: 800,
+              alt: 'Pranansh Singh Portfolio',
+            },
+            {
+              url: 'https://pranansh-singh.vercel.app/logo64.png',
+              width: 400,
+              height: 400,
               alt: 'Pranansh Singh Portfolio',
             },
           ],

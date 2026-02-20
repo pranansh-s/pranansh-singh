@@ -7,7 +7,7 @@ import Canvas from '@/components/Canvas';
 import { draggableSpringConfig } from '@/constants/motion';
 
 const Hero = () => (
-  <HeroContainer id="hero">
+  <HeroContainer id="hero" aria-label="Hero">
     <Canvas />
     <HeroHeader>
       <NameTag
@@ -86,7 +86,7 @@ const NameTag = tw(motion.h1)`
   xl:text-9xl
 `;
 
-const SubText = tw(motion.sub)`
+const SubText = tw(motion.h3)`
   hov
   hidden
   text-xl

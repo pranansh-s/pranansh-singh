@@ -15,7 +15,7 @@ const Work = () => {
   };
 
   return (
-    <WorkContainer id="work">
+    <WorkContainer id="work" aria-label="Work & Projects">
       <Header title="work" />
       <ProjectList>
         {work.map((item: WorkDetail, index: number) => (
@@ -54,7 +54,7 @@ const WorkContainer = tw.section`
   xl:p-xl
 `;
 
-const ProjectList = tw.ul`
+const ProjectList = tw.article`
   relative
   flex
   flex-col

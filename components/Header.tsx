@@ -1,15 +1,17 @@
+import { FC, memo } from 'react';
+
 import tw from 'tailwind-styled-components';
 
 interface IHeaderProps {
   title: string;
 }
 
-const Header: React.FC<IHeaderProps> = ({ title }) => (
+const Header: FC<IHeaderProps> = memo(({ title }) => (
   <HeaderContainer>
     <TitleShadow aria-hidden>{title}</TitleShadow>
     <Title>{title}</Title>
   </HeaderContainer>
-);
+));
 
 export default Header;
 

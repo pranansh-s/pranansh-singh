@@ -12,14 +12,17 @@
   @font-face {
     font-family: 'Bagel Fat One Regular';
     src: url('../public/fonts/BagelFatOne-Regular.ttf');
+    font-display: swap;
   }
   @font-face {
     font-family: 'MADE Outer Sans Regular';
     src: url('../public/fonts/outer-sans-regular.otf');
+    font-display: swap;
   }
   @font-face {
     font-family: 'Cedarville Cursive';
     src: url('../public/fonts/cedarville-cursive.ttf');
+    font-display: swap;
   }
 
   .font-outline {

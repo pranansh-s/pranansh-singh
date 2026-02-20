@@ -8,6 +8,7 @@ const Navbar = () => {
 
   return (
     <NavbarContainer
+      role='navigation'
       initial={{
         x: 100,
         opacity: 0,
@@ -28,7 +29,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const NavbarContainer = tw(motion.header)`
+const NavbarContainer = tw(motion.nav)`
   fixed
   right-0
   z-20

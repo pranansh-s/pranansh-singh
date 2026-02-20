@@ -45,7 +45,7 @@ export function SectionProvider({ children }: { children: React.ReactNode }) {
     return () => {
       observer.disconnect();
     };
-  }, [currentSection]);
+  }, []);
 
   return <SectionContext.Provider value={{ currentSection }}>{children}</SectionContext.Provider>;
 }

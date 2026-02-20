@@ -27,42 +27,48 @@ const Contact = () => {
   };
 
   return (
-    <ContactContainer id="contact">
+    <ContactContainer id="contact" aria-label="Contact Me">
       <Header title="contact" />
       <ContactContent>
         <Lottie animationData={gameLottie} />
         <StyledForm onSubmit={handleMailSend}>
           <StyledInput
             name="name"
+            id="name"
             value={formData.name}
+            type="text"
+            aria-label="name"
+            placeholder="your name"
+            onChange={handleInputChange}
+            required
             whileTap={{ scale: 1.05 }}
             {...swipeUpReveal}
-            required
-            onChange={handleInputChange}
-            type="text"
-            placeholder="your name"
           />
           <StyledInput
             name="email"
             value={formData.email}
-            {...swipeUpReveal}
+            type="email"
+            id="email"
+            aria-label="email"
+            placeholder="your email"
+            onChange={handleInputChange}
             required
             whileTap={{ scale: 1.05 }}
-            onChange={handleInputChange}
-            type="email"
-            placeholder="your email"
+            {...swipeUpReveal}
           />
           <StyledTextArea
             name="body"
             value={formData.body}
-            {...swipeUpReveal}
-            required
-            whileTap={{ scale: 1.05 }}
+            id="body"
+            aria-label="body"
+            placeholder="let's talk about . . ."
             onChange={handleInputChange}
             rows={5}
-            placeholder="let's talk about . . ."
+            required
+            whileTap={{ scale: 1.05 }}
+            {...swipeUpReveal}
           />
-          <motion.button {...swipeUpReveal} className="drop-shadow-md" type="submit">
+          <motion.button aria-label='Submit' {...swipeUpReveal} className="drop-shadow-md md:hover:cursor-none" type="submit">
             <StyledLottie animationData={contactLottie} />
           </motion.button>
         </StyledForm>

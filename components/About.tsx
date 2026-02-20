@@ -32,7 +32,15 @@ const Carousel = () => (
                 key={`${rowIdx}-card-${idx}`}
                 style={{ backgroundColor: `#${item.color}` }}
               >
-                <Image src={item.logo} alt={item.logo} loading="lazy" className="-rotate-90" width={80} height={80} />
+                <Image
+                  src={item.logo}
+                  alt={item.logo}
+                  loading="lazy"
+                  className="-rotate-90"
+                  width={80}
+                  height={80}
+                  sizes="80px"
+                />
               </SkillCard>
             ))}
         </CarouselRow>
@@ -46,7 +54,7 @@ const Carousel = () => (
           key={`card-${idx}`}
           style={{ backgroundColor: `#${item.color}` }}
         >
-          <Image src={item.logo} alt={item.logo} loading="lazy" width={64} height={64} />
+          <Image src={item.logo} alt={item.logo} loading="lazy" width={64} height={64} sizes="64px" />
         </SkillCard>
       ))}
     </CarouselRow>
@@ -54,7 +62,7 @@ const Carousel = () => (
 );
 
 const About = () => (
-  <AboutContainer id="about">
+  <AboutContainer id="about" aria-label="About me">
     <Header title="about me" />
     <AboutMeContent>
       <motion.p {...swipeUpReveal}>
@@ -80,9 +88,10 @@ const About = () => (
     <SocialLinkContainer {...swipeUpReveal}>
       {SocialLinks.map((item: IconLink, idx: number) => (
         <SocialLink
+          rel="noopener noreferrer"
+          aria-label={item.name}
           {...swipeUpReveal}
           initial={{ y: 100, rotate: -45, opacity: 0 }}
-          aria-label={item.name}
           key={idx}
           href={item.link}
           target="_blank"
