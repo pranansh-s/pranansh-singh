@@ -69,20 +69,20 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 300px"
           />
         </span>
-        <span className="flex items-end justify-around">
+        <span className="flex items-end justify-around h-fit">
           <Image
             src={item.doodleIcons[1]}
-            width={80}
-            height={80}
+            width={60}
+            height={60}
             alt={`project-doodle-${index}-${item.doodleIcons[1]}`}
-            sizes="80px"
+            sizes="60px"
           />
           <Image
             src={item.doodleIcons[0]}
-            width={80}
-            height={80}
+            width={60}
+            height={60}
             alt={`project-doodle-${index}-${item.doodleIcons[0]}`}
-            sizes="80px"
+            sizes="60px"
           />
         </span>
         <span className="flex p-2">
@@ -120,8 +120,8 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
           )}
         </Links>
         <ProjectAbout>
-          <span className="text-sm italic">
-            <b className="font-bagelRegular text-lg not-italic">Knowledge:</b> {item.tools.join(' | ')}
+          <span className="sm:text-sm text-xs italic">
+            <b className="font-bagelRegular text-sm not-italic">Knowledge:</b> {item.tools.join(' | ')}
           </span>
           <br />
           <br />
@@ -153,7 +153,7 @@ const ProjectTab = tw(motion.div)<{ $isActive: boolean }>`
   lg:rounded-xl
   lg:px-24
   md:hover:cursor-none
-  ${p => (p.$isActive ? 'h-0' : 'h-48')} `;
+  ${p => (p.$isActive ? 'h-0' : 'sm:h-48 h-36')} `;
 
 const StyledBackdrop = tw(Image)`
   object-cover
@@ -165,7 +165,8 @@ const ProjectHeader = tw.h2`
   z-10
   text-center
   font-outerRegular
-  text-3xl
+  text-2xl
+  sm:text-3xl
   text-purple-200/70
   group-hover:text-secondary
   lg:text-5xl
@@ -175,7 +176,8 @@ const TabMarquee = tw.div`
   absolute
   bottom-3
   left-1/2
-  h-2
+  sm:h-2
+  h-1
   w-full
   -translate-x-1/2
   rounded-r-full
@@ -194,14 +196,16 @@ const TabMarquee = tw.div`
 const ProjectDetailsContainer = tw.div<{ $isActive: boolean }>`
   flex
   flex-col
-  gap-16
-  px-8
+  gap-8
+  sm:gap-16
+  sm:px-8
+  px-3
   transition-all
   duration-300
   ease-out
   md:px-24
-  lg:flex-row
-  lg:flex-wrap
+  xl:flex-row
+  xl:flex-wrap
   ${p => (p.$isActive ? 'scale-y-100 py-16 opacity-100 -mx-sm md:-mx-md xl:-mx-xl' : 'h-0 scale-y-20 opacity-0')} `;
 
 const ProjectDetail = tw.div`
@@ -209,7 +213,7 @@ const ProjectDetail = tw.div`
   flex-1
   flex-col
   items-start
-  gap-6
+  sm:gap-0 gap-12
   lg:items-end
 `;
 
@@ -226,7 +230,8 @@ const ProjectTitle = tw.h3`
   flex-1
   text-center
   font-bagelRegular
-  text-4xl
+  text-3xl
+  sm:text-4xl
   uppercase
   md:text-7xl
   xl:text-left
@@ -235,7 +240,8 @@ const ProjectTitle = tw.h3`
 const ProjectAbout = tw.p`
   text-center
   font-outerRegular
-  text-sm
+  text-xs
+  sm:text-sm
   opacity-80
   lg:text-right
   lg:text-base
@@ -246,10 +252,9 @@ const DisplayImagesContainer = tw.div`
   mx-auto
   grid
   grid-cols-[auto_auto]
-  grid-rows-[40%_60%]
   gap-12
-  lg:w-[40%]
-  lg:-translate-y-24
+  xl:w-[40%]
+  xl:-translate-y-24
 `;
 
 const StyledVisitLink = tw.a`
@@ -262,7 +267,8 @@ const StyledVisitLink = tw.a`
   py-2
   px-4
   font-outerRegular
-  text-sm
+  text-xs
+  sm:text-sm
   outline
   outline-1
   transition-all

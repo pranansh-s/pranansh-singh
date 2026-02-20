@@ -49,7 +49,7 @@ const TypewriterContainer = tw(motion.div)`
   px-1
   text-left
   font-outerRegular
-  text-[2.75vw]
+  text-[2.7vw]
   text-secondary/80
   sm:px-3
   xl:text-[2.5rem]

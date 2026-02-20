@@ -79,7 +79,8 @@ const HeroHeader = tw.header`
 const NameTag = tw(motion.h1)`
   pointer-events-none
   font-bagelRegular
-  text-7xl
+  text-6xl
+  sm:text-7xl
   uppercase
   drop-shadow-[0_0_4px_rgba(0,0,0,1)]
   md:text-8xl

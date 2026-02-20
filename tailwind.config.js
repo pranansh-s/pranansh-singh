@@ -15,7 +15,7 @@ module.exports = {
       spacing: {
         xl: '64px',
         md: '36px',
-        sm: '16px',
+        sm: '8px',
       },
       animation: {
         xlcarouselScroll: 'scrollXL 24s linear infinite',

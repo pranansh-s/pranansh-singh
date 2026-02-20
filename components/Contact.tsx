@@ -68,9 +68,9 @@ const Contact = () => {
             whileTap={{ scale: 1.05 }}
             {...swipeUpReveal}
           />
-          <motion.button aria-label='Submit' {...swipeUpReveal} className="drop-shadow-md md:hover:cursor-none" type="submit">
-            <StyledLottie animationData={contactLottie} />
-          </motion.button>
+          <SubmitButton aria-label='Submit' {...swipeUpReveal} type="submit">
+            <Lottie animationData={contactLottie} />
+          </SubmitButton>
         </StyledForm>
       </ContactContent>
     </ContactContainer>
@@ -84,7 +84,8 @@ const ContactContainer = tw.section`
   mx-auto
   max-w-[1600px]
   flex-col
-  gap-16
+  gap-12
+  sm:gap-16
   space-y-8
   overflow-clip
   p-sm
@@ -97,14 +98,17 @@ const ContactContainer = tw.section`
 const StyledForm = tw.form`
   flex
   flex-col
-  gap-6
+  sm:gap-6
+  gap-3
+  w-full
   rounded-lg
   bg-[#67506F]
-  p-8
+  sm:p-8
+  p-5
   font-outerRegular
-  text-lg
+  sm:text-lg
   text-black/60
-  lg:-translate-x-24
+  xl:-translate-x-24
   xl:w-2/3
 `;
 
@@ -138,12 +142,15 @@ const ContactContent = tw.div`
   xl:flex-row
 `;
 
-const StyledLottie = tw(Lottie)`
+const SubmitButton = tw(motion.button)`
   hov
   cursor-pointer
-  px-24
+  xl:w-72
+  w-64
+  mx-auto
   transition-all
   duration-300
+  drop-shadow-md md:hover:cursor-none
   md:cursor-none
   lg:mt-12
   lg:hover:px-0

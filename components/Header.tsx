@@ -24,7 +24,8 @@ const HeaderContainer = tw.header`
 const Title = tw.h1`
   relative
   font-bagelRegular
-  text-5xl
+  text-4xl
+  sm:text-5xl
   text-primary
   lg:text-6xl
 `;
@@ -33,7 +34,8 @@ const TitleShadow = tw(Title)`
   -translate-x-3
   translate-y-10
   font-cedarville
-  text-6xl
+  text-5xl
+  sm:text-6xl
   opacity-20
   lg:text-7xl
 `;

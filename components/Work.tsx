@@ -47,7 +47,8 @@ const WorkContainer = tw.section`
   flex
   max-w-[1600px]
   flex-col
-  gap-24
+  sm:gap-24
+  gap-20
   border-y-2
   p-sm
   md:p-md
@@ -58,5 +59,6 @@ const ProjectList = tw.article`
   relative
   flex
   flex-col
-  gap-6
+  sm:gap-6
+  gap-3
 `;

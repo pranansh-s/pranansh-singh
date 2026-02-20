@@ -50,7 +50,7 @@ const Carousel = () => (
       {[...RowAll, ...RowAll].flat().map((item: Card, idx: number) => (
         <SkillCard
           whileTap={{ scale: 1.1 }}
-          className="w-36"
+          className="w-32 h-32 p-3"
           key={`card-${idx}`}
           style={{ backgroundColor: `#${item.color}` }}
         >
@@ -67,7 +67,7 @@ const About = () => (
     <AboutMeContent>
       <motion.p {...swipeUpReveal}>
         Hello! I&apos;m{' '}
-        <span className="font-bagelRegular text-xl text-secondary lg:text-2xl">&lt;PrananshSingh/&gt;</span>, a
+        <span className="font-bagelRegular text-lg sm:text-xl text-secondary lg:text-2xl">&lt;PrananshSingh/&gt;</span>, a
         developer who enjoys crafting software across the entire spectrum—from polished user interfaces to the
         nitty-gritty of system internals. I believe great engineering means understanding how the pieces fit together,
         whether I&apos;m designing a <u>robust API</u>, tuning a database query, or exploring what happens at the metal.
@@ -136,7 +136,8 @@ const AboutContainer = tw.section`
   flex-col
   items-start
   justify-start
-  gap-16
+  gap-12
+  sm:gap-16
   overflow-y-clip
   p-sm
   md:p-md
@@ -151,8 +152,10 @@ const AboutMeContent = tw.div`
   pr-6
   text-left
   font-outerRegular
-  text-sm
-  leading-7
+  text-xs
+  sm:text-sm
+  sm:leading-7
+  leading-5
   text-primary/60
   xl:w-[35%]
   xl:text-[0.9rem]
