@@ -1,13 +1,72 @@
-import { FC } from 'react';
+import React, { useState } from 'react';
 
+import { motion } from 'framer-motion';
+import Lottie from 'lottie-react';
 import tw from 'tailwind-styled-components';
 
-import Header from './Header';
+import Header from '@/components/Header';
 
-const Contact: FC = () => {
+import { swipeUpReveal } from '@/constants/motion';
+
+import contactLottie from '@/public/lottie/contact.json';
+import gameLottie from '@/public/lottie/game.json';
+
+const Contact = () => {
+  const [formData, setFormData] = useState({ email: '', name: '', body: '' });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    e.preventDefault();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleMailSend = (e: React.SubmitEvent) => {
+    e.preventDefault();
+    const { email, name, body } = formData;
+    if (!email.length || !name.length || !body.length) return;
+    window.location.href = `mailto:${email}?subject=project:${name}&body=${body}`;
+  };
+
   return (
     <ContactContainer id="contact">
       <Header title="contact" />
+      <ContactContent>
+        <Lottie animationData={gameLottie} />
+        <StyledForm onSubmit={handleMailSend}>
+          <StyledInput
+            name="name"
+            value={formData.name}
+            whileTap={{ scale: 1.05 }}
+            {...swipeUpReveal}
+            required
+            onChange={handleInputChange}
+            type="text"
+            placeholder="your name"
+          />
+          <StyledInput
+            name="email"
+            value={formData.email}
+            {...swipeUpReveal}
+            required
+            whileTap={{ scale: 1.05 }}
+            onChange={handleInputChange}
+            type="email"
+            placeholder="your email"
+          />
+          <StyledTextArea
+            name="body"
+            value={formData.body}
+            {...swipeUpReveal}
+            required
+            whileTap={{ scale: 1.05 }}
+            onChange={handleInputChange}
+            rows={5}
+            placeholder="let's talk about . . ."
+          />
+          <motion.button {...swipeUpReveal} className="drop-shadow-md" type="submit">
+            <StyledLottie animationData={contactLottie} />
+          </motion.button>
+        </StyledForm>
+      </ContactContent>
     </ContactContainer>
   );
 };
@@ -17,14 +76,69 @@ export default Contact;
 const ContactContainer = tw.section`
   relative
   mx-auto
-  flex
-  max-h-[768px]
   max-w-[1600px]
   flex-col
   gap-16
+  space-y-8
   overflow-clip
   p-sm
   md:p-md
+  xl:mb-24
   xl:gap-24
   xl:p-xl
+`;
+
+const StyledForm = tw.form`
+  flex
+  flex-col
+  gap-6
+  rounded-lg
+  bg-[#67506F]
+  p-8
+  font-outerRegular
+  text-lg
+  text-black/60
+  lg:-translate-x-24
+  xl:w-2/3
+`;
+
+const StyledInput = tw(motion.input)`
+  hov
+  rounded-xl
+  bg-primary
+  p-5
+  drop-shadow-md
+  focus:text-black
+  focus:outline-none
+  md:cursor-none
+`;
+
+const StyledTextArea = tw(motion.textarea)`
+  hov
+  resize-none
+  rounded-xl
+  bg-primary
+  p-5
+  drop-shadow-md
+  focus:text-black
+  focus:outline-none
+  md:cursor-none
+`;
+
+const ContactContent = tw.div`
+  flex
+  flex-col
+  items-center
+  xl:flex-row
+`;
+
+const StyledLottie = tw(Lottie)`
+  hov
+  cursor-pointer
+  px-24
+  transition-all
+  duration-300
+  md:cursor-none
+  lg:mt-12
+  lg:hover:px-0
 `;

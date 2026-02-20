@@ -1,4 +1,4 @@
-import '@/public/globals.css';
+import '@/styles/globals.css';
 
 import { NextSeo } from 'next-seo';
 

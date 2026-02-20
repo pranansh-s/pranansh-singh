@@ -46,9 +46,9 @@ const TypewriterContainer = tw(motion.div)`
   whitespace-nowrap
   px-1
   text-left
-  font-mono
+  font-outerRegular
   text-[2.75vw]
-  text-secondary
+  text-secondary/80
   sm:px-3
   xl:text-[2.5rem]
 `;

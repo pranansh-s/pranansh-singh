@@ -16,13 +16,14 @@ export default Header;
 const HeaderContainer = tw.header`
   relative
   w-max
-  text-white
+  text-primary
 `;
 
 const Title = tw.h1`
   relative
-  font-outerBold
+  font-bagelRegular
   text-5xl
+  text-primary
   lg:text-6xl
 `;
 

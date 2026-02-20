@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
 import tw from 'tailwind-styled-components';
 
+import Header from '@/components/Header';
+
 import { swipeUpReveal } from '@/constants/motion';
 import { Card, RowAll } from '@/constants/skills';
 import { IconLink, SocialLinks } from '@/constants/socials';
 
 import amongUsLottie from '@/public/lottie/among-us.json';
 import marioLottie from '@/public/lottie/mario.json';
-import Header from './Header';
 
 const Carousel = () => (
   <>
@@ -54,34 +55,33 @@ const Carousel = () => (
 
 const About = () => (
   <AboutContainer id="about">
-    <Header title="about" />
+    <Header title="about me" />
     <AboutMeContent>
       <motion.p {...swipeUpReveal}>
-        Hello! I&apos;m <span className="text-secondary">&lt;PrananshSingh/&gt;</span>, a developer who enjoys crafting
-        software across the entire spectrum—from polished user interfaces to the nitty-gritty of system internals. I
-        believe great engineering means understanding how the pieces fit together, whether I&apos;m designing a robust
-        API, tuning a database query, or exploring what happens at the metal.
+        Hello! I&apos;m{' '}
+        <span className="font-bagelRegular text-xl text-secondary lg:text-2xl">&lt;PrananshSingh/&gt;</span>, a
+        developer who enjoys crafting software across the entire spectrum—from polished user interfaces to the
+        nitty-gritty of system internals. I believe great engineering means understanding how the pieces fit together,
+        whether I&apos;m designing a <u>robust API</u>, tuning a database query, or exploring what happens at the metal.
       </motion.p>
       <motion.p {...swipeUpReveal}>
-        I&apos;m drawn to the challenge of building systems that are both elegant and resilient. That means thinking
-        about architecture from the start—structuring code for maintainability, choosing the right data flows, and
-        optimizing performance where it counts. And I love digging into low-level concepts: memory models, concurrency,
-        and the fundamentals that make software fast and reliable.
+        I&apos;m drawn to the challenge of <u>building systems</u> that are both elegant and resilient. That means
+        thinking about architecture from the start—structuring code for maintainability, choosing the right data flows,
+        and optimizing performance where it counts. And I love digging into <u>low-level concepts</u>: memory models,
+        concurrency, and the fundamentals that make software fast and reliable.
       </motion.p>
       <motion.p {...swipeUpReveal}>
-        Ultimately, I&apos;m driven by curiosity—whether it&apos;s a new framework, a systems programming language, or a
-        clever architectural pattern. I&apos;m always looking to learn and apply those insights to build software
+        Ultimately, I&apos;m driven by curiosity—whether it&apos;s <u>a new framework</u>,{' '}
+        <u>a systems programming language</u>, or a &nbsp;
+        <u>clever architectural pattern</u>. I&apos;m always looking to learn and apply those insights to build software
         that&apos;s not just functional, but a joy to use and maintain.
       </motion.p>
     </AboutMeContent>
     <SocialLinkContainer {...swipeUpReveal}>
       {SocialLinks.map((item: IconLink, idx: number) => (
         <SocialLink
-          initial={{ rotate: -45, scale: 0.5 }}
-          whileInView={{ rotate: 0, scale: 1 }}
-          viewport={{ once: true }}
-          whileTap={{ scale: 1.5 }}
-          transition={{ duration: 1.5, type: 'spring', stiffness: 80 }}
+          {...swipeUpReveal}
+          initial={{ y: 100, rotate: -45, opacity: 0 }}
           aria-label={item.name}
           key={idx}
           href={item.link}
@@ -133,7 +133,7 @@ const AboutContainer = tw.section`
   md:p-md
   xl:h-screen
   xl:max-h-[768px]
-  xl:gap-24
+  xl:gap-20
   xl:p-xl
 `;
 
@@ -141,10 +141,10 @@ const AboutMeContent = tw.div`
   space-y-5
   pr-6
   text-left
-  font-outerLight
+  font-outerRegular
   text-sm
-  leading-6
-  text-white/60
+  leading-7
+  text-primary/60
   xl:w-[35%]
   xl:text-[0.9rem]
 `;

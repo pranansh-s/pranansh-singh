@@ -10,16 +10,8 @@
 
 @layer base {
   @font-face {
-    font-family: 'MADE Outer Sans Bold';
-    src: url('../public/fonts/outer-sans-bold.otf');
-  }
-  @font-face {
-    font-family: 'MADE Outer Sans Light';
-    src: url('../public/fonts/outer-sans-light.otf');
-  }
-  @font-face {
-    font-family: 'MADE Outer Sans Medium';
-    src: url('../public/fonts/outer-sans-medium.otf');
+    font-family: 'Bagel Fat One Regular';
+    src: url('../public/fonts/BagelFatOne-Regular.ttf');
   }
   @font-face {
     font-family: 'MADE Outer Sans Regular';
@@ -39,6 +31,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+u:hover {
+  color: #ff5858;
 }
 
 .slick-slide {

@@ -8,8 +8,8 @@ export const draggableSpringConfig = {
 };
 
 export const swipeUpReveal = {
-  initial: { y: 100, opacity: 0 },
-  whileInView: { y: 0, opacity: 1 },
+  initial: { y: 100, rotate: -2, opacity: 0 },
+  whileInView: { y: 0, rotate: 0, opacity: 1 },
   viewport: { once: true },
   transition: { duration: 1, type: 'spring' as const, stiffness: 80 },
 };

@@ -55,22 +55,22 @@ const ProjectCard: FC<IProjectCard> = ({ handleSet, active, index, item }) => (
         <span className="flex items-end justify-around">
           <Image
             src={item.doodleIcons[1]}
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             alt={`project-doodle-${index}-${item.doodleIcons[1]}`}
           />
           <Image
             src={item.doodleIcons[0]}
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             alt={`project-doodle-${index}-${item.doodleIcons[0]}`}
           />
         </span>
-        <span className="flex">
+        <span className="flex p-2">
           <Image
             className="drop-shadow-lg"
             src={item.phone[1]}
-            width={800}
+            width={500}
             height={300}
             alt={`project-phone-${index}-${item.phone[1]}`}
           />
@@ -90,10 +90,11 @@ const ProjectCard: FC<IProjectCard> = ({ handleSet, active, index, item }) => (
           )}
         </Links>
         <ProjectAbout>
-          <span className="text-sm">
-            <b className="font-outerBold">TOOLS:</b> {item.tools.join(' | ')}
+          <span className="text-sm italic">
+            <b className="font-bagelRegular text-lg not-italic">Knowledge:</b> {item.tools.join(' | ')}
           </span>
-          <br /><br />
+          <br />
+          <br />
           {item.text}
         </ProjectAbout>
       </ProjectDetail>
@@ -130,11 +131,12 @@ const StyledBackdrop = tw(Image)`
 
 const ProjectHeader = tw.h2`
   z-10
-  font-outerMedium
+  text-center
+  font-outerRegular
   text-3xl
-  text-white
+  text-purple-200/70
   group-hover:text-secondary
-  md:text-5xl
+  lg:text-5xl
 `;
 
 const TabMarquee = tw.div`
@@ -159,9 +161,8 @@ const TabMarquee = tw.div`
 
 const ProjectDetailsContainer = tw.div<{ $isActive: boolean }>`
   flex
-  origin-top
   flex-col
-  gap-12
+  gap-16
   px-8
   transition-all
   duration-300
@@ -169,7 +170,7 @@ const ProjectDetailsContainer = tw.div<{ $isActive: boolean }>`
   md:px-24
   lg:flex-row
   lg:flex-wrap
-  ${p => (p.$isActive ? 'scale-y-100 py-16 opacity-100' : 'h-0 scale-y-0 opacity-0')} `;
+  ${p => (p.$isActive ? 'scale-y-100 py-16 opacity-100 -mx-sm md:-mx-md xl:-mx-xl' : 'h-0 scale-y-20 opacity-0')} `;
 
 const ProjectDetail = tw.div`
   flex
@@ -192,16 +193,16 @@ const ProjectTitle = tw.h3`
   my-auto
   flex-1
   text-center
-  font-outerBold
-  text-5xl
+  font-bagelRegular
+  text-4xl
   uppercase
-  lg:text-7xl
+  md:text-7xl
   xl:text-left
 `;
 
 const ProjectAbout = tw.p`
   text-center
-  font-outerLight
+  font-outerRegular
   text-sm
   opacity-80
   lg:text-right
@@ -214,7 +215,9 @@ const DisplayImagesContainer = tw.div`
   grid
   grid-cols-[auto_auto]
   grid-rows-[40%_60%]
+  gap-12
   lg:w-[40%]
+  lg:-translate-y-24
 `;
 
 const StyledVisitLink = tw.a`
@@ -226,7 +229,7 @@ const StyledVisitLink = tw.a`
   rounded-full
   py-2
   px-4
-  font-outerLight
+  font-outerRegular
   text-sm
   outline
   outline-1

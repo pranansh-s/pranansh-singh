@@ -25,7 +25,7 @@ const Hero = () => (
         whileInView={{ y: 0, opacity: 1 }}
         {...draggableSpringConfig}
         drag
-        className="mt-auto whitespace-nowrap font-outerMedium text-base md:text-lg xl:text-xl"
+        className="mt-auto whitespace-nowrap font-outerRegular"
       >
         clean work on time
       </SubText>
@@ -35,7 +35,7 @@ const Hero = () => (
         whileInView={{ y: 0, opacity: 1 }}
         {...draggableSpringConfig}
         drag
-        className="mb-auto w-48 font-cedarville text-lg md:w-64 md:text-xl xl:text-2xl"
+        className="mb-auto w-48 font-cedarville md:w-72"
       >
         get creative projects for your needs
       </SubText>
@@ -65,7 +65,7 @@ const HeroContainer = tw.section`
   items-center
   justify-center
   text-center
-  text-white
+  text-primary
 `;
 
 const HeroHeader = tw.header`
@@ -78,19 +78,23 @@ const HeroHeader = tw.header`
 
 const NameTag = tw(motion.h1)`
   pointer-events-none
-  font-outerBold
-  text-6xl
+  font-bagelRegular
+  text-7xl
   uppercase
   drop-shadow-[0_0_4px_rgba(0,0,0,1)]
-  lg:text-8xl
+  md:text-8xl
+  xl:text-9xl
 `;
 
 const SubText = tw(motion.sub)`
   hov
   hidden
-  text-white/30
+  text-xl
+  text-primary/30
   transition-colors
   duration-500
   hover:text-secondary
   sm:block
+  md:text-2xl
+  xl:text-3xl
 `;

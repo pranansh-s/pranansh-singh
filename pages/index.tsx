@@ -30,10 +30,8 @@ export default Home;
 
 const HomeContainer = tw.div`
   relative
-  z-0
-  overflow-x-hidden
-  overflow-y-visible
-  scroll-smooth
+  w-full
+  overflow-hidden
   will-change-scroll
   md:cursor-none
 `;

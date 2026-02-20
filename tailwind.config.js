@@ -4,14 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        outerBold: ['MADE Outer Sans Bold', 'serif'],
-        outerLight: ['MADE Outer Sans Light', 'serif'],
-        outerMedium: ['MADE Outer Sans Medium', 'serif'],
         outerRegular: ['MADE Outer Sans Regular', 'serif'],
+        bagelRegular: ['Bagel Fat One Regular', 'sans-serif'],
         cedarville: ['Cedarville Cursive', 'cursive'],
       },
       colors: {
-        primary: '#1C172E',
+        primary: '#F5F1F9',
         secondary: '#FF5858',
       },
       spacing: {
