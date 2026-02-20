@@ -10,8 +10,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="icon" href="/favi.ico" type="image/x-icon" />
-          <link rel="apple-touch-icon" href="/logo64.png" />
+          <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="preload" href="/fonts/BagelFatOne-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
           <link rel="preload" href="/fonts/outer-sans-regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />

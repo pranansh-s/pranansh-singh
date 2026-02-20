@@ -12,7 +12,7 @@ export type WorkDetail = {
 
 export const work: WorkDetail[] = [
   {
-    image: '/work/Atal Bihar Vajpayee Botanical Garden/ATAL.png',
+    image: '/work/Atal Bihar Vajpayee Botanical Garden/ATAL.webp',
     phone: [
       '/work/Atal Bihar Vajpayee Botanical Garden/portrait.svg',
       '/work/Atal Bihar Vajpayee Botanical Garden/landscape.svg',
@@ -29,8 +29,8 @@ export const work: WorkDetail[] = [
     link: 'https://visapur-garden.vercel.app/',
   },
   {
-    image: '/work/NotionApps/NOTION.png',
-    phone: ['/work/NotionApps/portrait.svg', '/work/NotionApps/landscape.png'],
+    image: '/work/NotionApps/NOTION.webp',
+    phone: ['/work/NotionApps/portrait.svg', '/work/NotionApps/landscape.webp'],
     doodleIcons: ['/work/NotionApps/tablet.svg', '/work/NotionApps/file-form.svg'],
     name: 'notionapps',
     color: '#77bfd0',
@@ -39,7 +39,7 @@ export const work: WorkDetail[] = [
     link: 'https://www.notionapps.com/',
   },
   {
-    image: '/work/Namegen/NAMEGEN.png',
+    image: '/work/Namegen/NAMEGEN.webp',
     phone: ['/work/Namegen/portrait.svg', '/work/Namegen/landscape.svg'],
     doodleIcons: ['/work/Namegen/bulb.svg', '/work/Namegen/ruler.svg'],
     name: 'namegen',
@@ -50,7 +50,7 @@ export const work: WorkDetail[] = [
     link: 'https://namegen-ten.vercel.app/',
   },
   {
-    image: '/work/The Barbeque Company/BBQ.png',
+    image: '/work/The Barbeque Company/BBQ.webp',
     phone: ['/work/The Barbeque Company/portrait.svg', '/work/The Barbeque Company/landscape.svg'],
     doodleIcons: ['/work/The Barbeque Company/cutlery.svg', '/work/The Barbeque Company/dish.svg'],
     name: 'the barbeque company',
@@ -63,8 +63,8 @@ export const work: WorkDetail[] = [
 
 export const projects: WorkDetail[] = [
   {
-    image: '/work/EGBA/EGBA.png',
-    phone: ['/work/EGBA/portrait.png', '/work/EGBA/landscape.png'],
+    image: '/work/EGBA/EGBA.webp',
+    phone: ['/work/EGBA/portrait.webp', '/work/EGBA/landscape.webp'],
     doodleIcons: ['/work/EGBA/chip.svg', '/work/EGBA/puzzle.svg'],
     name: 'egba (emulated gameboy advance)',
     color: '#9d77d0',
@@ -73,7 +73,7 @@ export const projects: WorkDetail[] = [
     github: 'https://github.com/pranansh-s/egba',
   },
   {
-    image: '/work/Xhess/XHESS.png',
+    image: '/work/Xhess/XHESS.webp',
     phone: ['/work/Xhess/portrait.webp', '/work/Xhess/landscape.webp'],
     doodleIcons: ['/work/Xhess/server.svg', '/work/Xhess/unbox.svg'],
     name: 'xhess',
@@ -84,8 +84,8 @@ export const projects: WorkDetail[] = [
     link: 'https://xhess-web.onrender.com/',
   },
   {
-    image: '/work/Rust-gine/GINE.png',
-    phone: ['/work/Rust-gine/portrait.png', '/work/Rust-gine/landscape.png'],
+    image: '/work/Rust-gine/GINE.webp',
+    phone: ['/work/Rust-gine/portrait.webp', '/work/Rust-gine/landscape.webp'],
     doodleIcons: ['/work/Rust-gine/trophy.svg', '/work/Rust-gine/paint-bucket.svg'],
     name: 'rust-gine',
     color: '#77d0b1',

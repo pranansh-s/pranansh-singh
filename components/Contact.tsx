@@ -116,7 +116,8 @@ const StyledInput = tw(motion.input)`
   hov
   rounded-xl
   bg-primary
-  p-5
+  sm:p-5
+  p-3
   drop-shadow-md
   focus:text-black
   focus:outline-none
@@ -128,7 +129,8 @@ const StyledTextArea = tw(motion.textarea)`
   resize-none
   rounded-xl
   bg-primary
-  p-5
+  sm:p-5
+  p-3
   drop-shadow-md
   focus:text-black
   focus:outline-none

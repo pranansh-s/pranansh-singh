@@ -57,6 +57,7 @@ const TypewriterContainer = tw(motion.div)`
 
 const StyledLottie = tw(Lottie)`
   absolute
+  pointer-events-none
   right-0
   bottom-0
   origin-bottom-right
@@ -64,7 +65,6 @@ const StyledLottie = tw(Lottie)`
   translate-y-8
   scale-[0.6]
   opacity-40
-  hover:opacity-100
   md:scale-[0.35]
   lg:translate-y-12
   xl:opacity-100

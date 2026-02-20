@@ -51,8 +51,8 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
       <span className="mx-auto">
         <Image
           src={item.image}
-          width={600}
-          height={300}
+          width={800}
+          height={500}
           className="drop-shadow-lg"
           alt={`project-${index}-${item.name}`}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
@@ -69,12 +69,13 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 300px"
           />
         </span>
-        <span className="flex items-end justify-around h-fit">
+        <span className="flex items-end justify-around max-h-72">
           <Image
             src={item.doodleIcons[1]}
             width={60}
             height={60}
             alt={`project-doodle-${index}-${item.doodleIcons[1]}`}
+            className='aspect-square'
             sizes="60px"
           />
           <Image
@@ -82,10 +83,11 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
             width={60}
             height={60}
             alt={`project-doodle-${index}-${item.doodleIcons[0]}`}
+            className='aspect-square'
             sizes="60px"
           />
         </span>
-        <span className="flex p-2">
+        <span>
           <Image
             className="drop-shadow-lg"
             src={item.phone[1]}
@@ -206,7 +208,7 @@ const ProjectDetailsContainer = tw.div<{ $isActive: boolean }>`
   md:px-24
   xl:flex-row
   xl:flex-wrap
-  ${p => (p.$isActive ? 'scale-y-100 py-16 opacity-100 -mx-sm md:-mx-md xl:-mx-xl' : 'h-0 scale-y-20 opacity-0')} `;
+  ${p => (p.$isActive ? 'scale-y-100 py-16 opacity-100 -mx-sm md:-mx-md xl:-mx-xl sm:min-h-screen' : 'h-0 scale-y-20 opacity-0')} `;
 
 const ProjectDetail = tw.div`
   flex
@@ -214,15 +216,15 @@ const ProjectDetail = tw.div`
   flex-col
   items-start
   sm:gap-0 gap-12
-  lg:items-end
+  xl:items-end
 `;
 
 const Links = tw.div`
   mx-auto
   flex
   gap-6
-  lg:mx-0
-  lg:mb-16
+  xl:mx-0
+  sm:mb-16
 `;
 
 const ProjectTitle = tw.h3`
@@ -243,8 +245,8 @@ const ProjectAbout = tw.p`
   text-xs
   sm:text-sm
   opacity-80
-  lg:text-right
-  lg:text-base
+  xl:text-right
+  xl:text-base
   2xl:text-lg
 `;
 
@@ -252,7 +254,7 @@ const DisplayImagesContainer = tw.div`
   mx-auto
   grid
   grid-cols-[auto_auto]
-  gap-12
+  gap-6
   xl:w-[40%]
   xl:-translate-y-24
 `;
