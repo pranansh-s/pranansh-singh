@@ -60,7 +60,7 @@ const HeroContainer = tw.section`
   mx-auto
   flex
   h-screen
-  max-h-[768px]
+  max-h-[1200px]
   max-w-[1600px]
   items-center
   justify-center

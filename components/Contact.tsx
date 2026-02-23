@@ -68,7 +68,7 @@ const Contact = () => {
             whileTap={{ scale: 1.05 }}
             {...swipeUpReveal}
           />
-          <SubmitButton aria-label='Submit' {...swipeUpReveal} type="submit">
+          <SubmitButton aria-label='Submit' type="submit">
             <Lottie animationData={contactLottie} />
           </SubmitButton>
         </StyledForm>
@@ -144,7 +144,7 @@ const ContactContent = tw.div`
   xl:flex-row
 `;
 
-const SubmitButton = tw(motion.button)`
+const SubmitButton = tw.button`
   hov
   cursor-pointer
   xl:w-72
