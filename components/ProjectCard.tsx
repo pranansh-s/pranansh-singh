@@ -271,6 +271,7 @@ const StyledVisitLink = tw.a`
   font-outerRegular
   text-xs
   sm:text-sm
+  focus:outline
   outline
   outline-1
   transition-all

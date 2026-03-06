@@ -57,7 +57,7 @@ export const work: WorkDetail[] = [
     color: '#FB5A35',
     text: 'This repository houses the full-stack codebase for the Barbeque Company website, serving as a comprehensive architectural backup for a previous client engagement. It demonstrates a clear separation of concerns by splitting the frontend and backend environments, ensuring a maintainable and scalable structure for a commercial restaurant platform. The project highlights my ability to deliver functional, end-to-end business solutions tailored exactly to client specifications while maintaining strict typing across the stack.',
     tools: ['Material UI', 'Strapi (Headless CMS)', 'Paytm Payment', 'GraphQL', 'Cloudinary'],
-    link: 'https://github.com/pranansh-s/bbq-backup',
+    github: 'https://github.com/pranansh-s/bbq-backup',
   },
 ];
 
