@@ -131,7 +131,6 @@ const AboutContainer = tw.section`
   mx-auto
   flex
   h-full
-  max-h-[1200px]
   max-w-[1600px]
   flex-col
   items-start
@@ -141,7 +140,6 @@ const AboutContainer = tw.section`
   overflow-y-clip
   p-sm
   md:p-md
-  xl:h-screen
   xl:gap-20
   xl:p-xl
 `;
