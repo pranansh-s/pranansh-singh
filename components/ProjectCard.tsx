@@ -246,7 +246,8 @@ const ProjectAbout = tw.p`
   text-center
   font-outerRegular
   text-xs
-  !leading-8
+  leading-6
+  md:leading-8
   opacity-80
   sm:text-sm
   xl:text-right

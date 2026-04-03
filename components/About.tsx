@@ -48,11 +48,11 @@ const Carousel = () => (
       {[...RowAll.flat(), ...RowAll.flat()].map((item: Card, idx: number) => (
         <SkillCard
           whileTap={{ scale: 1.1 }}
-          className="h-32 w-32 p-3"
+          className="h-24 w-24 p-5"
           key={`card-${idx}`}
           style={{ backgroundColor: `#${item.color}` }}
         >
-          <Image src={item.logo} alt={item.logo} loading="lazy" width={64} height={64} sizes="64px" />
+          <Image src={item.logo} alt={item.logo} loading="lazy" width={48} height={48} sizes="48px" />
         </SkillCard>
       ))}
     </CarouselRow>
@@ -71,7 +71,7 @@ const About = () => (
         I've debugged layout thrashing, shaved seconds off initial loads, and learned why useCallback isn't a free lunch.
       </motion.p>
       <motion.p {...swipeUpReveal}>
-        I design <u>UI/UX</u> that doesn't fight back <u>maintainable APIs</u> that don't crumble under load, optimize <u>database queries</u> before they become problems, and think
+        I design <u>UI/UX</u> that doesn't fight back, <u>maintainable APIs</u> that don't crumble under load, optimize <u>database queries</u> before they become problems, and think
         about <u>memory & concurrency</u> as first-class concerns.
       </motion.p>
       <motion.p {...swipeUpReveal}>
@@ -91,14 +91,14 @@ const About = () => (
           href={item.link}
           target="_blank"
         >
-          <Image width={24} height={24} src={item.icon} alt={item.name} />
+          <Image width={24} height={24} src={item.icon} alt={item.name} sizes="24px" className='md:p-0 p-1' />
         </SocialLink>
       ))}
     </SocialLinkContainer>
     <Carousel />
     <CharacterContainer>
       <motion.div
-        className="absolute -bottom-64 xl:-bottom-64"
+        className="absolute -bottom-36 sm:-bottom-64"
         initial={{ x: '-750%' }}
         animate={{ x: '750%' }}
         viewport={{ once: true }}
@@ -107,7 +107,7 @@ const About = () => (
         <LazyLottie loader={loadMarioLottie} />
       </motion.div>
       <motion.div
-        className="absolute -bottom-52 xl:-bottom-52"
+        className="absolute -bottom-32 sm:-bottom-52"
         initial={{ x: '-750%' }}
         animate={{ x: '750%' }}
         viewport={{ once: true }}
@@ -125,7 +125,7 @@ const AboutContainer = tw.section`
   relative
   mx-auto
   flex
-  h-[750px]
+  sm:h-[750px]
   max-w-[1600px]
   flex-col
   items-start
@@ -168,7 +168,8 @@ const AboutMeContent = tw.div`
   text-left
   font-outerRegular
   text-sm
-  leading-9
+  leading-6
+  sm:leading-9
   text-primary/60
   xl:w-[35%]
   xl:text-[0.9rem]
