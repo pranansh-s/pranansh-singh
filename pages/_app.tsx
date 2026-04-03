@@ -23,13 +23,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           locale: 'en_US',
           images: [
             {
-              url: 'https://pranansh-singh.vercel.app/logo192.png',
+              url: 'https://pranansh-singh.vercel.app/favicon-96x96.png',
               width: 800,
               height: 800,
               alt: 'Pranansh Singh Portfolio',
             },
             {
-              url: 'https://pranansh-singh.vercel.app/logo64.png',
+              url: 'https://pranansh-singh.vercel.app/favicon-32x32.png',
               width: 400,
               height: 400,
               alt: 'Pranansh Singh Portfolio',

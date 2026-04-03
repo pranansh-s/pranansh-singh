@@ -10,8 +10,12 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+          <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" />
+          <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/manifest.json" />
           <link
             rel="preload"
