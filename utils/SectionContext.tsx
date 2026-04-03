@@ -9,20 +9,16 @@ interface SectionContextType {
 const SectionContext = createContext<SectionContextType | undefined>(undefined);
 
 export function SectionProvider({ children }: { children: React.ReactNode }) {
-  const [currentSection, setCurrentSection] = useState<string>('hero');
-  const currentSectionRef = useRef<string>('hero');
-  const ratioMap = useRef<Map<string, number>>(new Map());
+  const [currentSection, setCurrentSection] = useState('hero');
+  const ratioMap = useRef(new Map<string, number>());
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
-        entries.forEach(entry => {
-          ratioMap.current.set(entry.target.id, entry.intersectionRatio);
-        });
+        entries.forEach(e => ratioMap.current.set(e.target.id, e.intersectionRatio));
 
         let maxRatio = 0;
         let mostVisible = '';
-
         ratioMap.current.forEach((ratio, id) => {
           if (ratio > maxRatio) {
             maxRatio = ratio;
@@ -30,39 +26,31 @@ export function SectionProvider({ children }: { children: React.ReactNode }) {
           }
         });
 
-        if (mostVisible && mostVisible !== currentSectionRef.current) {
-          currentSectionRef.current = mostVisible;
-          setCurrentSection(mostVisible);
-        }
+        if (mostVisible) setCurrentSection(mostVisible);
       },
-      {
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-      }
+      { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] }
     );
 
-    const observedIds = new Set<string>();
-
-    const tryObserveSections = () => {
+    const observed = new Set<string>();
+    const tryObserve = () => {
       SECTION_IDS.forEach(id => {
-        if (observedIds.has(id)) return;
+        if (observed.has(id)) return;
         const el = document.getElementById(id);
         if (el) {
           observer.observe(el);
-          observedIds.add(id);
+          observed.add(id);
         }
       });
     };
 
-    tryObserveSections();
+    tryObserve();
 
     const domWatcher = new MutationObserver(() => {
-      tryObserveSections();
-      if (observedIds.size === SECTION_IDS.length) {
-        domWatcher.disconnect();
-      }
+      tryObserve();
+      if (observed.size === SECTION_IDS.length) domWatcher.disconnect();
     });
 
-    if (observedIds.size < SECTION_IDS.length) {
+    if (observed.size < SECTION_IDS.length) {
       domWatcher.observe(document.body, { childList: true, subtree: true });
     }
 
@@ -76,9 +64,7 @@ export function SectionProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useSection() {
-  const context = useContext(SectionContext);
-  if (context === undefined) {
-    throw new Error('useSection must be used within a SectionProvider');
-  }
-  return context;
+  const ctx = useContext(SectionContext);
+  if (!ctx) throw new Error('useSection must be used within a SectionProvider');
+  return ctx;
 }

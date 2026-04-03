@@ -67,20 +67,17 @@ const About = () => (
         Hello! I&apos;m{' '}
         <span className="font-cedarville text-lg text-secondary sm:text-xl lg:text-2xl">&lt;PrananshSingh/&gt;</span>, a
         developer who enjoys crafting software across the entire spectrum—from polished user interfaces to the
-        nitty-gritty of system internals. I believe great engineering means understanding how the pieces fit together,
-        whether I&apos;m designing a <u>robust API</u>, tuning a database query, or exploring what happens at the metal.
+        nitty-gritty of system internals.
+        I've debugged layout thrashing, shaved seconds off initial loads, and learned why useCallback isn't a free lunch.
       </motion.p>
       <motion.p {...swipeUpReveal}>
-        I&apos;m drawn to the challenge of <u>building systems</u> that are both elegant and resilient. That means
-        thinking about architecture from the start—structuring code for maintainability, choosing the right data flows,
-        and optimizing performance where it counts. And I love digging into <u>low-level concepts</u>: memory models,
-        concurrency, and the fundamentals that make software fast and reliable.
+        I design <u>UI/UX</u> that doesn't fight back <u>maintainable APIs</u> that don't crumble under load, optimize <u>database queries</u> before they become problems, and think
+        about <u>memory & concurrency</u> as first-class concerns.
       </motion.p>
       <motion.p {...swipeUpReveal}>
-        Ultimately, I&apos;m driven by curiosity—whether it&apos;s <u>a new framework</u>,{' '}
-        <u>a systems programming language</u>, or a &nbsp;
-        <u>clever architectural pattern</u>. I&apos;m always looking to learn and apply those insights to build software
-        that&apos;s not just functional, but a joy to use and maintain.
+        I care about architecture that outlives the first feature request.
+        No fluff, no magic — just code that earns its keep.
+        I avoid cleverness that becomes tomorrow's footgun, document the why not just the what, and treat <u>maintainability</u> as a feature — not an afterthought.
       </motion.p>
     </AboutMeContent>
     <SocialLinkContainer {...swipeUpReveal}>
@@ -171,7 +168,7 @@ const AboutMeContent = tw.div`
   text-left
   font-outerRegular
   text-sm
-  leading-7
+  leading-9
   text-primary/60
   xl:w-[35%]
   xl:text-[0.9rem]
