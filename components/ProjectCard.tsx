@@ -122,9 +122,11 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
           )}
         </Links>
         <ProjectAbout>
-          <span className="text-xs italic sm:text-sm">
-            <b className="font-bagelRegular text-sm not-italic">Knowledge:</b> {item.tools.join(' | ')}
-          </span>
+          {item.tools.map((tool, i) => (
+            <span key={i} className="bg-black/20 mx-1 leading-7 inline-block border border-black/30 text-black px-2 rounded-md">
+              {tool}
+            </span>
+          ))}
           <br />
           <br />
           {item.text}
@@ -208,7 +210,7 @@ const ProjectDetailsContainer = tw.div<{ $isActive: boolean }>`
   md:px-24
   xl:flex-row
   xl:flex-wrap
-  ${p => (p.$isActive ? 'scale-y-100 py-16 opacity-100 -mx-sm md:-mx-md xl:-mx-xl sm:min-h-screen' : 'h-0 scale-y-20 opacity-0')} `;
+  ${p => (p.$isActive ? 'scale-y-100 py-16 opacity-100 -mx-sm md:-mx-md xl:-mx-xl' : 'h-0 scale-y-20 opacity-0')} `;
 
 const ProjectDetail = tw.div`
   flex
@@ -244,6 +246,7 @@ const ProjectAbout = tw.p`
   text-center
   font-outerRegular
   text-xs
+  !leading-8
   opacity-80
   sm:text-sm
   xl:text-right
