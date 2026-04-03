@@ -18,7 +18,8 @@ module.exports = {
         sm: '8px',
       },
       animation: {
-        xlcarouselScroll: 'scrollXL 24s linear infinite',
+        xlcarouselScrollUp: 'scrollXL 24s linear infinite',
+        xlcarouselScrollDown: 'scrollXL 24s linear infinite reverse',
         carouselScroll: 'scroll 24s linear infinite',
       },
       keyframes: {

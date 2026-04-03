@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import { motion } from 'framer-motion';
-import Lottie from 'lottie-react';
 import tw from 'tailwind-styled-components';
 
 import Header from '@/components/Header';
@@ -10,47 +9,46 @@ import { swipeUpReveal } from '@/constants/motion';
 import { Card, RowAll } from '@/constants/skills';
 import { IconLink, SocialLinks } from '@/constants/socials';
 
-import amongUsLottie from '@/public/lottie/among-us.json';
-import marioLottie from '@/public/lottie/mario.json';
+import LazyLottie from './LazyLottie';
+
+const loadMarioLottie = () => import('@/public/lottie/mario.json').then(m => m.default);
+const loadAmongUsLottie = () => import('@/public/lottie/among-us.json').then(m => m.default);
 
 const Carousel = () => (
   <>
     <CarouselContainer>
       {RowAll.map((row: Card[], rowIdx: number) => (
         <CarouselRow
-          className="animate-xlcarouselScroll"
+          className={rowIdx % 2 === 0 ? 'animate-xlcarouselScrollUp' : 'animate-xlcarouselScrollDown'}
           key={rowIdx}
-          style={{ animationDuration: `${row.length * 20}s` }}
+          style={{ animationDuration: `${row.length * row.length}s` }}
         >
-          {Array(row.length * 2)
-            .fill(row)
-            .flat()
-            .map((item: Card, idx: number) => (
-              <SkillCard
-                whileHover={{ scale: 1.1 }}
-                className="w-48"
-                key={`${rowIdx}-card-${idx}`}
-                style={{ backgroundColor: `#${item.color}` }}
-              >
-                <Image
-                  src={item.logo}
-                  alt={item.logo}
-                  loading="lazy"
-                  className="-rotate-90"
-                  width={80}
-                  height={80}
-                  sizes="80px"
-                />
-              </SkillCard>
-            ))}
+          {[...row, ...row].map((item: Card, idx: number) => (
+            <SkillCard
+              whileHover={{ scale: 1.1 }}
+              className="w-48"
+              key={`${rowIdx}-card-${idx}`}
+              style={{ backgroundColor: `#${item.color}` }}
+            >
+              <Image
+                src={item.logo}
+                alt={item.logo}
+                loading="lazy"
+                className="-rotate-90"
+                width={80}
+                height={80}
+                sizes="80px"
+              />
+            </SkillCard>
+          ))}
         </CarouselRow>
       ))}
     </CarouselContainer>
     <CarouselRow className="mb-24 animate-carouselScroll xl:hidden">
-      {[...RowAll, ...RowAll].flat().map((item: Card, idx: number) => (
+      {[...RowAll.flat(), ...RowAll.flat()].map((item: Card, idx: number) => (
         <SkillCard
           whileTap={{ scale: 1.1 }}
-          className="w-32 h-32 p-3"
+          className="h-32 w-32 p-3"
           key={`card-${idx}`}
           style={{ backgroundColor: `#${item.color}` }}
         >
@@ -67,7 +65,7 @@ const About = () => (
     <AboutMeContent>
       <motion.p {...swipeUpReveal}>
         Hello! I&apos;m{' '}
-        <span className="font-bagelRegular text-lg sm:text-xl text-secondary lg:text-2xl">&lt;PrananshSingh/&gt;</span>, a
+        <span className="font-cedarville text-lg text-secondary sm:text-xl lg:text-2xl">&lt;PrananshSingh/&gt;</span>, a
         developer who enjoys crafting software across the entire spectrum—from polished user interfaces to the
         nitty-gritty of system internals. I believe great engineering means understanding how the pieces fit together,
         whether I&apos;m designing a <u>robust API</u>, tuning a database query, or exploring what happens at the metal.
@@ -103,22 +101,22 @@ const About = () => (
     <Carousel />
     <CharacterContainer>
       <motion.div
-        className="absolute -bottom-44 lg:-bottom-20"
+        className="absolute -bottom-64 xl:-bottom-64"
         initial={{ x: '-750%' }}
         animate={{ x: '750%' }}
         viewport={{ once: true }}
         transition={{ duration: 16, repeat: Infinity, repeatType: 'loop' }}
       >
-        <Lottie animationData={marioLottie} />
+        <LazyLottie loader={loadMarioLottie} />
       </motion.div>
       <motion.div
-        className="absolute -bottom-36 lg:-bottom-10"
+        className="absolute -bottom-52 xl:-bottom-52"
         initial={{ x: '-750%' }}
         animate={{ x: '750%' }}
         viewport={{ once: true }}
         transition={{ duration: 12, repeat: Infinity, repeatType: 'loop' }}
       >
-        <Lottie animationData={amongUsLottie} />
+        <LazyLottie loader={loadAmongUsLottie} />
       </motion.div>
     </CharacterContainer>
   </AboutContainer>
@@ -130,16 +128,39 @@ const AboutContainer = tw.section`
   relative
   mx-auto
   flex
-  h-full
+  h-[750px]
   max-w-[1600px]
   flex-col
   items-start
   justify-start
   gap-12
-  sm:gap-16
   overflow-y-clip
+  border-y-2
   p-sm
+  before:pointer-events-none
+  before:absolute
+  before:top-0
+  before:left-0
+  before:z-10
+  before:h-6
+  before:w-full
+  before:bg-gradient-to-t
+  before:from-transparent
+  before:to-[#1C172E]
+  after:pointer-events-none
+  after:absolute
+  after:bottom-0
+  after:left-0
+  after:h-12
+  after:w-full
+  after:bg-gradient-to-b
+  after:from-transparent
+  after:to-[#1C172E]
+  sm:gap-16
   md:p-md
+  lg:before:h-24
+  lg:after:h-24
+  xl:h-full
   xl:gap-20
   xl:p-xl
 `;
@@ -149,10 +170,8 @@ const AboutMeContent = tw.div`
   pr-6
   text-left
   font-outerRegular
-  text-xs
-  sm:text-sm
-  sm:leading-7
-  leading-5
+  text-sm
+  leading-7
   text-primary/60
   xl:w-[35%]
   xl:text-[0.9rem]
@@ -174,7 +193,7 @@ const SocialLink = tw(motion.a)`
   duration-300
   ease-out
   hover:cursor-pointer
-  hover:bg-white
+  hover:bg-primary
   md:hover:cursor-none
 `;
 
@@ -193,8 +212,8 @@ const CarouselContainer = tw.div`
 const CharacterContainer = tw.div`
   pointer-events-none
   absolute
+  bottom-0
   z-10
-  h-full
   w-screen
   origin-bottom
   scale-[0.5]

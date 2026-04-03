@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
 import { motion } from 'framer-motion';
-import Lottie from 'lottie-react';
 import tw from 'tailwind-styled-components';
 
 import Header from '@/components/Header';
 
 import { swipeUpReveal } from '@/constants/motion';
 
-import contactLottie from '@/public/lottie/contact.json';
-import gameLottie from '@/public/lottie/game.json';
+import LazyLottie from './LazyLottie';
+
+const loadGameLottie = () => import('@/public/lottie/game.json').then(m => m.default);
 
 const Contact = () => {
   const [formData, setFormData] = useState({ email: '', name: '', body: '' });
@@ -30,8 +30,8 @@ const Contact = () => {
     <ContactContainer id="contact" aria-label="Contact Me">
       <Header title="contact" />
       <ContactContent>
-        <Lottie animationData={gameLottie} />
-        <StyledForm onSubmit={handleMailSend}>
+        <LazyLottie loader={loadGameLottie} />
+        <StyledForm {...swipeUpReveal} onSubmit={handleMailSend}>
           <StyledInput
             name="name"
             id="name"
@@ -68,8 +68,8 @@ const Contact = () => {
             whileTap={{ scale: 1.05 }}
             {...swipeUpReveal}
           />
-          <SubmitButton aria-label='Submit' type="submit">
-            <Lottie animationData={contactLottie} />
+          <SubmitButton aria-label="Submit" type="submit">
+            let&apos;s go &rarr;
           </SubmitButton>
         </StyledForm>
       </ContactContent>
@@ -85,42 +85,49 @@ const ContactContainer = tw.section`
   max-w-[1600px]
   flex-col
   gap-12
-  sm:gap-16
   space-y-8
   overflow-clip
   p-sm
+  sm:gap-16
   md:p-md
   xl:mb-24
   xl:gap-24
   xl:p-xl
 `;
 
-const StyledForm = tw.form`
+const StyledForm = tw(motion.form)`
   flex
-  flex-col
-  sm:gap-6
-  gap-3
   w-full
+  flex-col
+  gap-3
   rounded-lg
-  bg-[#67506F]
-  sm:p-8
+  border
+  border-primary/10
+  bg-primary/10
   p-5
   font-outerRegular
-  sm:text-lg
   text-black/60
-  xl:-translate-x-24
+  backdrop-blur-xl
+  sm:gap-6
+  sm:p-8
+  sm:text-lg
   xl:w-2/3
+  xl:-translate-x-24
 `;
 
 const StyledInput = tw(motion.input)`
   hov
   rounded-xl
-  bg-primary
-  sm:p-5
+  border
+  border-primary/10
+  bg-primary/10
   p-3
+  text-white/70
   drop-shadow-md
-  focus:text-black
+  backdrop-blur-xl
+  placeholder:text-white/20
   focus:outline-none
+  sm:p-5
   md:cursor-none
 `;
 
@@ -128,12 +135,15 @@ const StyledTextArea = tw(motion.textarea)`
   hov
   resize-none
   rounded-xl
-  bg-primary
-  sm:p-5
+  border
+  border-primary/10
+  bg-primary/10
   p-3
-  drop-shadow-md
-  focus:text-black
+  text-white
+  backdrop-blur-xl
+  placeholder:text-white/20
   focus:outline-none
+  sm:p-5
   md:cursor-none
 `;
 
@@ -146,14 +156,23 @@ const ContactContent = tw.div`
 
 const SubmitButton = tw.button`
   hov
-  cursor-pointer
-  xl:w-72
-  w-64
   mx-auto
+  mt-4
+  w-full
+  cursor-pointer
+  rounded-xl
+  bg-secondary/90
+  py-4
+  font-bagelRegular
+  text-lg
+  uppercase
+  tracking-wider
+  text-white
   transition-all
   duration-300
-  drop-shadow-md md:hover:cursor-none
+  hover:bg-secondary
+  hover:shadow-[0_0_24px_rgba(255,88,88,0.4)]
+  active:scale-[0.98]
   md:cursor-none
-  lg:mt-12
-  lg:hover:px-0
+  md:hover:cursor-none
 `;

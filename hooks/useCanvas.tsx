@@ -43,7 +43,7 @@ const useCanvas = () => {
       systemRef.current?.stop();
       window.removeEventListener('resize', handleResize);
     };
-  }, [canvasRef]);
+  }, []);
 
   return canvasRef;
 };

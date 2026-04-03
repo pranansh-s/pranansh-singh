@@ -14,7 +14,7 @@ const Hero = () => (
         initial={{ x: -200, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
         className="col-span-2 mr-auto"
       >
         pranansh
@@ -24,27 +24,29 @@ const Hero = () => (
         viewport={{ once: true }}
         whileInView={{ y: 0, opacity: 1 }}
         {...draggableSpringConfig}
+        transition={{ delay: 1 }}
         drag
         className="mt-auto whitespace-nowrap font-outerRegular"
       >
-        clean work on time
+        ship fast. ship clean.
       </SubText>
       <SubText
         initial={{ y: 50, opacity: 0 }}
         viewport={{ once: true }}
         whileInView={{ y: 0, opacity: 1 }}
         {...draggableSpringConfig}
+        transition={{ delay: 1 }}
         drag
-        className="mb-auto w-48 font-cedarville md:w-72"
+        className="mb-auto w-[15rem] font-cedarville text-2xl !leading-[3rem] tracking-widest xl:w-[25rem] xl:text-4xl"
       >
-        get creative projects for your needs
+        your weird idea? let&apos;s build it.
       </SubText>
       <AnimatedArrow />
       <NameTag
         initial={{ x: 100, opacity: 0 }}
         viewport={{ once: true }}
         whileInView={{ x: 0, opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
         className="ml-auto"
       >
         singh
@@ -80,14 +82,14 @@ const NameTag = tw(motion.h1)`
   pointer-events-none
   font-bagelRegular
   text-6xl
-  sm:text-7xl
   uppercase
   drop-shadow-[0_0_4px_rgba(0,0,0,1)]
+  sm:text-7xl
   md:text-8xl
   xl:text-9xl
 `;
 
-const SubText = tw(motion.h3)`
+const SubText = tw(motion.sub)`
   hov
   hidden
   text-xl

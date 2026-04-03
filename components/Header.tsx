@@ -25,8 +25,8 @@ const Title = tw.h1`
   relative
   font-bagelRegular
   text-4xl
-  sm:text-5xl
   text-primary
+  sm:text-5xl
   lg:text-6xl
 `;
 
@@ -35,7 +35,7 @@ const TitleShadow = tw(Title)`
   translate-y-10
   font-cedarville
   text-5xl
-  sm:text-6xl
   opacity-20
+  sm:text-6xl
   lg:text-7xl
 `;

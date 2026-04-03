@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <NavbarContainer
-      role='navigation'
+      role="navigation"
       initial={{
         x: 100,
         opacity: 0,

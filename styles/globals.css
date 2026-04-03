@@ -11,17 +11,19 @@
 @layer base {
   @font-face {
     font-family: 'Bagel Fat One Regular';
-    src: url('../public/fonts/BagelFatOne-Regular.ttf');
+    src: url('../public/fonts/BagelFatOne-Regular.woff2');
     font-display: swap;
   }
+
   @font-face {
     font-family: 'MADE Outer Sans Regular';
-    src: url('../public/fonts/outer-sans-regular.otf');
+    src: url('../public/fonts/outer-sans-regular.woff2');
     font-display: swap;
   }
+
   @font-face {
     font-family: 'Cedarville Cursive';
-    src: url('../public/fonts/cedarville-cursive.ttf');
+    src: url('../public/fonts/cedarville-cursive.woff2');
     font-display: swap;
   }
 
@@ -47,6 +49,7 @@ u:hover {
 html {
   scroll-behavior: smooth;
   user-select: none;
+  font-size: 12px;
 }
 
 .chevron {
@@ -87,14 +90,17 @@ html {
   25% {
     opacity: 0.4;
   }
+
   33% {
     opacity: 0.4;
     transform: translateY(30px);
   }
+
   67% {
     opacity: 0.4;
     transform: translateY(40px);
   }
+
   100% {
     opacity: 0;
     transform: translateY(55px) scale3d(0.5, 0.5, 0.5);

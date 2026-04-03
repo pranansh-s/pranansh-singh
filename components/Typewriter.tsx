@@ -1,10 +1,11 @@
 import { FC } from 'react';
 
 import { motion } from 'framer-motion';
-import Lottie from 'lottie-react';
 import tw from 'tailwind-styled-components';
 
-import typingLottie from '@/public/lottie/typing.json';
+import LazyLottie from './LazyLottie';
+
+const loadTypingLottie = () => import('@/public/lottie/typing.json').then(m => m.default);
 
 const sentenceVariants = {
   hidden: {},
@@ -28,7 +29,7 @@ const Typewriter: FC<ITypewriterProps> = ({ text }) => (
     whileInView="visible"
     viewport={{ once: true }}
   >
-    <StyledLottie animationData={typingLottie} />
+    <StyledLottie loader={loadTypingLottie} />
     {text.split('').map((char, i) => (
       <motion.span
         className="relative bottom-10 -left-3 xl:bottom-0 xl:-left-16"
@@ -55,15 +56,15 @@ const TypewriterContainer = tw(motion.div)`
   xl:text-[2.5rem]
 `;
 
-const StyledLottie = tw(Lottie)`
-  absolute
+const StyledLottie = tw(LazyLottie)`
   pointer-events-none
+  absolute
   right-0
   bottom-0
   origin-bottom-right
   translate-x-10
   translate-y-8
-  scale-[0.6]
+  scale-[0.4]
   opacity-40
   md:scale-[0.35]
   lg:translate-y-12

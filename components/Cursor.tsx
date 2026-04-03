@@ -44,7 +44,7 @@ const CursorContainer = tw(motion.div)`
   items-center
   justify-center
   rounded-full
-  bg-white
+  bg-primary
   mix-blend-difference
   md:flex
 `;

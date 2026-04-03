@@ -10,7 +10,7 @@ const SectionContext = createContext<SectionContextType | undefined>(undefined);
 
 export function SectionProvider({ children }: { children: React.ReactNode }) {
   const [currentSection, setCurrentSection] = useState<string>('');
-  const observerRef = useRef<IntersectionObserver | null>(null);
+  const currentSectionRef = useRef<string>('');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,14 +28,13 @@ export function SectionProvider({ children }: { children: React.ReactNode }) {
           }
         });
 
-        if (mostInView && mostInView !== currentSection) {
+        if (mostInView && mostInView !== currentSectionRef.current) {
+          currentSectionRef.current = mostInView;
           setCurrentSection(mostInView);
         }
       },
       { threshold: 0.5 }
     );
-
-    observerRef.current = observer;
 
     SECTION_IDS.forEach(id => {
       const element = document.getElementById(id);

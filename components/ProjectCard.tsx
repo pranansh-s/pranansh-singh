@@ -26,7 +26,7 @@ interface IProjectCard {
 }
 
 const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) => (
-  <motion.li {...swipeUpReveal}>
+  <motion.li tabIndex={-1} {...swipeUpReveal}>
     <ProjectTab
       role="button"
       aria-label={`View details for ${item.name} project`}
@@ -69,13 +69,13 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 300px"
           />
         </span>
-        <span className="flex items-end justify-around max-h-72">
+        <span className="flex max-h-72 items-end justify-around">
           <Image
             src={item.doodleIcons[1]}
             width={60}
             height={60}
             alt={`project-doodle-${index}-${item.doodleIcons[1]}`}
-            className='aspect-square'
+            className="aspect-square"
             sizes="60px"
           />
           <Image
@@ -83,7 +83,7 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
             width={60}
             height={60}
             alt={`project-doodle-${index}-${item.doodleIcons[0]}`}
-            className='aspect-square'
+            className="aspect-square"
             sizes="60px"
           />
         </span>
@@ -122,7 +122,7 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
           )}
         </Links>
         <ProjectAbout>
-          <span className="sm:text-sm text-xs italic">
+          <span className="text-xs italic sm:text-sm">
             <b className="font-bagelRegular text-sm not-italic">Knowledge:</b> {item.tools.join(' | ')}
           </span>
           <br />
@@ -137,7 +137,7 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
 ProjectCard.displayName = 'ProjectCard';
 export default ProjectCard;
 
-const ProjectTab = tw(motion.div)<{ $isActive: boolean }>`
+const ProjectTab = tw(motion.div) <{ $isActive: boolean }>`
   hov
   group
   relative
@@ -152,9 +152,9 @@ const ProjectTab = tw(motion.div)<{ $isActive: boolean }>`
   ease-out
   md:justify-start
   md:px-16
+  md:hover:cursor-none
   lg:rounded-xl
   lg:px-24
-  md:hover:cursor-none
   ${p => (p.$isActive ? 'h-0' : 'sm:h-48 h-36')} `;
 
 const StyledBackdrop = tw(Image)`
@@ -168,9 +168,9 @@ const ProjectHeader = tw.h2`
   text-center
   font-outerRegular
   text-2xl
-  sm:text-3xl
   text-purple-200/70
   group-hover:text-secondary
+  sm:text-3xl
   lg:text-5xl
 `;
 
@@ -178,7 +178,6 @@ const TabMarquee = tw.div`
   absolute
   bottom-3
   left-1/2
-  sm:h-2
   h-1
   w-full
   -translate-x-1/2
@@ -190,6 +189,7 @@ const TabMarquee = tw.div`
   ease-out
   group-hover:w-1/2
   group-hover:bg-secondary
+  sm:h-2
   md:left-0
   md:translate-x-0
   lg:rounded-l-none
@@ -199,12 +199,12 @@ const ProjectDetailsContainer = tw.div<{ $isActive: boolean }>`
   flex
   flex-col
   gap-8
-  sm:gap-16
-  sm:px-8
   px-3
   transition-all
   duration-300
   ease-out
+  sm:gap-16
+  sm:px-8
   md:px-24
   xl:flex-row
   xl:flex-wrap
@@ -215,7 +215,8 @@ const ProjectDetail = tw.div`
   flex-1
   flex-col
   items-start
-  sm:gap-0 gap-12
+  gap-12
+  sm:gap-0
   xl:items-end
 `;
 
@@ -223,8 +224,8 @@ const Links = tw.div`
   mx-auto
   flex
   gap-6
-  xl:mx-0
   sm:mb-16
+  xl:mx-0
 `;
 
 const ProjectTitle = tw.h3`
@@ -233,8 +234,8 @@ const ProjectTitle = tw.h3`
   text-center
   font-bagelRegular
   text-3xl
-  sm:text-4xl
   uppercase
+  sm:text-4xl
   md:text-7xl
   xl:text-left
 `;
@@ -243,8 +244,8 @@ const ProjectAbout = tw.p`
   text-center
   font-outerRegular
   text-xs
-  sm:text-sm
   opacity-80
+  sm:text-sm
   xl:text-right
   xl:text-base
   2xl:text-lg
@@ -270,15 +271,15 @@ const StyledVisitLink = tw.a`
   px-4
   font-outerRegular
   text-xs
-  sm:text-sm
-  focus:outline
   outline
   outline-1
   transition-all
   duration-300
   hover:cursor-pointer
-  hover:bg-white
+  hover:bg-primary
   hover:text-black
+  focus:outline
+  sm:text-sm
   md:hover:cursor-none
   lg:mx-0
 `;

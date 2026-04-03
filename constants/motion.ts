@@ -4,7 +4,7 @@ export const draggableSpringConfig = {
   dragConstraints: { top: 0, right: 0, bottom: 0, left: 0 },
   dragTransition: { bounceStiffness: 800, bounceDamping: 30 },
   dragElastic: 0.05,
-  transition: { duration: 0.8, type: 'spring' as const, stiffness: 100, delay: 0.5 },
+  transition: { duration: 0.8, type: 'spring' as const, stiffness: 100 },
 };
 
 export const swipeUpReveal = {

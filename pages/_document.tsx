@@ -8,14 +8,32 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="preload" href="/fonts/BagelFatOne-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-          <link rel="preload" href="/fonts/outer-sans-regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
-          <link rel="preload" href="/fonts/cedarville-cursive.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
+          <link
+            rel="preload"
+            href="/fonts/BagelFatOne-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/outer-sans-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/cedarville-cursive.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <meta name="google-site-verification" content="GL83bwDes4GKEoNh1nM55lYwcAStf1a5dxKYgpvqtbQ" />
           <script
             type="application/ld+json"
@@ -30,9 +48,10 @@ class MyDocument extends Document {
                   'https://github.com/pranansh-s',
                   'https://x.com/pronounshu/',
                   'https://www.instagram.com/prononshu/',
-                  'https://linkedin.com/in/pranansh-s',
+                  'https://www.linkedin.com/in/pranansh-singh-9288a523b/',
                 ],
-                description: 'Software Engineer specializing in web development and system design',
+                description:
+                  'a full-stack developer with a strong foundation in computer science and a passion for building scalable, high-performance web applications.',
               }),
             }}
           />
