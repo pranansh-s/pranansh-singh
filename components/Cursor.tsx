@@ -26,7 +26,7 @@ const Cursor = () => {
       <motion.span
         animate={{ rotate: 360 }}
         transition={{ ease: 'linear', duration: 2.5, repeat: Infinity }}
-        className="absolute rounded-full p-8 outline-dashed outline-2"
+        className="absolute rounded-full p-8 outline-dashed outline-2 will-change-transform"
       />
     </CursorContainer>
   );
@@ -46,5 +46,6 @@ const CursorContainer = tw(motion.div)`
   rounded-full
   bg-primary
   mix-blend-difference
+  will-change-transform
   md:flex
 `;

@@ -22,8 +22,8 @@ const useCanvas = () => {
       case 'work':
         systemRef.current.setColor(188, 21, 159);
         break;
-      case 'contact':
-        systemRef.current.setColor(120, 36, 72);
+      case 'connect':
+        systemRef.current.setColor(72, 20, 64);
         break;
     }
   }, [currentSection]);

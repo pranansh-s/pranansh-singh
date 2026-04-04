@@ -13,7 +13,7 @@ const Canvas = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="absolute h-screen w-screen shadow-[inset_0px_0px_100px_83px_rgba(0,0,0,0.7)]"
+        className="absolute h-screen w-screen shadow-[inset_0px_0px_100px_83px_rgba(0,0,0,0.4)]"
       />
     </CanvasContainer>
   );

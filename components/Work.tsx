@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
+import { motion } from 'framer-motion';
 import tw from 'tailwind-styled-components';
 
 import Header from '@/components/Header';
 import ProjectCard from '@/components/ProjectCard';
 import Typewriter from '@/components/Typewriter';
 
+import { staggerContainer } from '@/constants/motion';
 import { projects, work, WorkDetail } from '@/constants/work';
 
 const Work = () => {
@@ -17,13 +19,13 @@ const Work = () => {
   return (
     <WorkContainer id="work" aria-label="Work & Projects">
       <Header title="work" />
-      <ProjectList>
+      <ProjectList {...staggerContainer}>
         {work.map((item: WorkDetail, index: number) => (
           <ProjectCard key={`work-${index}`} handleSet={handleSetActive} index={index} active={active} item={item} />
         ))}
       </ProjectList>
       <Header title="projects" />
-      <ProjectList>
+      <ProjectList {...staggerContainer}>
         {projects.map((item: WorkDetail, index: number) => (
           <ProjectCard
             key={`project-${index}`}
@@ -48,13 +50,14 @@ const WorkContainer = tw.section`
   max-w-[1600px]
   flex-col
   gap-16
+  border-b-2
   p-sm
   sm:gap-20
   md:p-md
   xl:p-xl
 `;
 
-const ProjectList = tw.ul`
+const ProjectList = tw(motion.ul)`
   relative
   flex
   flex-col

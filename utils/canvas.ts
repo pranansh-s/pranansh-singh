@@ -34,6 +34,7 @@ const TARGET_FPS = 30;
 const FRAME_INTERVAL = 1000 / TARGET_FPS;
 const MOUSE_RADIUS = 300;
 const MOUSE_INNER = 50;
+const MOUSE_RADIUS_SQ = MOUSE_RADIUS * MOUSE_RADIUS;
 
 export class DelaunaySystem {
   private canvas: HTMLCanvasElement;
@@ -46,14 +47,17 @@ export class DelaunaySystem {
   private mouseX: number = 0;
   private mouseY: number = 0;
   private color: Color = { r: 65, g: 41, b: 90 };
+  private targetColor: Color = { r: 65, g: 41, b: 90 };
   private lastFrameTime: number = 0;
   private vertices: number[][] = [];
   private boundMouseMove: (e: MouseEvent) => void;
+  private isDesktop: boolean = false;
 
-  constructor(canvas: HTMLCanvasElement, count = 500) {
+  constructor(canvas: HTMLCanvasElement, count?: number) {
     this.canvas = canvas;
-    this.ctx = canvas.getContext('2d')!;
-    this.count = count;
+    this.ctx = canvas.getContext('2d', { alpha: false })!;
+    this.isDesktop = window.innerWidth >= 768;
+    this.count = count ?? (this.isDesktop ? 400 : 200);
     this.resize();
     this.initPoints();
 
@@ -61,13 +65,14 @@ export class DelaunaySystem {
       this.mouseX = e.clientX;
       this.mouseY = e.clientY;
     };
-    window.addEventListener('mousemove', this.boundMouseMove);
+    window.addEventListener('mousemove', this.boundMouseMove, { passive: true });
   }
 
   public resize() {
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.width = window.innerWidth;
     this.height = window.innerHeight;
+    this.isDesktop = this.width >= 768;
 
     this.canvas.width = this.width * dpr;
     this.canvas.height = this.height * dpr;
@@ -97,26 +102,29 @@ export class DelaunaySystem {
     const centerX = (p1[0] + p2[0] + p3[0]) / 3;
     const centerY = (p1[1] + p2[1] + p3[1]) / 3;
 
-    const dx = centerX - this.mouseX;
-    const dy = centerY - this.mouseY;
-    const distSq = dx * dx + dy * dy;
-    const radiusSq = MOUSE_RADIUS * MOUSE_RADIUS;
+    let visibility: number;
+    if (this.isDesktop) {
+      const dx = centerX - this.mouseX;
+      const dy = centerY - this.mouseY;
+      const distSq = dx * dx + dy * dy;
 
-    if (distSq > radiusSq) return;
-
-    const distance = Math.sqrt(distSq);
-    const visibility = Math.min(1, Math.max(0, 1 - (distance - MOUSE_INNER) / (MOUSE_RADIUS - MOUSE_INNER)));
-    if (visibility <= 0.3) return;
+      if (distSq > MOUSE_RADIUS_SQ) return;
+      const distance = Math.sqrt(distSq);
+      visibility = Math.min(1, Math.max(0, 1 - (distance - MOUSE_INNER) / (MOUSE_RADIUS - MOUSE_INNER)));
+      if (visibility <= 0.3) return;
+    } else {
+      visibility = 1;
+    }
 
     const opacity = Math.abs(p1[0] * (p2[1] - p3[1]) + p2[0] * (p3[1] - p1[1]) + p3[0] * (p1[1] - p2[1])) / 3e4;
+
+    const { r, g, b } = this.color;
 
     this.ctx.beginPath();
     this.ctx.moveTo(p1[0], p1[1]);
     this.ctx.lineTo(p2[0], p2[1]);
     this.ctx.lineTo(p3[0], p3[1]);
     this.ctx.closePath();
-
-    const { r, g, b } = this.color;
 
     this.ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity * visibility * 2})`;
     this.ctx.strokeStyle = `rgba(0, 0, 0, ${opacity * visibility * 0.25})`;
@@ -125,7 +133,14 @@ export class DelaunaySystem {
   }
 
   public setColor(red: number, green: number, blue: number) {
-    this.color = { r: red, g: green, b: blue };
+    this.targetColor = { r: red, g: green, b: blue };
+  }
+
+  private lerpColor() {
+    const speed = 0.1;
+    this.color.r += (this.targetColor.r - this.color.r) * speed;
+    this.color.g += (this.targetColor.g - this.color.g) * speed;
+    this.color.b += (this.targetColor.b - this.color.b) * speed;
   }
 
   public start() {
@@ -135,6 +150,7 @@ export class DelaunaySystem {
       const delta = now - this.lastFrameTime;
       if (delta < FRAME_INTERVAL) return;
       this.lastFrameTime = now - (delta % FRAME_INTERVAL);
+      this.lerpColor();
 
       this.ctx.fillStyle = '#1C172E';
       this.ctx.fillRect(0, 0, this.width, this.height);
@@ -146,7 +162,6 @@ export class DelaunaySystem {
         this.vertices[i][1] = p.y;
       }
 
-      // Corner points
       this.vertices[this.count][0] = 0;
       this.vertices[this.count][1] = 0;
       this.vertices[this.count + 1][0] = this.width;

@@ -43,8 +43,8 @@ const useCursor = (setVariant: Dispatch<SetStateAction<CursorType>>) => {
   );
 
   useEffect(() => {
-    window.addEventListener('mousemove', moveCursor);
-    window.addEventListener('mouseover', checkHoverState);
+    window.addEventListener('mousemove', moveCursor, { passive: true });
+    window.addEventListener('mouseover', checkHoverState, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);

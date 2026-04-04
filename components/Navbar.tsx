@@ -47,6 +47,6 @@ const NavbarContainer = tw(motion.nav)`
 const SectionDot = tw.div<{ $isActive: boolean }>`
   w-min
   rounded-full
-  transition-all
+  transition-[background-color,padding,outline]
   duration-300
   ${p => (p.$isActive ? 'bg-secondary p-[5px] outline outline-2 outline-white sm:p-2' : 'bg-white/60 sm:p-1')} `;

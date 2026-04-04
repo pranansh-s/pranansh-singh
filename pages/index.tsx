@@ -32,6 +32,5 @@ const HomeContainer = tw.div`
   relative
   w-full
   overflow-hidden
-  will-change-scroll
   md:cursor-none
 `;

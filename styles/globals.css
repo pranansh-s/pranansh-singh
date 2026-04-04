@@ -38,6 +38,29 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  user-select: none;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scroll that respects reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 u:hover {
   color: #ff5858;
 }
@@ -46,12 +69,7 @@ u:hover {
   width: max-content !important;
 }
 
-html {
-  scroll-behavior: smooth;
-  user-select: none;
-  font-size: 12px;
-}
-
+/* Chevron scroll indicator */
 .chevron {
   width: 14px;
   height: 4px;
@@ -69,6 +87,7 @@ html {
 
 .chevron:before,
 .chevron:after {
+  content: '';
   position: absolute;
   top: 0;
   height: 100%;
@@ -77,30 +96,27 @@ html {
 
 .chevron:before {
   left: 0;
-  transform: skew(0deg, 30deg);
+  transform: skewY(30deg);
 }
 
 .chevron:after {
   right: 0;
   width: 50%;
-  transform: skew(0deg, -30deg);
+  transform: skewY(-30deg);
 }
 
 @keyframes move {
   25% {
     opacity: 0.4;
   }
-
   33% {
     opacity: 0.4;
     transform: translateY(30px);
   }
-
   67% {
     opacity: 0.4;
     transform: translateY(40px);
   }
-
   100% {
     opacity: 0;
     transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
@@ -122,4 +138,9 @@ input,
 label,
 span {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* GPU acceleration hints for animated elements */
+.will-change-transform {
+  will-change: transform;
 }

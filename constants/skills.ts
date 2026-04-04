@@ -47,3 +47,7 @@ const Row4: Card[] = [
 ];
 
 export const RowAll: Card[][] = [[...Row4], [...Row3], [...Row2], [...Row1]];
+export const RowAllResponsive: Card[][] = [
+  [...Row4, ...Row3],
+  [...Row2, ...Row1],
+];

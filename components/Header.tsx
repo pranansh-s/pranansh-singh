@@ -18,7 +18,6 @@ export default Header;
 const HeaderContainer = tw.header`
   relative
   w-max
-  text-primary
 `;
 
 const Title = tw.h1`
@@ -31,11 +30,11 @@ const Title = tw.h1`
 `;
 
 const TitleShadow = tw(Title)`
-  -translate-x-3
+  -translate-x-4
   translate-y-10
   font-cedarville
   text-5xl
-  opacity-20
+  text-secondary/20
   sm:text-6xl
   lg:text-7xl
 `;

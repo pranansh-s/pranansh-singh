@@ -5,9 +5,8 @@ import tw from 'tailwind-styled-components';
 
 import Header from '@/components/Header';
 
-import { swipeUpReveal } from '@/constants/motion';
-import { Card, RowAll } from '@/constants/skills';
-import { IconLink, SocialLinks } from '@/constants/socials';
+import { staggerContainer, swipeUpRevealChild } from '@/constants/motion';
+import { Card, RowAll, RowAllResponsive } from '@/constants/skills';
 
 import LazyLottie from './LazyLottie';
 
@@ -44,61 +43,52 @@ const Carousel = () => (
         </CarouselRow>
       ))}
     </CarouselContainer>
-    <CarouselRow className="mb-24 animate-carouselScroll xl:hidden">
-      {[...RowAll.flat(), ...RowAll.flat()].map((item: Card, idx: number) => (
-        <SkillCard
-          whileTap={{ scale: 1.1 }}
-          className="h-24 w-24 p-5"
-          key={`card-${idx}`}
-          style={{ backgroundColor: `#${item.color}` }}
-        >
-          <Image src={item.logo} alt={item.logo} loading="lazy" width={48} height={48} sizes="48px" />
-        </SkillCard>
-      ))}
-    </CarouselRow>
+    {RowAllResponsive.map((row: Card[], rowIdx: number) => (
+      <CarouselRow
+        key={rowIdx}
+        className={`${rowIdx % 2 === 0 ? 'animate-carouselScrollLeft' : 'animate-carouselScrollRight'} xl:hidden`}
+      >
+        {[...row, ...row].map((item: Card, idx: number) => (
+          <SkillCard
+            whileTap={{ scale: 1.1 }}
+            className="h-24 w-24 p-5 sm:h-36 sm:w-36 sm:p-3"
+            key={`card-${idx}`}
+            style={{ backgroundColor: `#${item.color}` }}
+          >
+            <Image src={item.logo} alt={item.logo} loading="lazy" width={48} height={48} sizes="48px" />
+          </SkillCard>
+        ))}
+      </CarouselRow>
+    ))}
   </>
 );
 
 const About = () => (
   <AboutContainer id="about" aria-label="About me">
     <Header title="about me" />
-    <AboutMeContent>
-      <motion.p {...swipeUpReveal}>
-        Hello! I&apos;m{' '}
+    <AboutMeContent {...staggerContainer}>
+      <motion.p {...swipeUpRevealChild}>
+        Hey there! I&apos;m{' '}
         <span className="font-cedarville text-lg text-secondary sm:text-xl lg:text-2xl">&lt;PrananshSingh/&gt;</span>, a
         developer who enjoys crafting software across the entire spectrum—from polished user interfaces to the
-        nitty-gritty of system internals.
-        I've debugged layout thrashing, shaved seconds off initial loads, and learned why useCallback isn't a free lunch.
+        nitty-gritty of system internals. I've debugged layout thrashing, shaved seconds off initial loads, and learned
+        why useCallback isn't a free lunch.
       </motion.p>
-      <motion.p {...swipeUpReveal}>
-        I design <u>UI/UX</u> that doesn't fight back, <u>maintainable APIs</u> that don't crumble under load, optimize <u>database queries</u> before they become problems, and think
-        about <u>memory & concurrency</u> as first-class concerns.
+      <motion.p {...swipeUpRevealChild}>
+        I design <u>UI/UX</u> that doesn't fight back, <u>maintainable APIs</u> that don't crumble under load, optimize{' '}
+        <u>database queries</u> before they become problems, and think about <u>memory & concurrency</u> as first-class
+        concerns.
       </motion.p>
-      <motion.p {...swipeUpReveal}>
-        I care about architecture that outlives the first feature request.
-        No fluff, no magic — just code that earns its keep.
-        I avoid cleverness that becomes tomorrow's footgun, document the why not just the what, and treat <u>maintainability</u> as a feature — not an afterthought.
+      <motion.p {...swipeUpRevealChild}>
+        I care about architecture that outlives the first feature request. No fluff, no magic — just code that earns its
+        keep. I avoid cleverness that becomes tomorrow's footgun, document the why not just the what, and treat{' '}
+        <u>maintainability</u> as a feature — not an afterthought.
       </motion.p>
     </AboutMeContent>
-    <SocialLinkContainer {...swipeUpReveal}>
-      {SocialLinks.map((item: IconLink, idx: number) => (
-        <SocialLink
-          rel="noopener noreferrer"
-          aria-label={item.name}
-          {...swipeUpReveal}
-          initial={{ y: 100, rotate: -45, opacity: 0 }}
-          key={idx}
-          href={item.link}
-          target="_blank"
-        >
-          <Image width={24} height={24} src={item.icon} alt={item.name} sizes="24px" className='md:p-0 p-1' />
-        </SocialLink>
-      ))}
-    </SocialLinkContainer>
     <Carousel />
     <CharacterContainer>
       <motion.div
-        className="absolute -bottom-36 sm:-bottom-64"
+        className="absolute -bottom-44 sm:-bottom-64"
         initial={{ x: '-750%' }}
         animate={{ x: '750%' }}
         viewport={{ once: true }}
@@ -107,7 +97,7 @@ const About = () => (
         <LazyLottie loader={loadMarioLottie} />
       </motion.div>
       <motion.div
-        className="absolute -bottom-32 sm:-bottom-52"
+        className="absolute -bottom-40 sm:-bottom-52"
         initial={{ x: '-750%' }}
         animate={{ x: '750%' }}
         viewport={{ once: true }}
@@ -125,15 +115,17 @@ const AboutContainer = tw.section`
   relative
   mx-auto
   flex
-  sm:h-[750px]
   max-w-[1600px]
   flex-col
   items-start
   justify-start
   gap-12
-  overflow-y-clip
-  border-y-2
+  overflow-clip
+  rounded-xl
+  border-2
+  border-primary/10
   p-sm
+  pb-24
   before:pointer-events-none
   before:absolute
   before:top-0
@@ -160,39 +152,20 @@ const AboutContainer = tw.section`
   xl:h-full
   xl:gap-20
   xl:p-xl
+  xl:!pb-36
 `;
 
-const AboutMeContent = tw.div`
+const AboutMeContent = tw(motion.div)`
   space-y-5
   pr-6
   text-left
   font-outerRegular
   text-sm
   leading-6
-  sm:leading-9
   text-primary/60
+  sm:leading-9
   xl:w-[35%]
   xl:text-[0.9rem]
-`;
-
-const SocialLinkContainer = tw(motion.div)`
-  flex
-  space-x-3
-  xl:space-x-6
-`;
-
-const SocialLink = tw(motion.a)`
-  hov
-  flex
-  items-center
-  rounded-full
-  p-2
-  transition-all
-  duration-300
-  ease-out
-  hover:cursor-pointer
-  hover:bg-primary
-  md:hover:cursor-none
 `;
 
 const CarouselContainer = tw.div`

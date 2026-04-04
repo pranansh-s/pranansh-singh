@@ -20,7 +20,8 @@ module.exports = {
       animation: {
         xlcarouselScrollUp: 'scrollXL 24s linear infinite',
         xlcarouselScrollDown: 'scrollXL 24s linear infinite reverse',
-        carouselScroll: 'scroll 24s linear infinite',
+        carouselScrollLeft: 'scroll 24s linear infinite',
+        carouselScrollRight: 'scroll 24s linear infinite reverse',
       },
       keyframes: {
         scroll: {

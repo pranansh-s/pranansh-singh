@@ -94,8 +94,8 @@ const SubText = tw(motion.sub)`
   hidden
   text-xl
   text-primary/30
-  transition-colors
-  duration-500
+  transition-[color]
+  duration-300
   hover:text-secondary
   sm:block
   md:text-2xl
