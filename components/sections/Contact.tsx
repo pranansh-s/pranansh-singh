@@ -4,11 +4,10 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import tw from 'tailwind-styled-components';
 
-import Header from '@/components/Header';
-import LazyLottie from '@/components/LazyLottie';
+import Header from '@/components/ui/Header';
+import LazyLottie from '@/components/ui/LazyLottie';
 
 import { staggerContainer, swipeUpReveal, swipeUpRevealChild } from '@/constants/motion';
-import { IconLink, SocialLinks } from '@/constants/socials';
 
 const loadGameLottie = () => import('@/public/lottie/game.json').then(m => m.default);
 
@@ -33,25 +32,7 @@ const Contact = () => {
       <ContactContent>
         <LazyLottie loader={loadGameLottie} />
         <StyledForm {...staggerContainer} onSubmit={handleMailSend}>
-          <SocialLinkContainer>
-            {SocialLinks.map((item: IconLink, idx: number) => (
-              <SocialLink
-                rel="noopener noreferrer"
-                aria-label={item.name}
-                {...swipeUpRevealChild}
-                key={idx}
-                href={item.link}
-                target="_blank"
-              >
-                <Image width={24} height={24} src={item.icon} alt={item.name} sizes="24px" className="p-1 md:p-0" />
-              </SocialLink>
-            ))}
-          </SocialLinkContainer>
-          <p className="my-6 flex items-center justify-center gap-3 text-primary/60">
-            <hr className="w-1/2" />
-            or
-            <hr className="w-1/2" />
-          </p>
+
           <StyledInput
             name="name"
             id="name"
@@ -61,7 +42,7 @@ const Contact = () => {
             placeholder="your name"
             onChange={handleInputChange}
             required
-            whileTap={{ scale: 1.05 }}
+            whileTap={{ scale: 1.02 }}
             {...swipeUpReveal}
           />
           <StyledInput
@@ -73,7 +54,7 @@ const Contact = () => {
             placeholder="your email"
             onChange={handleInputChange}
             required
-            whileTap={{ scale: 1.05 }}
+            whileTap={{ scale: 1.02 }}
             {...swipeUpRevealChild}
           />
           <StyledTextArea
@@ -85,7 +66,7 @@ const Contact = () => {
             onChange={handleInputChange}
             rows={5}
             required
-            whileTap={{ scale: 1.05 }}
+            whileTap={{ scale: 1.02 }}
             {...swipeUpRevealChild}
           />
           <SubmitButton aria-label="Submit" type="submit">
@@ -100,15 +81,15 @@ const Contact = () => {
 export default Contact;
 
 const ContactContainer = tw.section`
+  sm:gap-18
   relative
   mx-auto
   max-w-[1600px]
   flex-col
-  gap-12
-  space-y-6
+  gap-14
+  space-y-8
   overflow-clip
-  p-sm
-  sm:gap-16
+  p-sm-md
   md:p-md
   xl:gap-24
   xl:p-xl
@@ -119,33 +100,34 @@ const StyledForm = tw(motion.form)`
   w-full
   max-w-[800px]
   flex-col
-  gap-3
-  rounded-lg
+  gap-4
+  rounded-xl
   border
   border-primary/10
-  bg-primary/10
-  p-5
+  bg-surface
+  p-6
   font-outerRegular
-  text-black/60
-  backdrop-blur-xl
+  text-primary-muted
+  shadow-[inset_0_1px_0_rgba(245,241,249,0.08)]
   sm:gap-6
   sm:p-8
   sm:text-lg
   xl:w-3/4
-  xl:-translate-x-24
 `;
 
 const StyledInput = tw(motion.input)`
   hov
-  rounded-xl
-  border
+  rounded-lg
+  border-b-2
   border-primary/10
-  bg-primary/10
+  bg-surface-light
   p-3
-  text-white/70
+  text-white/80
   drop-shadow-md
-  backdrop-blur-xl
-  placeholder:text-white/20
+  transition-[border-color]
+  duration-300
+  placeholder:text-white/25
+  focus:border-secondary/40
   focus:outline-none
   sm:p-5
   md:cursor-none
@@ -154,14 +136,16 @@ const StyledInput = tw(motion.input)`
 const StyledTextArea = tw(motion.textarea)`
   hov
   resize-none
-  rounded-xl
-  border
+  rounded-lg
+  border-b-2
   border-primary/10
-  bg-primary/10
+  bg-surface-light
   p-3
-  text-white
-  backdrop-blur-xl
-  placeholder:text-white/20
+  text-white/80
+  transition-[border-color]
+  duration-300
+  placeholder:text-white/25
+  focus:border-secondary/40
   focus:outline-none
   sm:p-5
   md:cursor-none
@@ -172,12 +156,15 @@ const ContactContent = tw.div`
   flex-col
   items-center
   xl:flex-row
+  xl:gap-12
 `;
+
+
 
 const SubmitButton = tw.button`
   hov
   mx-auto
-  mt-4
+  mt-6
   w-full
   cursor-pointer
   rounded-xl
@@ -194,24 +181,5 @@ const SubmitButton = tw.button`
   hover:shadow-[0_0_24px_rgba(255,88,88,0.4)]
   active:scale-[0.98]
   md:cursor-none
-  md:hover:cursor-none
-`;
-
-const SocialLinkContainer = tw.div`
-  flex
-  justify-around
-`;
-
-const SocialLink = tw(motion.a)`
-  hov
-  flex
-  items-center
-  rounded-full
-  p-2
-  transition-[background-color]
-  duration-300
-  ease-out
-  hover:cursor-pointer
-  hover:bg-primary
   md:hover:cursor-none
 `;

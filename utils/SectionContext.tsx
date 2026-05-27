@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
-const SECTION_IDS = ['hero', 'about', 'work', 'contact'];
+const SECTION_IDS = ['hero', 'about', 'work', 'connect'];
 
 interface SectionContextType {
   currentSection: string;

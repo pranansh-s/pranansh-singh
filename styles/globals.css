@@ -44,9 +44,10 @@ html {
   font-size: 12px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: #3d3358 #1c172e;
 }
 
-/* Smooth scroll that respects reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -61,6 +62,33 @@ html {
   }
 }
 
+::selection {
+  background: rgba(255, 88, 88, 0.35);
+  color: #f5f1f9;
+}
+
+::-moz-selection {
+  background: rgba(255, 88, 88, 0.35);
+  color: #f5f1f9;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c172e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3d3358;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a4b7a;
+}
+
 u:hover {
   color: #ff5858;
 }
@@ -69,7 +97,33 @@ u:hover {
   width: max-content !important;
 }
 
-/* Chevron scroll indicator */
+a:focus {
+  outline: none;
+}
+
+.hov {
+  position: relative;
+}
+
+.hov::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  bottom: -15px;
+  left: -15px;
+  z-index: 10;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(255, 88, 88, 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .chevron {
   width: 14px;
   height: 4px;
@@ -109,22 +163,21 @@ u:hover {
   25% {
     opacity: 0.4;
   }
+
   33% {
     opacity: 0.4;
     transform: translateY(30px);
   }
+
   67% {
     opacity: 0.4;
     transform: translateY(40px);
   }
+
   100% {
     opacity: 0;
     transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
   }
-}
-
-a:focus {
-  outline: none;
 }
 
 img {
@@ -140,7 +193,6 @@ span {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* GPU acceleration hints for animated elements */
 .will-change-transform {
   will-change: transform;
 }

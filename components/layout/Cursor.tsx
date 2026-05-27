@@ -25,7 +25,7 @@ const Cursor = () => {
     >
       <motion.span
         animate={{ rotate: 360 }}
-        transition={{ ease: 'linear', duration: 2.5, repeat: Infinity }}
+        transition={{ ease: 'linear', duration: 3.5, repeat: Infinity }}
         className="absolute rounded-full p-8 outline-dashed outline-2 will-change-transform"
       />
     </CursorContainer>

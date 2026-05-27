@@ -14,16 +14,16 @@ const useCanvas = () => {
 
     switch (currentSection) {
       case 'hero':
-        systemRef.current.setColor(65, 41, 90);
+        systemRef.current.setColor(78, 58, 128);
         break;
       case 'about':
-        systemRef.current.setColor(26, 45, 178);
+        systemRef.current.setColor(79, 93, 163);
         break;
       case 'work':
-        systemRef.current.setColor(188, 21, 159);
+        systemRef.current.setColor(145, 71, 110);
         break;
       case 'connect':
-        systemRef.current.setColor(72, 20, 64);
+        systemRef.current.setColor(139, 68, 77);
         break;
     }
   }, [currentSection]);

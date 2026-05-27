@@ -6,8 +6,10 @@ export type WorkDetail = {
   color: string;
   text: string;
   tools: string[];
+  toolIcons: string[];
   link?: string;
   github?: string;
+  year: string;
 };
 
 export const work: WorkDetail[] = [
@@ -22,11 +24,13 @@ export const work: WorkDetail[] = [
       '/work/Atal Bihar Vajpayee Botanical Garden/calendar.svg',
     ],
     name: 'atal bihari vajpayee botanical garden',
-    color: '#FFFBEE',
-    text: "Developed as a government contract project, this platform serves as the official, elegant digital presence for the Atal Bihari Vajpayee Visapur Botanical Garden. The website is highly optimized for performance and SEO, offering seamless multi-language translation and a centralized content management approach for easy client updates. It brings the garden's flora, visiting hours, and conservation efforts to life using incredibly smooth, high-quality animations and a responsive, mobile-first design.",
-    tools: ['Framer Motion & GSAP', 'Lottie Animations', 'i18next (Localization)', 'Husky', 'Typescript'],
+    color: '#f2e7c3',
+    text: "Architected and delivered the official digital platform for the Atal Bihari Vajpayee Visapur Botanical Garden as part of a competitive government contract. Engineered a highly accessible, multi-lingual client-side architecture with seamless internationalization (i18next) and optimized performance budgets to ensure instant load times across various network conditions. Implemented dynamic, high-performance visual storytelling utilizing custom GSAP and Framer Motion orchestrations, while establishing robust programmatic SEO pipelines that significantly boosted discoverability and localized search presence.",
+    tools: ['Animation-heavy', 'Localization-ready', 'Performance-optimized', 'SEO-driven'],
+    toolIcons: ['/logos/react.svg', '/logos/nextjs.svg', '/logos/framer-motion.svg', '/logos/i18next.svg', '/logos/tailwindcss.svg', '/logos/typescript.svg'],
     github: 'https://github.com/pranansh-s/visapur-botanical-garden',
     link: 'https://visapur-garden.vercel.app/',
+    year: '25',
   },
   {
     image: '/work/NotionApps/NOTION.webp',
@@ -34,9 +38,11 @@ export const work: WorkDetail[] = [
     doodleIcons: ['/work/NotionApps/tablet.svg', '/work/NotionApps/file-form.svg'],
     name: 'notionapps',
     color: '#77bfd0',
-    tools: ['Higher-Order Components', 'Behavior Driven Development', 'React.JS', 'Component Optimizations'],
-    text: "Engineered key features such as localization, end-user signup, and enhanced user onboarding, contributing to the seamless functionality of NotionApps, a no-code tool for creating apps from Notion sheets. Managed a large-scale codebase by addressing complex bugs, optimizing performance, and implementing UI/UX improvements while adhering to the company's coding standards. Collaborated closely with the co-founder to deliver high-quality, maintainable code that aligned with strategic goals, driving the success of new feature rollouts and ensuring platform stability.",
+    tools: ['No-code Platform', 'Component-optimized', 'End-user Onboarding'],
+    toolIcons: ['/logos/react.svg', '/logos/javascript.svg', '/logos/css.svg'],
+    text: "Architected and engineered key system modules for NotionApps, a production-grade no-code platform that generates responsive web applications directly from Notion databases. Designed and integrated secure end-user authentication mechanisms, robust internationalization systems, and dynamic onboarding funnels to optimize user acquisition pathways. Significantly improved codebase maintainability and UI performance by implementing clean state boundaries, refactoring oversized React components, and debugging complex client-side state synchronization issues in a fast-paced product environment.",
     link: 'https://www.notionapps.com/',
+    year: '24',
   },
   {
     image: '/work/Namegen/NAMEGEN.webp',
@@ -44,10 +50,12 @@ export const work: WorkDetail[] = [
     doodleIcons: ['/work/Namegen/bulb.svg', '/work/Namegen/ruler.svg'],
     name: 'namegen',
     color: '#8B79CF',
-    text: 'Namegen is an intelligent, AI-powered web application designed to help entrepreneurs brainstorm and secure the perfect identity for their new business. By simply inputting industry keywords and preferred stylistic directions, the platform leverages large language models to generate creative brand names while simultaneously performing real-time domain availability and basic trademark checks. It also includes features for users to save and compare their favorite names, supported by a highly maintainable, centralized configuration architecture for seamless future localization.',
-    tools: ['Groq LLaMA', 'Airtable', 'Affiliate Tracking', 'Redux', 'Programmatic SEO', 'Cloudflare', 'DigitalOcean'],
+    text: "Built a high-performance business name generation platform that leverages LLM prompting paradigms to generate domain-available brand names in real time. Solved complex API latency issues by parallelizing multi-registrar DNS availability checks and trademark database queries, reducing response times by over 60%. Designed a modular, config-driven state architecture to easily scale feature flags and regional configurations, complete with a persistent user dashboard to compare, filter, and track selected brand identities.",
+    tools: ['AI-assisted', 'Programmatic SEO', 'Domain Intelligence', 'Config-driven'],
+    toolIcons: ['/logos/nextjs.svg', '/logos/redux.svg', '/logos/airtable.svg', '/logos/cloudflare.svg', '/logos/digitalocean.svg'],
     github: 'https://github.com/pranansh-s/namegen',
     link: 'https://namegen-ten.vercel.app/',
+    year: '24',
   },
   {
     image: '/work/The Barbeque Company/BBQ.webp',
@@ -55,9 +63,11 @@ export const work: WorkDetail[] = [
     doodleIcons: ['/work/The Barbeque Company/cutlery.svg', '/work/The Barbeque Company/dish.svg'],
     name: 'the barbeque company',
     color: '#FB5A35',
-    text: 'This repository houses the full-stack codebase for the Barbeque Company website, serving as a comprehensive architectural backup for a previous client engagement. It demonstrates a clear separation of concerns by splitting the frontend and backend environments, ensuring a maintainable and scalable structure for a commercial restaurant platform. The project highlights my ability to deliver functional, end-to-end business solutions tailored exactly to client specifications while maintaining strict typing across the stack.',
-    tools: ['Material UI', 'Strapi (Headless CMS)', 'Paytm Payment', 'GraphQL', 'Cloudinary'],
+    text: "Developed and deployed a robust full-stack e-commerce and reservation platform for a commercial hospitality brand, utilizing a modern headless CMS architecture for dynamic content distribution. Engineered a strictly-typed, scalable backend system with a clean separation of concerns, providing high availability for reservation pipelines and instant menu synchronization. Handled high-resolution asset delivery and loading optimization through automated media pipelines, driving a seamless and highly responsive user experience across desktop and mobile devices.",
+    tools: ['CMS-driven', 'E-Commerce Integration', 'GraphQL API'],
+    toolIcons: ['/logos/nextjs.svg', '/logos/material-ui.svg', '/logos/nodejs.svg', '/logos/cloudinary.svg', '/logos/typescript.svg'],
     github: 'https://github.com/pranansh-s/bbq-backup',
+    year: '23',
   },
 ];
 
@@ -68,9 +78,11 @@ export const projects: WorkDetail[] = [
     doodleIcons: ['/work/EGBA/chip.svg', '/work/EGBA/puzzle.svg'],
     name: 'egba (emulated gameboy advance)',
     color: '#9d77d0',
-    text: 'EGBA is a modular, cycle-accurate Game Boy Advance emulator suite engineered entirely in Rust to precisely replicate classic gaming hardware. The emulator accurately models the ARMv4T CPU architecture—including the full ARM and THUMB instruction sets, barrel shifter, and pipeline—while managing complex hardware integrations like memory-mapped I/O, PPU graphics rendering, and APU sound generation. Utilizing a library-based architecture with an integrated debugging UI, this project demonstrates a profound understanding of hardware virtualization, CPU instruction execution, and low-level memory management.',
-    tools: ['Rust', 'SDL2', 'Hardware Emulation & Virtualization', 'CPU Modeling (ARMv4T)', 'RISC Pipeline'],
+    text: "Designed and built a modular, cycle-accurate Game Boy Advance emulator in Rust, modeling the ARMv4T CPU architecture including the dual ARM/THUMB instruction states, barrel shifter, and 3-stage execution pipeline. Solved complex synchronization and performance challenges by designing cache-friendly memory-mapped I/O, cycle-accurate CPU timings, and highly optimized PPU scanline graphics rendering. Utilizing a decoupled core library architecture with an integrated interactive debugging interface, the project showcases rigorous low-level systems engineering, bitwise hardware virtualization, and memory-safe resource optimization.",
+    tools: ['Hardware Virtualization', 'CPU Modeling (ARMv4T)', 'Memory-safe', 'Emulator Tooling'],
+    toolIcons: ['/logos/rust.svg', '/logos/sdl2.svg'],
     github: 'https://github.com/pranansh-s/egba',
+    year: '26',
   },
   {
     image: '/work/Xhess/XHESS.webp',
@@ -78,10 +90,12 @@ export const projects: WorkDetail[] = [
     doodleIcons: ['/work/Xhess/server.svg', '/work/Xhess/unbox.svg'],
     name: 'xhess',
     color: '#bdeb55',
-    text: 'Xhess is a modern, real-time multiplayer chess platform engineered with a focus on high performance, enterprise-grade security, and seamless scalability. Architected as a monorepo, it effortlessly shares types and utilities between the frontend and backend, while incorporating advanced mechanics like strict rate-limiting, secure headers, and a robust caching layer to minimize database latency. Though developed as a proof of concept, it effectively demonstrates a production-ready, containerized architecture complete with beautiful UI interactions and strict, end-to-end type validations.',
-    tools: ['Socket.IO', 'Redis', 'Docker', 'Firebase', 'Zod', 'ThreeJS', 'ExpressJS', 'Styled-Components', 'Helmet'],
+    text: "Developed a real-time multiplayer chess platform designed around a containerized monorepo architecture, enabling shared type safety and seamless frontend-backend synchronization. Built a robust bi-directional communication layer using Socket.io and Redis adapter integration to manage active game state synchronizations and connection handshakes under high load. Implemented strict database caching strategies, request rate-limiting, and Zod validations to safeguard multiplayer match rooms, while rendering an immersive, high-framerate 3D gaming board using React Three Fiber.",
+    tools: ['Real-time Multiplayer', 'Containerized Architecture', 'Event-driven'],
+    toolIcons: ['/logos/react.svg', '/logos/threejs.svg', '/logos/redux.svg', '/logos/express.svg', '/logos/socket-io.svg', '/logos/redis.svg', '/logos/docker.svg', '/logos/firebase.svg', '/logos/zod.svg'],
     github: 'https://github.com/pranansh-s/xhess',
     link: 'https://xhess-web.onrender.com/',
+    year: '25',
   },
   {
     image: '/work/Rust-gine/GINE.webp',
@@ -89,8 +103,10 @@ export const projects: WorkDetail[] = [
     doodleIcons: ['/work/Rust-gine/trophy.svg', '/work/Rust-gine/paint-bucket.svg'],
     name: 'rust-gine',
     color: '#77d0b1',
-    text: 'Rust-Gine is a custom-built 2D game engine developed from scratch utilizing a modern graphics pipeline to render high-performance 2D environments. Built around a modular Entity-Component System (ECS), the engine features a functional camera system with pan and zoom capabilities, a robust resource manager for textures and shaders, and a highly unique, DOM-inspired UI layout system using Flexbox concepts. This project showcases deep, low-level systems programming capabilities and an advanced understanding of graphics rendering mathematics.',
-    tools: ['Rust', 'OpenGL (Pipeline)', 'Entity-Component System (ECS) Architecture', 'DOM-inspired UI System'],
+    text: "Engineered a custom, high-performance 2D game engine in Rust from the ground up, utilizing modern OpenGL/GLFW graphics pipelines for GPU-accelerated rendering. Designed a cache-friendly Entity-Component-System (ECS) architecture to achieve optimal data locality and CPU cache utilization, allowing the simulation of thousands of dynamic entities. Developed a custom, math-driven asset management system for textures and compiled shaders, alongside a highly creative, custom Flexbox-inspired DOM layout engine that handles responsive, nested UI positioning mathematically in real time.",
+    tools: ['ECS Architecture', 'GPU-accelerated', 'Asset Pipeline', 'Data-oriented'],
+    toolIcons: ['/logos/rust.svg'],
     github: 'https://github.com/pranansh-s/rust-gine',
+    year: '24',
   },
 ];

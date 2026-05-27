@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import tw from 'tailwind-styled-components';
 
-import Header from '@/components/Header';
-import ProjectCard from '@/components/ProjectCard';
-import Typewriter from '@/components/Typewriter';
+import Header from '@/components/ui/Header';
+import ProjectCard from '@/components/ui/ProjectCard';
+import Typewriter from '@/components/ui/Typewriter';
 
 import { staggerContainer } from '@/constants/motion';
 import { projects, work, WorkDetail } from '@/constants/work';
@@ -13,7 +13,7 @@ import { projects, work, WorkDetail } from '@/constants/work';
 const Work = () => {
   const [active, setActive] = useState<number>(-1);
   const handleSetActive = (index: number) => {
-    setActive(index);
+    setActive(prev => (prev === index ? -1 : index));
   };
 
   return (
@@ -24,6 +24,7 @@ const Work = () => {
           <ProjectCard key={`work-${index}`} handleSet={handleSetActive} index={index} active={active} item={item} />
         ))}
       </ProjectList>
+      <ProjectsDivider />
       <Header title="projects" />
       <ProjectList {...staggerContainer}>
         {projects.map((item: WorkDetail, index: number) => (
@@ -36,7 +37,7 @@ const Work = () => {
           />
         ))}
       </ProjectList>
-      <Typewriter text=". . . find more of my work and their source codes on github" />
+      <Typewriter/>
     </WorkContainer>
   );
 };
@@ -49,7 +50,7 @@ const WorkContainer = tw.section`
   flex
   max-w-[1600px]
   flex-col
-  gap-16
+  gap-6
   border-b-2
   p-sm
   sm:gap-20
@@ -62,5 +63,10 @@ const ProjectList = tw(motion.ul)`
   flex
   flex-col
   gap-3
-  sm:gap-6
+  sm:gap-5
+`;
+
+const ProjectsDivider = tw.div`
+  mt-8
+  sm:mt-12
 `;

@@ -20,7 +20,7 @@ const HeaderContainer = tw.header`
   w-max
 `;
 
-const Title = tw.h1`
+const Title = tw.h2`
   relative
   font-bagelRegular
   text-4xl

@@ -30,8 +30,8 @@ class Point {
   }
 }
 
-const TARGET_FPS = 30;
-const FRAME_INTERVAL = 1000 / TARGET_FPS;
+const DESKTOP_FPS = 30;
+const MOBILE_FPS = 24;
 const MOUSE_RADIUS = 300;
 const MOUSE_INNER = 50;
 const MOUSE_RADIUS_SQ = MOUSE_RADIUS * MOUSE_RADIUS;
@@ -57,7 +57,7 @@ export class DelaunaySystem {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d', { alpha: false })!;
     this.isDesktop = window.innerWidth >= 768;
-    this.count = count ?? (this.isDesktop ? 400 : 200);
+    this.count = count ?? (this.isDesktop ? 400 : 150);
     this.resize();
     this.initPoints();
 
@@ -144,12 +144,14 @@ export class DelaunaySystem {
   }
 
   public start() {
+    const targetFps = this.isDesktop ? DESKTOP_FPS : MOBILE_FPS;
+    const frameInterval = 1000 / targetFps;
     const render = (now: number) => {
       this.animationId = requestAnimationFrame(render);
 
       const delta = now - this.lastFrameTime;
-      if (delta < FRAME_INTERVAL) return;
-      this.lastFrameTime = now - (delta % FRAME_INTERVAL);
+      if (delta < frameInterval) return;
+      this.lastFrameTime = now - (delta % frameInterval);
       this.lerpColor();
 
       this.ctx.fillStyle = '#1C172E';
