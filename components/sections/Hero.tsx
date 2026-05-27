@@ -31,26 +31,26 @@ const Hero = () => (
           initial={{ x: -200, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 1.5 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           pranansh
         </NameTag>
         <MutedTagline
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 30, opacity: 0 }}
           viewport={{ once: true }}
           whileInView={{ y: 0, opacity: 1 }}
           {...draggableSpringConfig}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.4 }}
           drag
         >
           ship fast. ship clean.
         </MutedTagline>
         <HandwrittenQuote
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 30, opacity: 0 }}
           viewport={{ once: true }}
           whileInView={{ y: 0, opacity: 1 }}
           {...draggableSpringConfig}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.5 }}
           drag
         >
           your weird idea? let&apos;s build it.
@@ -60,7 +60,7 @@ const Hero = () => (
           initial={{ x: 100, opacity: 0 }}
           viewport={{ once: true }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           singh
         </LastNameTag>
