@@ -101,7 +101,7 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
               <DisplayImagesContainer>
                 <PrimaryPhoneWrapper>
                   <Image
-                    className="drop-shadow-lg"
+                    className="drop-shadow-lg object-cover"
                     src={item.phone[0]}
                     width={300}
                     height={400}
@@ -129,10 +129,10 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
                 </DoodlesWrapper>
                 <SecondaryPhoneWrapper>
                   <Image
-                    className="drop-shadow-lg"
+                    className="drop-shadow-lg aspect-[16/9]"
                     src={item.phone[1]}
                     width={500}
-                    height={300}
+                    height={200}
                     alt={`project-phone-${index}-${item.phone[1]}`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                   />
