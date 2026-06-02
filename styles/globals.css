@@ -26,10 +26,6 @@
     src: url('/fonts/cedarville-cursive.woff2') format('woff2');
     font-display: swap;
   }
-
-  .font-outline {
-    -webkit-text-stroke: 2px white;
-  }
 }
 
 * {
@@ -89,14 +85,6 @@ html {
   background: #5a4b7a;
 }
 
-u:hover {
-  color: #ff5858;
-}
-
-.slick-slide {
-  width: max-content !important;
-}
-
 a:focus {
   outline: none;
 }
@@ -124,62 +112,6 @@ textarea:focus-visible {
   border-radius: 4px;
 }
 
-.chevron {
-  width: 14px;
-  height: 4px;
-  opacity: 0;
-  animation: move 3s ease-out infinite;
-}
-
-.chevron:first-child {
-  animation-delay: 1s;
-}
-
-.chevron:nth-child(2) {
-  animation-delay: 2s;
-}
-
-.chevron:before,
-.chevron:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 51%;
-}
-
-.chevron:before {
-  left: 0;
-  transform: skewY(30deg);
-}
-
-.chevron:after {
-  right: 0;
-  width: 50%;
-  transform: skewY(-30deg);
-}
-
-@keyframes move {
-  25% {
-    opacity: 0.4;
-  }
-
-  33% {
-    opacity: 0.4;
-    transform: translateY(30px);
-  }
-
-  67% {
-    opacity: 0.4;
-    transform: translateY(40px);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
-  }
-}
-
 img {
   pointer-events: none;
 }
@@ -191,8 +123,4 @@ input,
 label,
 span {
   -webkit-tap-highlight-color: transparent;
-}
-
-.will-change-transform {
-  will-change: transform;
 }

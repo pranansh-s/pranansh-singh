@@ -44,13 +44,10 @@ export default AnimatedArrow;
 
 const ArrowContainer = tw(motion.div)`
   hov
-  relative
+  sm:block
+  hidden
+  xl:-left-64
   -left-40
   col-span-full
-  mx-auto
-  mr-auto
-  hidden
   sm:col-span-1
-  sm:mx-0
-  sm:block
 `;

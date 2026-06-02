@@ -77,7 +77,7 @@ const Carousel = () => (
 const About = () => (
   <AboutContainer id="about" aria-label="About me">
     <TopVignette />
-    <Header title="about me" />
+    <Header title="about_me" />
     <AboutMeContent {...staggerContainer}>
       <motion.p {...swipeUpRevealChild}>
         Hey there! I&apos;m <DeveloperName>&lt;PrananshSingh/&gt;</DeveloperName>, a software developer fueled by a deep
@@ -137,8 +137,6 @@ const AboutContainer = tw.section`
   flex
   max-w-[1600px]
   flex-col
-  items-start
-  justify-start
   gap-16
   overflow-clip
   rounded-xl
@@ -146,7 +144,6 @@ const AboutContainer = tw.section`
   border-primary/10
   p-sm
   pb-24
-  sm:gap-16
   md:p-md
   xl:h-full
   xl:gap-20
@@ -220,7 +217,6 @@ const SocialLink = tw(motion.a)`
   transition-[background-color]
   duration-300
   ease-out
-  hover:cursor-pointer
   hover:bg-secondary/20
   md:hover:cursor-none
 `;
@@ -231,12 +227,8 @@ const Tooltip = tw.div`
   -top-2
   left-1/2
   z-50
-  flex
   -translate-x-1/2
   -translate-y-[80%]
-  flex-col
-  items-center
-  justify-center
   whitespace-nowrap
   rounded-md
   bg-[#1C172E]/95

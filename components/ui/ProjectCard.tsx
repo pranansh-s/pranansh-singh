@@ -366,7 +366,6 @@ const StyledVisitLink = tw.a`
   outline-1
   transition-colors
   duration-300
-  hover:cursor-pointer
   hover:bg-primary
   hover:text-black
   focus:outline

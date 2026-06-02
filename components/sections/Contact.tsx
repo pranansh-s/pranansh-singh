@@ -28,7 +28,7 @@ const Contact = () => {
 
   return (
     <ContactContainer id="connect" aria-label="Connect With Me">
-      <Header title="let's connect" />
+      <Header title="let's_connect" />
       <ContactContent>
         <LazyLottie loader={loadGameLottie} />
         <StyledForm {...staggerContainer} onSubmit={handleMailSend}>
@@ -80,17 +80,13 @@ const Contact = () => {
 export default Contact;
 
 const ContactContainer = tw.section`
-  sm:gap-18
   relative
   mx-auto
   max-w-[1600px]
-  flex-col
-  gap-14
   space-y-8
   overflow-clip
   p-sm-md
   md:p-md
-  xl:gap-24
   xl:p-xl
 `;
 
@@ -163,7 +159,6 @@ const SubmitButton = tw.button`
   mx-auto
   mt-6
   w-full
-  cursor-pointer
   rounded-xl
   bg-secondary/90
   py-4
@@ -177,6 +172,5 @@ const SubmitButton = tw.button`
   hover:bg-secondary
   hover:shadow-[0_0_24px_rgba(255,88,88,0.4)]
   active:scale-[0.98]
-  md:cursor-none
   md:hover:cursor-none
 `;

@@ -89,7 +89,6 @@ const DotGrid = tw.div`
   pointer-events-none
   absolute
   inset-0
-  select-none
   [background-image:radial-gradient(rgba(245,241,249,0.08)_1px,transparent_0)]
   [background-size:24px_24px]
   [-webkit-mask-image:radial-gradient(circle_at_center,transparent_20%,black_75%)]
@@ -185,7 +184,6 @@ const HandwrittenQuote = tw(motion.sub)`
   hidden
   w-[15rem]
   font-cedarville
-  text-xl
   text-2xl
   !leading-[3rem]
   tracking-widest
@@ -203,7 +201,6 @@ const HandwrittenQuote = tw(motion.sub)`
 const CornerCrosshair = tw.div<{ $position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' }>`
   pointer-events-none
   absolute
-  select-none
   font-outerRegular
   text-sm
   text-primary/20
@@ -218,7 +215,6 @@ const CornerStatus = tw.div<{ $position: 'topLeft' | 'bottomRight' }>`
   pointer-events-none
   absolute
   flex
-  select-none
   items-center
   font-outerRegular
   text-[8px]
