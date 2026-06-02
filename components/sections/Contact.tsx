@@ -159,8 +159,6 @@ const ContactContent = tw.div`
   xl:gap-12
 `;
 
-
-
 const SubmitButton = tw.button`
   hov
   mx-auto

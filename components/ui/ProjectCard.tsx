@@ -88,7 +88,7 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
                 {item.name}
                 <TitleYear>&apos;{item.year}</TitleYear>
               </ProjectTitle>
-              <FeaturedImageWrapper>
+              <div>
                 <Image
                   src={item.image}
                   width={800}
@@ -97,9 +97,9 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
                   alt={`project-${index}-${item.name}`}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 />
-              </FeaturedImageWrapper>
+              </div>
               <DisplayImagesContainer>
-                <PrimaryPhoneWrapper>
+                <div className='row-span-2'>
                   <Image
                     className="drop-shadow-lg object-cover"
                     src={item.phone[0]}
@@ -108,7 +108,7 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
                     alt={`project-phone-${index}-${item.phone[0]}`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 300px"
                   />
-                </PrimaryPhoneWrapper>
+                </div>
                 <DoodlesWrapper>
                   <Image
                     src={item.doodleIcons[1]}
@@ -127,16 +127,16 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
                     sizes="60px"
                   />
                 </DoodlesWrapper>
-                <SecondaryPhoneWrapper>
+                <div>
                   <Image
-                    className="drop-shadow-lg aspect-[16/9]"
+                    className="drop-shadow-lg object-cover"
                     src={item.phone[1]}
-                    width={500}
-                    height={200}
+                    width={300}
+                    height={300}
                     alt={`project-phone-${index}-${item.phone[1]}`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
                   />
-                </SecondaryPhoneWrapper>
+                </div>
               </DisplayImagesContainer>
               <ProjectDetail>
                 <Links>
@@ -400,6 +400,7 @@ const ToolTag = tw.span`
 
 const DisplayImagesContainer = tw.div`
   mx-auto
+  items-end
   grid
   grid-cols-[auto_auto]
   gap-6
@@ -445,22 +446,9 @@ const TitleYear = tw.span`
   ml-3
 `;
 
-const FeaturedImageWrapper = tw.span`
-  mx-auto
-`;
-
-const PrimaryPhoneWrapper = tw.span`
-  row-span-2
-  flex
-`;
-
 const DoodlesWrapper = tw.span`
   flex
   max-h-72
   items-end
   justify-around
-`;
-
-const SecondaryPhoneWrapper = tw.span`
-  flex
 `;

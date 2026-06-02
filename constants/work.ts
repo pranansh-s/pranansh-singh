@@ -73,6 +73,18 @@ export const work: WorkDetail[] = [
 
 export const projects: WorkDetail[] = [
   {
+    image: '/work/Mute.ly/MUTELY.webp',
+    phone: ['/work/Mute.ly/portrait.webp', '/work/Mute.ly/landscape.webp'],
+    doodleIcons: ['/work/Mute.ly/mute.svg', '/work/Mute.ly/youtube.svg'],
+    name: 'mute.ly',
+    color: '#df8115',
+    text: "Mute.ly is a high-performance Chrome extension that delivers secure, 100% local real-time YouTube captions using browser-side WebAssembly AI inference. Engineered with a specialized dual-mode architecture, it captures and transcribes JIT live streams using low-latency Voice Activity Detection (Silero VAD) alongside an Ahead-of-Time, seek-aware streaming pipeline for VODs powered by a local Node.js proxy server. The system features a sophisticated, telephony-grade audio DSP preprocessor utilizing second-order Butterworth high-pass/low-pass filters and dynamic gain normalization to aggressively filter room hum and static hiss, completely eliminating noise-induced hallucinations in the underlying Whisper model while preserving frame-accurate visual sync.",
+    tools: ['Local AI (Whisper)', 'Biquad DSP / VAD', 'Manifest V3 Offscreen', 'Seek-Aware Streaming'],
+    toolIcons: ['/logos/typescript.svg', '/logos/nodejs.svg', '/logos/express.svg'],
+    github: 'https://github.com/pranansh-s/mute.ly',
+    year: '26',
+  },
+  {
     image: '/work/EGBA/EGBA.webp',
     phone: ['/work/EGBA/portrait.webp', '/work/EGBA/landscape.webp'],
     doodleIcons: ['/work/EGBA/chip.svg', '/work/EGBA/puzzle.svg'],
