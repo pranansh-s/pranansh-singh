@@ -37,7 +37,7 @@ const Work = () => {
           />
         ))}
       </ProjectList>
-      <Typewriter/>
+      <Typewriter />
     </WorkContainer>
   );
 };

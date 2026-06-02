@@ -10,7 +10,7 @@ const Hero = () => (
   <HeroContainer id="hero" aria-label="Hero">
     <Canvas />
     <DotGrid />
-    
+
     <HeroFrame
       initial={{ opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -79,16 +79,16 @@ const HeroContainer = tw.section`
   max-h-[1200px]
   items-center
   justify-center
+  px-6
   text-center
   text-primary
-  px-6
-  sm:px-12 
+  sm:px-12
 `;
 
 const DotGrid = tw.div`
+  pointer-events-none
   absolute
   inset-0
-  pointer-events-none
   select-none
   [background-image:radial-gradient(rgba(245,241,249,0.08)_1px,transparent_0)]
   [background-size:24px_24px]
@@ -101,12 +101,12 @@ const HeroFrame = tw(motion.div)`
   flex
   items-center
   justify-center
-  p-8
-  md:p-12
+  rounded-xl
   border
   border-primary/[0.04]
-  rounded-xl
   bg-primary/[0.005]
+  p-8
+  md:p-12
 `;
 
 const HeroHeader = tw.header`
@@ -115,57 +115,60 @@ const HeroHeader = tw.header`
   grid-cols-3
   items-center
   justify-items-end
-  sm:px-0
-  sm:gap-0
   gap-12
   px-sm
+  sm:gap-0
+  sm:px-0
 `;
 
 const StatusIndicator = tw.div`
-  bg-green-400
-  w-2
-  h-2
-  rounded-full
   mr-3
+  h-2
+  w-2
+  rounded-full
+  bg-green-400
 `;
 
 const NameTag = tw(motion.h1)`
   pointer-events-none
-  font-bagelRegular
-  text-6xl
-  uppercase
-  drop-shadow-[0_0_4px_rgba(0,0,0,1)]
-  sm:text-7xl
-  md:text-8xl
-  xl:text-9xl
   col-span-full
   mr-auto
   w-full
   text-left
-  sm:col-span-2
-  sm:w-auto
-`;
-
-const LastNameTag = tw(motion.h2)`
-  pointer-events-none
   font-bagelRegular
   text-6xl
   uppercase
   drop-shadow-[0_0_4px_rgba(0,0,0,1)]
+  sm:col-span-2
+  sm:w-auto
   sm:text-7xl
   md:text-8xl
   xl:text-9xl
+`;
+
+const LastNameTag = tw(motion.h2)`
+  pointer-events-none
   col-span-full
   ml-auto
   w-full
   text-right
+  font-bagelRegular
+  text-6xl
+  uppercase
+  drop-shadow-[0_0_4px_rgba(0,0,0,1)]
   sm:col-span-1
   sm:w-auto
+  sm:text-7xl
+  md:text-8xl
+  xl:text-9xl
 `;
 
 const MutedTagline = tw(motion.sub)`
   hov
+  mt-auto
   hidden
+  whitespace-nowrap
+  font-outerRegular
   text-xl
   text-primary/30
   transition-[color]
@@ -174,59 +177,54 @@ const MutedTagline = tw(motion.sub)`
   sm:block
   md:text-2xl
   xl:text-3xl
-  mt-auto
-  whitespace-nowrap
-  font-outerRegular
 `;
 
 const HandwrittenQuote = tw(motion.sub)`
   hov
+  mb-auto
   hidden
+  w-[15rem]
+  font-cedarville
   text-xl
+  text-2xl
+  !leading-[3rem]
+  tracking-widest
   text-primary/30
   transition-[color]
   duration-300
   hover:text-secondary
   sm:block
   md:text-2xl
-  xl:text-3xl
-  mb-auto
-  w-[15rem]
-  font-cedarville
-  text-2xl
-  !leading-[3rem]
-  tracking-widest
   xl:w-[25rem]
+  xl:text-3xl
   xl:text-4xl
 `;
 
 const CornerCrosshair = tw.div<{ $position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' }>`
+  pointer-events-none
   absolute
+  select-none
   font-outerRegular
   text-sm
   text-primary/20
-  pointer-events-none
-  select-none
   transition-opacity
   duration-300
   ${p => p.$position === 'topLeft' && 'top-0 left-0 -translate-x-1/2 -translate-y-1/2'}
   ${p => p.$position === 'topRight' && 'top-0 right-0 translate-x-1/2 -translate-y-1/2'}
   ${p => p.$position === 'bottomLeft' && 'bottom-0 left-0 -translate-x-1/2 translate-y-1/2'}
-  ${p => p.$position === 'bottomRight' && 'bottom-0 right-0 translate-x-1/2 translate-y-1/2'}
-`;
+  ${p => p.$position === 'bottomRight' && 'bottom-0 right-0 translate-x-1/2 translate-y-1/2'} `;
 
 const CornerStatus = tw.div<{ $position: 'topLeft' | 'bottomRight' }>`
+  pointer-events-none
   absolute
+  flex
+  select-none
+  items-center
   font-outerRegular
   text-[8px]
-  sm:text-[10px]
+  uppercase
   tracking-widest
   text-primary/40
-  uppercase
-  flex
-  items-center
-  pointer-events-none
-  select-none
+  sm:text-[10px]
   ${p => p.$position === 'topLeft' && '-top-6 left-0'}
-  ${p => p.$position === 'bottomRight' && '-bottom-6 right-0'}
-`;
+  ${p => p.$position === 'bottomRight' && '-bottom-6 right-0'} `;

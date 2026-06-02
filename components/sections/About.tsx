@@ -34,7 +34,7 @@ const HoverSkillCard = ({ item, isResponsive, ...props }: HoverSkillCardProps) =
         height={isResponsive ? 48 : 80}
         sizes={isResponsive ? '48px' : '80px'}
       />
-      <Tooltip className={isResponsive ? '' : '-rotate-90 origin-bottom'}>
+      <Tooltip className={isResponsive ? '' : 'origin-bottom -rotate-90'}>
         <TooltipTitle>{item.name}</TooltipTitle>
       </Tooltip>
     </SkillCard>
@@ -48,7 +48,7 @@ const Carousel = () => (
         <CarouselRow
           className={rowIdx % 2 === 0 ? 'animate-xlcarouselScrollUp' : 'animate-xlcarouselScrollDown'}
           key={rowIdx}
-          style={{ animationDuration: `${row.length * row.length / 2}s` }}
+          style={{ animationDuration: `${(row.length * row.length) / 2}s` }}
         >
           {[...row, ...row].map((item: Card, idx: number) => (
             <HoverSkillCard
@@ -67,12 +67,7 @@ const Carousel = () => (
         className={`${rowIdx % 2 === 0 ? 'animate-carouselScrollLeft' : 'animate-carouselScrollRight'} xl:hidden`}
       >
         {[...row, ...row].map((item: Card, idx: number) => (
-          <HoverSkillCard
-            whileTap={{ scale: 1.1 }}
-            key={`card-${idx}`}
-            item={item}
-            isResponsive={true}
-          />
+          <HoverSkillCard whileTap={{ scale: 1.1 }} key={`card-${idx}`} item={item} isResponsive={true} />
         ))}
       </CarouselRow>
     ))}
@@ -85,12 +80,16 @@ const About = () => (
     <Header title="about me" />
     <AboutMeContent {...staggerContainer}>
       <motion.p {...swipeUpRevealChild}>
-        Hey there! I&apos;m{' '}
-        <DeveloperName>&lt;PrananshSingh/&gt;</DeveloperName>, a software
-        developer fueled by a deep curiosity for how things work under the hood. For me, programming isn&apos;t just about writing code; it&apos;s a creative craft. I love the process of translating complex, abstract ideas into tangible, polished digital tools that feel natural to use.
+        Hey there! I&apos;m <DeveloperName>&lt;PrananshSingh/&gt;</DeveloperName>, a software developer fueled by a deep
+        curiosity for how things work under the hood. For me, programming isn&apos;t just about writing code; it&apos;s
+        a creative craft. I love the process of translating complex, abstract ideas into tangible, polished digital
+        tools that feel natural to use.
       </motion.p>
       <motion.p {...swipeUpRevealChild}>
-        I thrive at the intersection of aesthetics and solid engineering. I believe software should not only look exceptionally premium but also run with absolute efficiency. From buttery-smooth 60fps micro-interactions to fine-tuning database indexes and optimizing layout render cycles, I focus on the tiny details that separate the good from the outstanding.
+        I thrive at the intersection of aesthetics and solid engineering. I believe software should not only look
+        exceptionally premium but also run with absolute efficiency. From buttery-smooth 60fps micro-interactions to
+        fine-tuning database indexes and optimizing layout render cycles, I focus on the tiny details that separate the
+        good from the outstanding.
       </motion.p>
       <SocialLinkContainer>
         {SocialLinks.map((item: IconLink, idx: number) => (
@@ -247,8 +246,8 @@ const Tooltip = tw.div`
   backdrop-blur-sm
   transition-all
   duration-300
-  group-hover:-translate-y-full
   group-hover:visible
+  group-hover:-translate-y-full
   group-hover:opacity-100
 `;
 
@@ -280,11 +279,11 @@ const AmongUsWrapper = tw(motion.div)`
 
 const SocialIcon = tw(Image)`
   p-0.5
-  md:p-0
   opacity-80
   transition-opacity
   duration-300
   hover:opacity-100
+  md:p-0
 `;
 
 const TopVignette = tw.div`

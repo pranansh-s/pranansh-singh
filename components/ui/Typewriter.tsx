@@ -19,14 +19,9 @@ const letterVariants = {
 
 const Typewriter = () => {
   return (
-    <TypewriterContainer
-      variants={sentenceVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
+    <TypewriterContainer variants={sentenceVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
       <StyledLottie loader={loadTypingLottie} />
-      {". . . find more of my work and their source codes on ".split('').map((char, i) => (
+      {'. . . find more of my work and their source codes on '.split('').map((char, i) => (
         <motion.span
           className="relative -bottom-10 -left-3 xl:bottom-0 xl:-left-16"
           key={`${char}-${i}`}
@@ -43,13 +38,10 @@ const Typewriter = () => {
           hidden: {},
           visible: { transition: { staggerChildren: 0.1 } },
         }}
-        className="relative -bottom-10 -left-3 xl:bottom-0 xl:-left-16 inline-flex transition-colors duration-300 underline decoration-secondary/30 hover:decoration-secondary hover:text-white md:cursor-none hov underline-offset-[6px]"
+        className="hov relative -bottom-10 -left-3 inline-flex underline decoration-secondary/30 underline-offset-[6px] transition-colors duration-300 hover:text-white hover:decoration-secondary md:cursor-none xl:bottom-0 xl:-left-16"
       >
-        {"github".split('').map((char, i) => (
-          <motion.span
-            key={`github-${char}-${i}`}
-            variants={letterVariants}
-          >
+        {'github'.split('').map((char, i) => (
+          <motion.span key={`github-${char}-${i}`} variants={letterVariants}>
             {char}
           </motion.span>
         ))}
@@ -63,13 +55,13 @@ export default Typewriter;
 const TypewriterContainer = tw(motion.div)`
   whitespace-nowrap
   px-1
+  pb-16
   text-left
   font-outerRegular
   text-[clamp(0.75rem,2.5vw,2.5rem)]
   text-secondary/80
-  xl:pb-0
-  pb-16
   sm:px-3
+  xl:pb-0
 `;
 
 const StyledLottie = tw(LazyLottie)`

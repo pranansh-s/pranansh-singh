@@ -8,18 +8,8 @@ const AnimatedArrow = () => {
   const rotate = useTransform(y, [-150, 150], [-90, 90]);
 
   return (
-    <ArrowContainer
-      drag="y"
-      style={{ rotate, y }}
-      {...draggableSpringConfig}
-    >
-      <motion.svg
-        width="80"
-        height="80"
-        viewBox="0 0 156 137"
-        fill="none"
-        strokeLinecap="round"
-      >
+    <ArrowContainer drag="y" style={{ rotate, y }} {...draggableSpringConfig}>
+      <motion.svg width="80" height="80" viewBox="0 0 156 137" fill="none" strokeLinecap="round">
         <motion.path
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 0.52, opacity: 1 }}
@@ -55,12 +45,12 @@ export default AnimatedArrow;
 const ArrowContainer = tw(motion.div)`
   hov
   relative
-  mr-auto
-  sm:block
-  hidden
   -left-40
   col-span-full
   mx-auto
+  mr-auto
+  hidden
   sm:col-span-1
   sm:mx-0
+  sm:block
 `;

@@ -7,7 +7,7 @@ import tw from 'tailwind-styled-components';
 import { swipeUpRevealChild } from '@/constants/motion';
 import { WorkDetail } from '@/constants/work';
 
-const ArrowIcon = () => (
+const ArrowIcon: FC = () => (
   <svg
     aria-hidden="true"
     className="ml-1 w-5 rotate-45 fill-black transition-transform duration-300 group-hover:rotate-90"
@@ -18,7 +18,7 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const GithubIcon = () => (
+const GithubIcon: FC = () => (
   <svg width="20" height="20" viewBox="0 0 38 36" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_419_11)">
       <path
@@ -36,6 +36,187 @@ const GithubIcon = () => (
   </svg>
 );
 
+interface IProjectTab {
+  item: WorkDetail;
+  isActive: boolean;
+  onClick: () => void;
+}
+
+const ProjectTab: FC<IProjectTab> = ({ item, isActive, onClick }) => {
+  return (
+    <StyledProjectTab
+      role="button"
+      aria-label={`View details for ${item.name} project`}
+      aria-expanded={isActive}
+      tabIndex={0}
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 1.02 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      onClick={onClick}
+      $isActive={isActive}
+    >
+      <BackdropImage
+        src={item.image}
+        fill
+        alt={`project-backdrop`}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+      />
+      <BackdropOverlay style={{ background: `linear-gradient(to top, ${item.color}44 0%, transparent 60%)` }} />
+      <ProjectHeader>
+        <span className="font-bagelRegular">
+          &apos;{item.year}&nbsp;<span className="font-outerRegular text-xl opacity-60">//</span> &nbsp;
+        </span>
+        <span>{item.name}</span>
+      </ProjectHeader>
+      <TabMarquee />
+    </StyledProjectTab>
+  );
+};
+
+interface IProjectMediaGallery {
+  item: WorkDetail;
+}
+
+const ProjectMediaGallery: FC<IProjectMediaGallery> = ({ item }) => {
+  return (
+    <>
+      <MainImageWrapper>
+        <Image
+          src={item.image}
+          width={800}
+          height={500}
+          className="drop-shadow-lg"
+          alt={`project-${item.name}`}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+        />
+      </MainImageWrapper>
+      <DisplayImagesContainer>
+        <div className="row-span-2">
+          <Image
+            className="object-cover drop-shadow-lg"
+            src={item.phone[0]}
+            width={300}
+            height={400}
+            alt={`project-phone-${item.phone[0]}`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 300px"
+          />
+        </div>
+        <DoodlesWrapper>
+          <Image
+            src={item.doodleIcons[1]}
+            width={60}
+            height={60}
+            alt={`project-doodle-${item.doodleIcons[1]}`}
+            className="aspect-square"
+            sizes="60px"
+          />
+          <Image
+            src={item.doodleIcons[0]}
+            width={60}
+            height={60}
+            alt={`project-doodle-${item.doodleIcons[0]}`}
+            className="aspect-square"
+            sizes="60px"
+          />
+        </DoodlesWrapper>
+        <div>
+          <Image
+            className="object-cover drop-shadow-lg"
+            src={item.phone[1]}
+            width={300}
+            height={300}
+            alt={`project-phone-${item.phone[1]}`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
+          />
+        </div>
+      </DisplayImagesContainer>
+    </>
+  );
+};
+
+interface IProjectDetailsContent {
+  item: WorkDetail;
+}
+
+const ProjectDetailsContent: FC<IProjectDetailsContent> = ({ item }) => {
+  return (
+    <StyledProjectDetail>
+      <Links>
+        {item.link && (
+          <StyledVisitLink
+            rel="noopener noreferrer"
+            aria-label={`Visit ${item.name} website`}
+            target="_blank"
+            href={item.link}
+          >
+            Visit Site <ArrowIcon />
+          </StyledVisitLink>
+        )}
+        {item.github && (
+          <StyledVisitLink
+            rel="noopener noreferrer"
+            aria-label={`Visit ${item.name} github`}
+            target="_blank"
+            href={item.github}
+          >
+            Visit Github &nbsp; <GithubIcon />
+          </StyledVisitLink>
+        )}
+      </Links>
+      <ProjectAbout>
+        {item.toolIcons && (
+          <ToolIconsContainer>
+            {item.toolIcons.map((icon, i) => {
+              const name = icon.split('/').pop()?.replace('.svg', '').replace(/-/g, ' ').replace('c ', 'C++') || '';
+              return (
+                <ToolIconWrapper key={`icon-${i}`}>
+                  <Image src={icon} alt={name} width={44} height={44} />
+                  <ToolIconTooltip>{name}</ToolIconTooltip>
+                </ToolIconWrapper>
+              );
+            })}
+          </ToolIconsContainer>
+        )}
+        <ToolTagsContainer>
+          {item.tools.map((tool, i) => (
+            <ToolTag key={i}>{tool}</ToolTag>
+          ))}
+        </ToolTagsContainer>
+        {item.text}
+      </ProjectAbout>
+    </StyledProjectDetail>
+  );
+};
+
+interface IProjectDetails {
+  item: WorkDetail;
+  isActive: boolean;
+}
+
+const ProjectDetails: FC<IProjectDetails> = ({ item, isActive }) => {
+  return (
+    <AnimatePresence initial={false}>
+      {isActive && (
+        <StyledDetailsContainer
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ backgroundColor: item.color }}
+        >
+          <DetailsInner>
+            <ProjectTitle>
+              {item.name}
+            </ProjectTitle>
+            <ProjectMediaGallery item={item} />
+            <ProjectDetailsContent item={item} />
+          </DetailsInner>
+        </StyledDetailsContainer>
+      )}
+    </AnimatePresence>
+  );
+};
+
 interface IProjectCard {
   handleSet: (index: number) => void;
   active: number;
@@ -48,150 +229,8 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
 
   return (
     <motion.li {...swipeUpRevealChild}>
-      <ProjectTab
-        role="button"
-        aria-label={`View details for ${item.name} project`}
-        aria-expanded={isActive}
-        tabIndex={0}
-        whileHover={{ y: -2 }}
-        whileTap={{ scale: 1.02 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        $isActive={isActive}
-        onClick={() => handleSet(index)}
-      >
-        <StyledBackdrop
-          src={item.image}
-          layout="fill"
-          alt={`project-backdrop-${index}`}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-        />
-        <BackdropOverlay style={{ background: `linear-gradient(to top, ${item.color}44 0%, transparent 60%)` }} />
-        <ProjectHeader>
-          <span>{item.name}</span>
-          <HeaderYear>&nbsp;&apos;{item.year}</HeaderYear>
-        </ProjectHeader>
-        <TabMarquee />
-      </ProjectTab>
-
-      <AnimatePresence initial={false}>
-        {isActive && (
-          <ProjectDetailsContainer
-            key={`details-${index}`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ backgroundColor: item.color }}
-          >
-            <ProjectDetailsInner>
-              <ProjectTitle>
-                {item.name}
-                <TitleYear>&apos;{item.year}</TitleYear>
-              </ProjectTitle>
-              <div>
-                <Image
-                  src={item.image}
-                  width={800}
-                  height={500}
-                  className="drop-shadow-lg"
-                  alt={`project-${index}-${item.name}`}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                />
-              </div>
-              <DisplayImagesContainer>
-                <div className='row-span-2'>
-                  <Image
-                    className="drop-shadow-lg object-cover"
-                    src={item.phone[0]}
-                    width={300}
-                    height={400}
-                    alt={`project-phone-${index}-${item.phone[0]}`}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 300px"
-                  />
-                </div>
-                <DoodlesWrapper>
-                  <Image
-                    src={item.doodleIcons[1]}
-                    width={60}
-                    height={60}
-                    alt={`project-doodle-${index}-${item.doodleIcons[1]}`}
-                    className="aspect-square"
-                    sizes="60px"
-                  />
-                  <Image
-                    src={item.doodleIcons[0]}
-                    width={60}
-                    height={60}
-                    alt={`project-doodle-${index}-${item.doodleIcons[0]}`}
-                    className="aspect-square"
-                    sizes="60px"
-                  />
-                </DoodlesWrapper>
-                <div>
-                  <Image
-                    className="drop-shadow-lg object-cover"
-                    src={item.phone[1]}
-                    width={300}
-                    height={300}
-                    alt={`project-phone-${index}-${item.phone[1]}`}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
-                  />
-                </div>
-              </DisplayImagesContainer>
-              <ProjectDetail>
-                <Links>
-                  {item.link && (
-                    <StyledVisitLink
-                      rel="noopener noreferrer"
-                      aria-label={`Visit ${item.name} website`}
-                      target="_blank"
-                      href={item.link}
-                    >
-                      Visit Site <ArrowIcon />
-                    </StyledVisitLink>
-                  )}
-                  {item.github && (
-                    <StyledVisitLink
-                      rel="noopener noreferrer"
-                      aria-label={`Visit ${item.name} github`}
-                      target="_blank"
-                      href={item.github}
-                    >
-                      Visit Github &nbsp; <GithubIcon />
-                    </StyledVisitLink>
-                  )}
-                </Links>
-                <ProjectAbout>
-                  {item.toolIcons && (
-                    <ToolIconsContainer>
-                      {item.toolIcons.map((icon, i) => {
-                        const name = icon.split('/').pop()?.replace('.svg', '').replace(/-/g, ' ').replace('c ', 'C++') || '';
-                        return (
-                          <ToolIconWrapper key={`icon-${i}`}>
-                            <Image
-                              src={icon}
-                              alt={name}
-                              width={44}
-                              height={44}
-                            />
-                            <ToolIconTooltip>{name}</ToolIconTooltip>
-                          </ToolIconWrapper>
-                        );
-                      })}
-                    </ToolIconsContainer>
-                  )}
-                  {item.tools.map((tool, i) => (
-                    <ToolTag key={i}>{tool}</ToolTag>
-                  ))}
-                  <br />
-                  <br />
-                  {item.text}
-                </ProjectAbout>
-              </ProjectDetail>
-            </ProjectDetailsInner>
-          </ProjectDetailsContainer>
-        )}
-      </AnimatePresence>
+      <ProjectTab item={item} isActive={isActive} onClick={() => handleSet(index)} />
+      <ProjectDetails item={item} isActive={isActive} />
     </motion.li>
   );
 });
@@ -199,7 +238,7 @@ const ProjectCard: FC<IProjectCard> = memo(({ handleSet, active, index, item }) 
 ProjectCard.displayName = 'ProjectCard';
 export default ProjectCard;
 
-const ProjectTab = tw(motion.div)<{ $isActive: boolean }>`
+const StyledProjectTab = tw(motion.div)<{ $isActive: boolean }>`
   hov
   group
   relative
@@ -209,7 +248,7 @@ const ProjectTab = tw(motion.div)<{ $isActive: boolean }>`
   justify-center
   overflow-hidden
   rounded-md
-  px-3
+  px-8
   transition-[height]
   duration-300
   ease-out
@@ -220,7 +259,7 @@ const ProjectTab = tw(motion.div)<{ $isActive: boolean }>`
   lg:px-24
   ${p => (p.$isActive ? 'h-0' : 'sm:h-52 h-40')} `;
 
-const StyledBackdrop = tw(Image)`
+const BackdropImage = tw(Image)`
   object-cover
   brightness-[0.35]
   transition-[filter]
@@ -232,23 +271,22 @@ const BackdropOverlay = tw.div`
   pointer-events-none
   absolute
   inset-0
-  z-[1]
+  z-10
 `;
 
 const ProjectHeader = tw.h2`
   z-10
   flex
   grow
-  text-center
   items-center
-  sm:justify-between
-  justify-center
+  gap-4
   font-outerRegular
   text-2xl
   text-purple-200/80
   transition-colors
   duration-300
   group-hover:text-secondary
+  sm:gap-16
   sm:text-3xl
   lg:text-5xl
 `;
@@ -256,48 +294,46 @@ const ProjectHeader = tw.h2`
 const TabMarquee = tw.div`
   absolute
   bottom-3
-  left-1/2
   z-10
   h-1
   w-full
-  -translate-x-1/2
-  rounded-r-full
-  rounded-l-full
   border-y-[1px]
+  rounded-r-full
   transition-[width,background-color,box-shadow]
   duration-300
   ease-out
-  group-hover:w-1/2
+  group-hover:w-3/4
   group-hover:bg-secondary
   group-hover:shadow-[0_0_12px_rgba(255,88,88,0.3)]
   sm:h-2
-  md:left-0
-  md:translate-x-0
-  lg:rounded-l-none
+  left-0
+  translate-x-0
+  rounded-l-none
 `;
 
-const ProjectDetailsContainer = tw(motion.div)`
-  -mx-sm-md
-  md:-mx-md
-  xl:-mx-xl
-  overflow-hidden
+const MainImageWrapper = tw.div`
+  w-full
+  xl:w-auto
 `;
 
-const ProjectDetailsInner = tw.div`
-  flex
-  flex-col
+const DisplayImagesContainer = tw.div`
+  mx-auto
+  grid
+  grid-cols-[auto_auto]
+  items-end
   gap-6
-  px-3
-  py-12
-  sm:gap-12
-  sm:px-8
-  sm:py-16
-  md:px-24
-  xl:flex-row
-  xl:flex-wrap
+  xl:w-[40%]
+  xl:-translate-y-24
 `;
 
-const ProjectDetail = tw.div`
+const DoodlesWrapper = tw.span`
+  flex
+  max-h-72
+  items-end
+  justify-around
+`;
+
+const StyledProjectDetail = tw.div`
   flex
   flex-1
   flex-col
@@ -315,19 +351,31 @@ const Links = tw.div`
   xl:mx-0
 `;
 
-const ProjectTitle = tw.h3`
-  my-auto
-  flex-1
-  text-center
-  font-bagelRegular
-  text-3xl
-  uppercase
-  sm:text-4xl
-  md:text-7xl
-  xl:text-left
+const StyledVisitLink = tw.a`
+  hov
+  group
+  mx-auto
+  flex
+  items-center
+  rounded-full
+  py-2
+  px-4
+  font-outerRegular
+  text-xs
+  outline
+  outline-1
+  transition-colors
+  duration-300
+  hover:cursor-pointer
+  hover:bg-primary
+  hover:text-black
+  focus:outline
+  sm:text-sm
+  md:hover:cursor-none
+  lg:mx-0
 `;
 
-const ProjectAbout = tw.p`
+const ProjectAbout = tw.div`
   text-center
   font-outerRegular
   text-xs
@@ -377,16 +425,24 @@ const ToolIconTooltip = tw.span`
   backdrop-blur-sm
   transition-all
   duration-300
-  group-hover:-translate-y-full
   group-hover:visible
+  group-hover:-translate-y-full
   group-hover:opacity-100
+`;
+
+const ToolTagsContainer = tw.div`
+  mb-6
+  flex
+  flex-wrap
+  justify-center
+  gap-2
+  xl:justify-end
 `;
 
 const ToolTag = tw.span`
   bg-black/15
   mx-1
   inline-block
-  opacity-80
   rounded-md
   border
   border-black/20
@@ -395,60 +451,39 @@ const ToolTag = tw.span`
   text-xs
   leading-7
   text-black/90
+  opacity-80
   sm:text-sm
 `;
 
-const DisplayImagesContainer = tw.div`
-  mx-auto
-  items-end
-  grid
-  grid-cols-[auto_auto]
+const StyledDetailsContainer = tw(motion.div)`
+  -mx-sm-md
+  overflow-hidden
+  md:-mx-md
+  xl:-mx-xl
+`;
+
+const DetailsInner = tw.div`
+  flex
+  flex-col
   gap-6
-  xl:w-[40%]
-  xl:-translate-y-24
+  px-3
+  py-12
+  sm:gap-12
+  sm:px-8
+  sm:py-16
+  md:px-24
+  xl:flex-row
+  xl:flex-wrap
 `;
 
-const StyledVisitLink = tw.a`
-  hov
-  group
-  mx-auto
-  flex
-  items-center
-  rounded-full
-  py-2
-  px-4
-  font-outerRegular
-  text-xs
-  outline
-  outline-1
-  transition-colors
-  duration-300
-  hover:cursor-pointer
-  hover:bg-primary
-  hover:text-black
-  focus:outline
-  sm:text-sm
-  md:hover:cursor-none
-  lg:mx-0
-`;
-
-const HeaderYear = tw.span`
-  opacity-60
-  text-xl
-  sm:text-[0.65em]
-  font-outerRegular
-`;
-
-const TitleYear = tw.span`
-  opacity-40
-  text-[0.6em]
+const ProjectTitle = tw.h3`
+  my-auto
+  flex-1
+  text-center
   font-bagelRegular
-  ml-3
-`;
-
-const DoodlesWrapper = tw.span`
-  flex
-  max-h-72
-  items-end
-  justify-around
+  text-3xl
+  uppercase
+  sm:text-4xl
+  md:text-7xl
+  xl:text-left
 `;

@@ -32,7 +32,6 @@ const Contact = () => {
       <ContactContent>
         <LazyLottie loader={loadGameLottie} />
         <StyledForm {...staggerContainer} onSubmit={handleMailSend}>
-
           <StyledInput
             name="name"
             id="name"
