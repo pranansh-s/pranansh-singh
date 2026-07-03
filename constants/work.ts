@@ -1,7 +1,6 @@
 export type WorkDetail = {
   image: string;
   phone: string[];
-  doodleIcons: string[];
   name: string;
   color: string;
   text: string;
@@ -19,14 +18,10 @@ export const work: WorkDetail[] = [
       '/work/Atal Bihar Vajpayee Botanical Garden/portrait.svg',
       '/work/Atal Bihar Vajpayee Botanical Garden/landscape.svg',
     ],
-    doodleIcons: [
-      '/work/Atal Bihar Vajpayee Botanical Garden/location.svg',
-      '/work/Atal Bihar Vajpayee Botanical Garden/calendar.svg',
-    ],
     name: 'atal bihari vajpayee botanical garden',
     color: '#f2e7c3',
-    text: 'Architected and delivered the official digital platform for the Atal Bihari Vajpayee Visapur Botanical Garden as part of a competitive government contract. Engineered a highly accessible, multi-lingual client-side architecture with seamless internationalization (i18next) and optimized performance budgets to ensure instant load times across various network conditions. Implemented dynamic, high-performance visual storytelling utilizing custom GSAP and Framer Motion orchestrations, while establishing robust programmatic SEO pipelines that significantly boosted discoverability and localized search presence.',
-    tools: ['Animation-heavy', 'Localization-ready', 'Performance-optimized', 'SEO-driven'],
+    text: 'The official website for the Atal Bihari Vajpayee Visapur Botanical Garden, designed and delivered as part of a government contract. Built to welcome every visitor, it tells the garden\'s story in multiple languages through a full i18next localization layer and brings its flora to life with choreographed GSAP, Framer Motion, and Lottie animations that stay smooth even on slow connections. Under the hood, aggressive image optimization, tight performance budgets, and automated sitemap generation keep the site instant to load and easy to discover in local search.',
+    tools: ['government contract', 'multi-lingual', 'animation-heavy', 'seo-ready'],
     toolIcons: [
       '/logos/react.svg',
       '/logos/nextjs.svg',
@@ -41,24 +36,22 @@ export const work: WorkDetail[] = [
   },
   {
     image: '/work/NotionApps/NOTION.webp',
-    phone: ['/work/NotionApps/portrait.svg', '/work/NotionApps/landscape.webp'],
-    doodleIcons: ['/work/NotionApps/tablet.svg', '/work/NotionApps/file-form.svg'],
+    phone: ['/work/NotionApps/portrait.svg', '/work/NotionApps/landscape.svg'],
     name: 'notionapps',
     color: '#77bfd0',
-    tools: ['No-code Platform', 'Component-optimized', 'End-user Onboarding'],
+    tools: ['no-code platform', 'end-user auth', 'onboarding funnels'],
     toolIcons: ['/logos/react.svg', '/logos/javascript.svg', '/logos/css.svg'],
-    text: 'Architected and engineered key system modules for NotionApps, a production-grade no-code platform that generates responsive web applications directly from Notion databases. Designed and integrated secure end-user authentication mechanisms, robust internationalization systems, and dynamic onboarding funnels to optimize user acquisition pathways. Significantly improved codebase maintainability and UI performance by implementing clean state boundaries, refactoring oversized React components, and debugging complex client-side state synchronization issues in a fast-paced product environment.',
+    text: 'NotionApps is a production no-code platform that turns Notion databases into polished, responsive web apps — no engineers required. Working as a product engineer, I shipped features across the acquisition funnel: secure end-user authentication, full internationalization support, and dynamic onboarding flows that guide new builders to their first live app. I also led the quality-of-life work that keeps a fast-moving product maintainable — carving oversized React components into clean state boundaries and untangling client-side state synchronization bugs affecting live customer apps.',
     link: 'https://www.notionapps.com/',
     year: '24',
   },
   {
     image: '/work/Namegen/NAMEGEN.webp',
     phone: ['/work/Namegen/portrait.svg', '/work/Namegen/landscape.svg'],
-    doodleIcons: ['/work/Namegen/bulb.svg', '/work/Namegen/ruler.svg'],
     name: 'namegen',
     color: '#8B79CF',
-    text: 'Built a high-performance business name generation platform that leverages LLM prompting paradigms to generate domain-available brand names in real time. Solved complex API latency issues by parallelizing multi-registrar DNS availability checks and trademark database queries, reducing response times by over 60%. Designed a modular, config-driven state architecture to easily scale feature flags and regional configurations, complete with a persistent user dashboard to compare, filter, and track selected brand identities.',
-    tools: ['AI-assisted', 'Programmatic SEO', 'Domain Intelligence', 'Config-driven'],
+    text: 'A business-name generator that gives founders what they actually need: a name they can own. NameGen prompts LLaMA models to produce brand names tuned by industry, keywords, and naming style, then immediately verifies each suggestion against live domain availability across multiple extensions and a trademark search — so every idea on screen is actionable, dramatically cutting the wait between idea and answer. Favorites can be saved and compared side by side, while a centralized config-driven architecture and programmatic SEO pages keep the platform easy to extend and easy to find.',
+    tools: ['ai-assisted', 'domain intelligence', 'trademark search', 'programmatic seo'],
     toolIcons: [
       '/logos/nextjs.svg',
       '/logos/redux.svg',
@@ -73,11 +66,10 @@ export const work: WorkDetail[] = [
   {
     image: '/work/The Barbeque Company/BBQ.webp',
     phone: ['/work/The Barbeque Company/portrait.svg', '/work/The Barbeque Company/landscape.svg'],
-    doodleIcons: ['/work/The Barbeque Company/cutlery.svg', '/work/The Barbeque Company/dish.svg'],
     name: 'the barbeque company',
     color: '#FB5A35',
-    text: 'Developed and deployed a robust full-stack e-commerce and reservation platform for a commercial hospitality brand, utilizing a modern headless CMS architecture for dynamic content distribution. Engineered a strictly-typed, scalable backend system with a clean separation of concerns, providing high availability for reservation pipelines and instant menu synchronization. Handled high-resolution asset delivery and loading optimization through automated media pipelines, driving a seamless and highly responsive user experience across desktop and mobile devices.',
-    tools: ['CMS-driven', 'E-Commerce Integration', 'GraphQL API'],
+    text: 'A full-stack commercial platform for The Barbeque Company, handling everything from browsing the menu and reserving a table to paying for the order. Customers check out through an integrated Paytm payment gateway and receive automated real-time order updates via event-driven messaging, while staff manage menus, media, and content themselves through a headless Strapi CMS exposed over GraphQL. High-resolution food photography is delivered through automated Cloudinary media pipelines, and a strictly-typed Next.js frontend keeps the experience fast and responsive across desktop and mobile.',
+    tools: ['e-commerce', 'paytm payments', 'headless cms', 'graphql api'],
     toolIcons: [
       '/logos/nextjs.svg',
       '/logos/material-ui.svg',
@@ -94,23 +86,21 @@ export const projects: WorkDetail[] = [
   {
     image: '/work/Mute.ly/MUTELY.webp',
     phone: ['/work/Mute.ly/portrait.webp', '/work/Mute.ly/landscape.webp'],
-    doodleIcons: ['/work/Mute.ly/mute.svg', '/work/Mute.ly/youtube.svg'],
     name: 'mute.ly',
     color: '#df8115',
-    text: 'Mute.ly is a high-performance Chrome extension that delivers secure, 100% local real-time YouTube captions using browser-side WebAssembly AI inference. Engineered with a specialized dual-mode architecture, it captures and transcribes JIT live streams using low-latency Voice Activity Detection (Silero VAD) alongside an Ahead-of-Time, seek-aware streaming pipeline for VODs powered by a local Node.js proxy server. The system features a sophisticated, telephony-grade audio DSP preprocessor utilizing second-order Butterworth high-pass/low-pass filters and dynamic gain normalization to aggressively filter room hum and static hiss, completely eliminating noise-induced hallucinations in the underlying Whisper model while preserving frame-accurate visual sync.',
-    tools: ['Local AI (Whisper)', 'Biquad DSP / VAD', 'Manifest V3 Offscreen', 'Seek-Aware Streaming'],
-    toolIcons: ['/logos/typescript.svg', '/logos/nodejs.svg', '/logos/express.svg'],
+    text: 'Mute.ly is a Chrome extension that gives any YouTube video or live stream real-time AI captions generated entirely on your own machine — no cloud, no API keys, nothing you watch ever leaves your device. It runs OpenAI\'s Whisper directly in the browser via WebGPU-accelerated ONNX inference, with a dual-mode pipeline: live streams are captioned the moment someone finishes speaking using Silero voice-activity detection, while regular videos are transcribed ahead of playback in seek-aware chunks so skipping around never stalls. A custom audio-cleanup stage strips hum and background noise before inference, eliminating the hallucinated text that plagues raw Whisper output.',
+    tools: ['on-device ai (whisper)', 'webgpu inference', 'voice activity detection', 'seek-aware streaming'],
+    toolIcons: ['/logos/typescript.svg', '/logos/nodejs.svg'],
     github: 'https://github.com/pranansh-s/mute.ly',
     year: '26',
   },
   {
     image: '/work/EGBA/EGBA.webp',
     phone: ['/work/EGBA/portrait.webp', '/work/EGBA/landscape.webp'],
-    doodleIcons: ['/work/EGBA/chip.svg', '/work/EGBA/puzzle.svg'],
     name: 'egba (emulated gameboy advance)',
     color: '#9d77d0',
-    text: 'Designed and built a modular, cycle-accurate Game Boy Advance emulator in Rust, modeling the ARMv4T CPU architecture including the dual ARM/THUMB instruction states, barrel shifter, and 3-stage execution pipeline. Solved complex synchronization and performance challenges by designing cache-friendly memory-mapped I/O, cycle-accurate CPU timings, and highly optimized PPU scanline graphics rendering. Utilizing a decoupled core library architecture with an integrated interactive debugging interface, the project showcases rigorous low-level systems engineering, bitwise hardware virtualization, and memory-safe resource optimization.',
-    tools: ['Hardware Virtualization', 'CPU Modeling (ARMv4T)', 'Memory-safe', 'Emulator Tooling'],
+    text: 'A cycle-accurate Game Boy Advance emulator written from scratch in Rust — faithful enough to boot the real GBA BIOS and watch the Nintendo logo scroll. It models the ARM7TDMI processor down to per-cycle bus timing: dual ARM/THUMB instruction sets passing the full ARMwrestler test suite, the 3-stage pipeline, barrel shifter, and the hardware quirks real games depend on, alongside a scanline PPU rendering all six background modes and DMA-driven stereo audio. A strict four-crate workspace keeps the I/O-free emulation core portable, with an SDL2 frontend, terminal debugger, and battery-save persistence built around it.',
+    tools: ['cycle-accurate emulation', 'arm7tdmi cpu', 'pixel perfect ppu', 'built-in debugger'],
     toolIcons: ['/logos/rust.svg', '/logos/sdl2.svg'],
     github: 'https://github.com/pranansh-s/egba',
     year: '26',
@@ -118,13 +108,13 @@ export const projects: WorkDetail[] = [
   {
     image: '/work/Xhess/XHESS.webp',
     phone: ['/work/Xhess/portrait.webp', '/work/Xhess/landscape.webp'],
-    doodleIcons: ['/work/Xhess/server.svg', '/work/Xhess/unbox.svg'],
     name: 'xhess',
     color: '#bdeb55',
-    text: 'Xhess is a premium, real-time multiplayer chess platform combining an immersive 3D WebGL interface with a highly scalable, containerized cloud backend. Designed as a high-traffic proof-of-concept, it pairs fluid browser animations and a custom chess engine with a low-latency socket architecture and smart database caching—slashing cloud database costs by 90% while guaranteeing sub-millisecond gameplay synchronization. It is a complete, production-grade showcase of modern full-stack engineering, real-time scalability, and visual wow-factor.',
-    tools: ['Real-time Multiplayer', 'Containerized Architecture', 'Event-driven'],
+    text: 'Xhess is a real-time multiplayer chess platform where every match plays out on an immersive board, rendered in the browser with React Three Fiber and studio lighting. Underneath, an Express and Socket.IO gateway synchronizes moves, turn clocks, draw offers, and live chat with low latency, while a Redis cache-aside layer in front of Firestore serves hot game state in under a millisecond and dramatically cuts database costs under load. The chess rules themselves are a custom strategy-pattern engine — no third-party chess library — shared with the Next.js frontend through a fully type-safe monorepo secured by Firebase Auth and Zod validation.',
+    tools: ['real-time multiplayer', '3d webgl', 'custom chess engine', 'cache-aside redis'],
     toolIcons: [
       '/logos/react.svg',
+      '/logos/nextjs.svg',
       '/logos/threejs.svg',
       '/logos/redux.svg',
       '/logos/express.svg',
@@ -141,11 +131,10 @@ export const projects: WorkDetail[] = [
   {
     image: '/work/Rust-gine/GINE.webp',
     phone: ['/work/Rust-gine/portrait.webp', '/work/Rust-gine/landscape.webp'],
-    doodleIcons: ['/work/Rust-gine/trophy.svg', '/work/Rust-gine/paint-bucket.svg'],
     name: 'rust-gine',
     color: '#77d0b1',
-    text: 'Engineered a custom, high-performance 2D game engine in Rust from the ground up, utilizing modern OpenGL/GLFW graphics pipelines for GPU-accelerated rendering. Designed a cache-friendly Entity-Component-System (ECS) architecture to achieve optimal data locality and CPU cache utilization, allowing the simulation of thousands of dynamic entities. Developed a custom, math-driven asset management system for textures and compiled shaders, alongside a highly creative, custom Flexbox-inspired DOM layout engine that handles responsive, nested UI positioning mathematically in real time.',
-    tools: ['ECS Architecture', 'GPU-accelerated', 'Asset Pipeline', 'Data-oriented'],
+    text: 'A 2D game engine built from the ground up in Rust on OpenGL 3.3 — no frameworks, just raw GPU-accelerated graphics programming. It takes a deliberately explicit approach to architecture: a zero-global-state ownership model where the game manager owns every subsystem, making resource lifecycles deterministic and leak-free by construction. On top sit a unified sprite rendering pipeline with custom GLSL shaders, a DOM-inspired nested UI layout tree, a camera with smooth zoom-to-cursor and drag-panning, and high-precision timing with scheduled task callbacks — all exercised through standalone playable examples and an automated test suite.',
+    tools: ['custom game engine', 'opengl + glsl', 'zero-global ownership', 'dom-style ui'],
     toolIcons: ['/logos/rust.svg'],
     github: 'https://github.com/pranansh-s/rust-gine',
     year: '24',

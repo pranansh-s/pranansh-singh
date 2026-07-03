@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { CSSProperties, FC, KeyboardEvent, memo } from 'react';
 import Image from 'next/image';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -36,6 +36,16 @@ const GithubIcon: FC = () => (
   </svg>
 );
 
+const flowStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
+
+const flowBlockReveal = {
+  hidden: { y: 24, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const } },
+};
+
 interface IProjectTab {
   item: WorkDetail;
   isActive: boolean;
@@ -53,6 +63,13 @@ const ProjectTab: FC<IProjectTab> = ({ item, isActive, onClick }) => {
       whileTap={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       onClick={onClick}
+      onKeyDown={(e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      style={{ '--pc': item.color } as CSSProperties}
       $isActive={isActive}
     >
       <BackdropImage
@@ -61,130 +78,16 @@ const ProjectTab: FC<IProjectTab> = ({ item, isActive, onClick }) => {
         alt={`project-backdrop`}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
       />
-      <BackdropOverlay style={{ background: `linear-gradient(to top, ${item.color}44 0%, transparent 60%)` }} />
+      <BackdropOverlay style={{ background: `linear-gradient(to top, ${item.color}55 0%, transparent 60%)` }} />
       <ProjectHeader>
-        <span className="font-bagelRegular">
+        <YearTag>
           &apos;{item.year}&nbsp;<span className="font-outerRegular text-xl opacity-60">//</span> &nbsp;
-        </span>
+        </YearTag>
         <span>{item.name}</span>
       </ProjectHeader>
+      <TabMeta>[{item.tools[0]}]</TabMeta>
       <TabMarquee />
     </StyledProjectTab>
-  );
-};
-
-interface IProjectMediaGallery {
-  item: WorkDetail;
-}
-
-const ProjectMediaGallery: FC<IProjectMediaGallery> = ({ item }) => {
-  return (
-    <>
-      <MainImageWrapper>
-        <Image
-          src={item.image}
-          width={800}
-          height={500}
-          className="drop-shadow-lg"
-          alt={`project-${item.name}`}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-        />
-      </MainImageWrapper>
-      <DisplayImagesContainer>
-        <div className="row-span-2">
-          <Image
-            className="object-cover drop-shadow-lg"
-            src={item.phone[0]}
-            width={300}
-            height={400}
-            alt={`project-phone-${item.phone[0]}`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 300px"
-          />
-        </div>
-        <DoodlesWrapper>
-          <Image
-            src={item.doodleIcons[1]}
-            width={60}
-            height={60}
-            alt={`project-doodle-${item.doodleIcons[1]}`}
-            className="aspect-square"
-            sizes="60px"
-          />
-          <Image
-            src={item.doodleIcons[0]}
-            width={60}
-            height={60}
-            alt={`project-doodle-${item.doodleIcons[0]}`}
-            className="aspect-square"
-            sizes="60px"
-          />
-        </DoodlesWrapper>
-        <div>
-          <Image
-            className="object-cover drop-shadow-lg"
-            src={item.phone[1]}
-            width={300}
-            height={300}
-            alt={`project-phone-${item.phone[1]}`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
-          />
-        </div>
-      </DisplayImagesContainer>
-    </>
-  );
-};
-
-interface IProjectDetailsContent {
-  item: WorkDetail;
-}
-
-const ProjectDetailsContent: FC<IProjectDetailsContent> = ({ item }) => {
-  return (
-    <StyledProjectDetail>
-      <Links>
-        {item.link && (
-          <StyledVisitLink
-            rel="noopener noreferrer"
-            aria-label={`Visit ${item.name} website`}
-            target="_blank"
-            href={item.link}
-          >
-            Visit Site <ArrowIcon />
-          </StyledVisitLink>
-        )}
-        {item.github && (
-          <StyledVisitLink
-            rel="noopener noreferrer"
-            aria-label={`Visit ${item.name} github`}
-            target="_blank"
-            href={item.github}
-          >
-            Visit Github &nbsp; <GithubIcon />
-          </StyledVisitLink>
-        )}
-      </Links>
-      <ProjectAbout>
-        {item.toolIcons && (
-          <ToolIconsContainer>
-            {item.toolIcons.map((icon, i) => {
-              const name = icon.split('/').pop()?.replace('.svg', '').replace(/-/g, ' ').replace('c ', 'C++') || '';
-              return (
-                <ToolIconWrapper key={`icon-${i}`}>
-                  <Image src={icon} alt={name} width={44} height={44} />
-                  <ToolIconTooltip>{name}</ToolIconTooltip>
-                </ToolIconWrapper>
-              );
-            })}
-          </ToolIconsContainer>
-        )}
-        <ToolTagsContainer>
-          {item.tools.map((tool, i) => (
-            <ToolTag key={i}>{tool}</ToolTag>
-          ))}
-        </ToolTagsContainer>
-        {item.text}
-      </ProjectAbout>
-    </StyledProjectDetail>
   );
 };
 
@@ -205,11 +108,99 @@ const ProjectDetails: FC<IProjectDetails> = ({ item, isActive }) => {
           style={{ backgroundColor: item.color }}
         >
           <DetailsInner>
-            <ProjectTitle>
-              {item.name}
-            </ProjectTitle>
-            <ProjectMediaGallery item={item} />
-            <ProjectDetailsContent item={item} />
+            <FlowColumn initial="hidden" animate="visible" variants={flowStagger}>
+              <FlowBlock variants={flowBlockReveal}>
+                <ProjectTitle>{item.name}</ProjectTitle>
+              </FlowBlock>
+              <FlowBlock variants={flowBlockReveal}>
+                <HeroComposition>
+                  <Image
+                    src={item.image}
+                    width={800}
+                    height={500}
+                    className="h-auto w-full rounded-xl drop-shadow-lg"
+                    alt={`project-${item.name}`}
+                    sizes="(max-width: 1200px) 100vw, 960px"
+                  />
+                  <LandscapeOverlay>
+                    <Image
+                      className="h-auto w-full rounded-lg drop-shadow-2xl"
+                      src={item.phone[1]}
+                      width={480}
+                      height={300}
+                      alt={`${item.name} landscape view`}
+                      sizes="(max-width: 1200px) 38vw, 380px"
+                    />
+                  </LandscapeOverlay>
+                  <PortraitOverlay>
+                    <Image
+                      className="h-auto w-full drop-shadow-2xl"
+                      src={item.phone[0]}
+                      width={300}
+                      height={420}
+                      alt={`${item.name} mobile view`}
+                      sizes="(max-width: 1200px) 15vw, 150px"
+                    />
+                  </PortraitOverlay>
+                </HeroComposition>
+              </FlowBlock>
+              <FlowBlock variants={flowBlockReveal}>
+                <InfoGrid>
+                  <AboutBlock>
+                    <ProjectAbout>{item.text}</ProjectAbout>
+                    <Links>
+                      {item.link && (
+                        <StyledVisitLink
+                          rel="noopener noreferrer"
+                          aria-label={`Visit ${item.name} website`}
+                          target="_blank"
+                          href={item.link}
+                        >
+                          visit site <ArrowIcon />
+                        </StyledVisitLink>
+                      )}
+                      {item.github && (
+                        <StyledVisitLink
+                          rel="noopener noreferrer"
+                          aria-label={`Visit ${item.name} github`}
+                          target="_blank"
+                          href={item.github}
+                        >
+                          visit github &nbsp; <GithubIcon />
+                        </StyledVisitLink>
+                      )}
+                    </Links>
+                  </AboutBlock>
+                  <MetaBlock>
+                    {item.toolIcons && (
+                      <MetaGroup>
+                        <MetaLabel>[stack]</MetaLabel>
+                        <ToolIconsContainer>
+                          {item.toolIcons.map(icon => {
+                            const name =
+                              icon.split('/').pop()?.replace('.svg', '').replace(/-/g, ' ') || '';
+                            return (
+                              <ToolChip key={icon}>
+                                <Image className="h-6 w-6 object-contain" src={icon} alt="" width={24} height={24} />
+                                {name}
+                              </ToolChip>
+                            );
+                          })}
+                        </ToolIconsContainer>
+                      </MetaGroup>
+                    )}
+                    <MetaGroup>
+                      <MetaLabel>[highlights]</MetaLabel>
+                      <ToolTagsContainer>
+                        {item.tools.map((tool, i) => (
+                          <ToolTag key={i}>{tool}</ToolTag>
+                        ))}
+                      </ToolTagsContainer>
+                    </MetaGroup>
+                  </MetaBlock>
+                </InfoGrid>
+              </FlowBlock>
+            </FlowColumn>
           </DetailsInner>
         </StyledDetailsContainer>
       )}
@@ -260,11 +251,15 @@ const StyledProjectTab = tw(motion.div)<{ $isActive: boolean }>`
   ${p => (p.$isActive ? 'h-0' : 'sm:h-52 h-40')} `;
 
 const BackdropImage = tw(Image)`
+  scale-105
   object-cover
-  brightness-[0.35]
-  transition-[filter]
+  opacity-0
+  brightness-[0.3]
+  transition-[opacity,transform]
   duration-500
-  group-hover:brightness-[0.45]
+  ease-out
+  group-hover:scale-100
+  group-hover:opacity-100
 `;
 
 const BackdropOverlay = tw.div`
@@ -272,6 +267,10 @@ const BackdropOverlay = tw.div`
   absolute
   inset-0
   z-10
+  opacity-0
+  transition-opacity
+  duration-500
+  group-hover:opacity-100
 `;
 
 const ProjectHeader = tw.h2`
@@ -282,79 +281,145 @@ const ProjectHeader = tw.h2`
   gap-4
   font-outerRegular
   text-2xl
-  text-purple-200/80
+  text-primary/60
   transition-colors
   duration-300
-  group-hover:text-secondary
+  group-hover:text-primary
+  group-hover:drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]
   sm:gap-16
   sm:text-3xl
   lg:text-5xl
 `;
 
+const YearTag = tw.span`
+  font-bagelRegular
+  text-secondary/60
+  transition-colors
+  duration-300
+  group-hover:text-secondary
+`;
+
+const TabMeta = tw.span`
+  z-10
+  hidden
+  whitespace-nowrap
+  font-outerRegular
+  text-xs
+  uppercase
+  tracking-widest
+  text-primary/50
+  transition-colors
+  duration-300
+  group-hover:text-primary/90
+  lg:block
+`;
+
 const TabMarquee = tw.div`
+  group-hover:bg-[var(--pc)]
   absolute
   bottom-3
+  left-0
   z-10
   h-1
   w-full
-  border-y-[1px]
+  translate-x-0
   rounded-r-full
+  rounded-l-none
+  border-y-[1px]
+  border-primary/25
   transition-[width,background-color,box-shadow]
   duration-300
   ease-out
   group-hover:w-3/4
-  group-hover:bg-secondary
-  group-hover:shadow-[0_0_12px_rgba(255,88,88,0.3)]
+  group-hover:shadow-[0_0_12px_var(--pc)]
   sm:h-2
-  left-0
-  translate-x-0
-  rounded-l-none
 `;
 
-const MainImageWrapper = tw.div`
-  w-full
-  xl:w-auto
-`;
-
-const DisplayImagesContainer = tw.div`
+const FlowColumn = tw(motion.div)`
   mx-auto
-  grid
-  grid-cols-[auto_auto]
-  items-end
-  gap-6
-  xl:w-[40%]
-  xl:-translate-y-24
-`;
-
-const DoodlesWrapper = tw.span`
   flex
-  max-h-72
-  items-end
-  justify-around
-`;
-
-const StyledProjectDetail = tw.div`
-  flex
-  flex-1
+  w-full
+  max-w-[960px]
   flex-col
   items-start
+  gap-8
+  sm:gap-10
+`;
+
+const FlowBlock = tw(motion.div)`
+  w-full
+`;
+
+const HeroComposition = tw.div`
+  relative
+  mb-10
+  w-full
+  sm:mb-14
+`;
+
+const LandscapeOverlay = tw.div`
+  absolute
+  -bottom-8
+  right-[10%]
+  z-10
+  w-[38%]
+  sm:-bottom-12
+`;
+
+const PortraitOverlay = tw.div`
+  absolute
+  -bottom-8
+  right-[1%]
+  z-20
+  w-[16%]
+  sm:-bottom-12
+`;
+
+const InfoGrid = tw.div`
+  grid
+  w-full
   gap-10
-  sm:gap-0
-  xl:items-end
+  lg:grid-cols-[minmax(0,1fr)_300px]
+  lg:gap-16
+`;
+
+const MetaBlock = tw.div`
+  flex
+  flex-col
+  gap-8
+  lg:pt-1
+`;
+
+const MetaGroup = tw.div`
+  flex
+  flex-col
+  gap-3
+`;
+
+const MetaLabel = tw.span`
+  font-outerRegular
+  text-xs
+  uppercase
+  tracking-widest
+  text-black/60
+`;
+
+const AboutBlock = tw.div`
+  flex
+  flex-col
+  items-start
+  gap-8
 `;
 
 const Links = tw.div`
-  mx-auto
   flex
-  gap-6
-  sm:mb-12
-  xl:mx-0
+  flex-wrap
+  gap-4
 `;
 
 const StyledVisitLink = tw.a`
   hov
   group
-  mx-auto
   flex
   items-center
   rounded-full
@@ -371,86 +436,60 @@ const StyledVisitLink = tw.a`
   focus:outline
   sm:text-sm
   md:hover:cursor-none
-  lg:mx-0
 `;
 
-const ProjectAbout = tw.div`
-  text-center
+const ProjectAbout = tw.p`
+  max-w-[75ch]
+  text-left
   font-outerRegular
   text-xs
   leading-6
+  text-black/80
   sm:text-sm
   md:leading-8
-  xl:text-right
   xl:text-base
-  2xl:text-lg
 `;
 
 const ToolIconsContainer = tw.div`
-  mb-6
   flex
+  w-full
   flex-wrap
-  justify-center
-  gap-8
-  xl:justify-end
+  gap-3
 `;
 
-const ToolIconWrapper = tw.div`
-  group
-  relative
+const ToolChip = tw.span`
   flex
   items-center
-  justify-center
-`;
-
-const ToolIconTooltip = tw.span`
-  invisible
-  absolute
-  -top-2
-  left-1/2
-  z-50
-  -translate-x-1/2
-  -translate-y-[80%]
-  whitespace-nowrap
-  rounded-md
-  bg-black/80
-  px-2.5
-  py-1
+  gap-2.5
+  rounded-lg
+  bg-white/90
+  py-2
+  px-3
   font-outerRegular
-  text-xs
-  capitalize
-  text-white/90
-  opacity-0
-  backdrop-blur-sm
-  transition-all
-  duration-300
-  group-hover:visible
-  group-hover:-translate-y-full
-  group-hover:opacity-100
+  text-sm
+  text-black/80
+  shadow-sm
 `;
 
 const ToolTagsContainer = tw.div`
-  mb-6
   flex
+  w-full
   flex-wrap
-  justify-center
   gap-2
-  xl:justify-end
 `;
 
 const ToolTag = tw.span`
-  bg-black/15
-  mx-1
   inline-block
   rounded-md
   border
-  border-black/20
+  border-black/25
+  bg-black/10
   px-2.5
   py-0.5
+  font-outerRegular
   text-xs
   leading-7
-  text-black/90
-  opacity-80
+  text-black/80
   sm:text-sm
 `;
 
@@ -464,25 +503,20 @@ const StyledDetailsContainer = tw(motion.div)`
 const DetailsInner = tw.div`
   flex
   flex-col
-  gap-6
-  px-3
+  gap-10
+  px-5
   py-12
-  sm:gap-12
+  sm:gap-14
   sm:px-8
   sm:py-16
   md:px-24
-  xl:flex-row
-  xl:flex-wrap
 `;
 
 const ProjectTitle = tw.h3`
-  my-auto
-  flex-1
-  text-center
+  text-left
   font-bagelRegular
   text-3xl
   uppercase
   sm:text-4xl
-  md:text-7xl
-  xl:text-left
+  md:text-6xl
 `;

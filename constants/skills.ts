@@ -5,11 +5,11 @@ export type Card = {
 };
 
 const Row1: Card[] = [
-  { name: 'React', logo: '/logos/react.svg', color: '61DBFB' },
+  { name: 'React', logo: '/logos/react.svg', color: '000000' },
   { name: 'Tailwind CSS', logo: '/logos/tailwindcss.svg', color: 'FFFFFF' },
   { name: 'Next.js', logo: '/logos/nextjs.svg', color: 'FFFFFF' },
   { name: 'Node.js', logo: '/logos/nodejs.svg', color: 'FFFFFF' },
-  { name: 'Redux', logo: '/logos/redux.svg', color: '764ABC' },
+  { name: 'Redux', logo: '/logos/redux.svg', color: 'FFFFFF' },
   { name: 'AWS', logo: '/logos/aws.svg', color: 'FFFFFF' },
   { name: 'Cloudinary', logo: '/logos/cloudinary.svg', color: 'FFFFFF' },
   { name: 'i18next', logo: '/logos/i18next.svg', color: 'FFFFFF' },
