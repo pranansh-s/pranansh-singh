@@ -22,6 +22,7 @@ class MyDocument extends Document {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
+            fetchPriority="high"
           />
           <link
             rel="preload"
@@ -29,6 +30,7 @@ class MyDocument extends Document {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
+            fetchPriority="high"
           />
           <link
             rel="preload"
@@ -36,6 +38,7 @@ class MyDocument extends Document {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
+            fetchPriority="low"
           />
           <meta name="google-site-verification" content="GL83bwDes4GKEoNh1nM55lYwcAStf1a5dxKYgpvqtbQ" />
           <script

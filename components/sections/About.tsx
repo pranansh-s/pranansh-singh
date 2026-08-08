@@ -187,6 +187,7 @@ const CharacterContainer = tw.div`
 `;
 
 const CarouselRow = tw.div`
+  motion-safe-override
   hover:pause
   flex
   w-max

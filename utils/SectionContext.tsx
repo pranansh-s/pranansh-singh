@@ -28,7 +28,7 @@ export function SectionProvider({ children }: { children: React.ReactNode }) {
 
         if (mostVisible) setCurrentSection(mostVisible);
       },
-      { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] }
+      { threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
 
     const observed = new Set<string>();
@@ -51,7 +51,8 @@ export function SectionProvider({ children }: { children: React.ReactNode }) {
     });
 
     if (observed.size < SECTION_IDS.length) {
-      domWatcher.observe(document.body, { childList: true, subtree: true });
+      const root = document.getElementById('__next') || document.body;
+      domWatcher.observe(root, { childList: true, subtree: true });
     }
 
     return () => {

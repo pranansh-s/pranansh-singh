@@ -34,14 +34,20 @@ const useCanvas = () => {
     systemRef.current = new DelaunaySystem(canvasRef.current);
     systemRef.current.start();
 
+    let resizeRafId: number | null = null;
     const handleResize = () => {
-      systemRef.current?.resize();
+      if (resizeRafId) cancelAnimationFrame(resizeRafId);
+      resizeRafId = requestAnimationFrame(() => {
+        systemRef.current?.resize();
+        resizeRafId = null;
+      });
     };
     window.addEventListener('resize', handleResize);
 
     return () => {
       systemRef.current?.stop();
       window.removeEventListener('resize', handleResize);
+      if (resizeRafId) cancelAnimationFrame(resizeRafId);
     };
   }, []);
 

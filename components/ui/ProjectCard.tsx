@@ -243,6 +243,7 @@ const StyledProjectTab = tw(motion.div)<{ $isActive: boolean }>`
   transition-[height]
   duration-300
   ease-out
+  will-change-[height]
   md:justify-start
   md:px-16
   md:hover:cursor-none
@@ -258,6 +259,7 @@ const BackdropImage = tw(Image)`
   transition-[opacity,transform]
   duration-500
   ease-out
+  will-change-[opacity,transform]
   group-hover:scale-100
   group-hover:opacity-100
 `;

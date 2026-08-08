@@ -51,7 +51,10 @@ export class DelaunaySystem {
   private lastFrameTime: number = 0;
   private vertices: number[][] = [];
   private boundMouseMove: (e: MouseEvent) => void;
+  private boundVisibilityChange: () => void;
   private isDesktop: boolean = false;
+  private isPaused: boolean = false;
+  private cachedBgStyle: string = '#1C172E';
 
   constructor(canvas: HTMLCanvasElement, count?: number) {
     this.canvas = canvas;
@@ -66,6 +69,16 @@ export class DelaunaySystem {
       this.mouseY = e.clientY;
     };
     window.addEventListener('mousemove', this.boundMouseMove, { passive: true });
+
+    this.boundVisibilityChange = () => {
+      if (document.hidden) {
+        this.isPaused = true;
+      } else {
+        this.isPaused = false;
+        this.lastFrameTime = performance.now();
+      }
+    };
+    document.addEventListener('visibilitychange', this.boundVisibilityChange);
   }
 
   public resize() {
@@ -149,12 +162,14 @@ export class DelaunaySystem {
     const render = (now: number) => {
       this.animationId = requestAnimationFrame(render);
 
+      if (this.isPaused) return;
+
       const delta = now - this.lastFrameTime;
       if (delta < frameInterval) return;
       this.lastFrameTime = now - (delta % frameInterval);
       this.lerpColor();
 
-      this.ctx.fillStyle = '#1C172E';
+      this.ctx.fillStyle = this.cachedBgStyle;
       this.ctx.fillRect(0, 0, this.width, this.height);
 
       for (let i = 0; i < this.count; i++) {
@@ -189,5 +204,7 @@ export class DelaunaySystem {
       this.animationId = null;
     }
     window.removeEventListener('mousemove', this.boundMouseMove);
+    document.removeEventListener('visibilitychange', this.boundVisibilityChange);
   }
 }
+
